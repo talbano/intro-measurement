@@ -1,0 +1,95 @@
+--- 
+title: "Introduction to Educational and Psychological Measurement"
+subtitle: "With Examples in R"
+author: "Anthony D. Albano"
+date: "March 21, 2016"
+knit: "bookdown::render_book"
+documentclass: book
+bibliography: intro-measurement.bib
+biblio-style: apalike
+link-citations: yes
+---
+
+# Overview
+
+This book provides an introduction to the theory and application of measurement in education and psychology. Topics include test development, item writing, item analysis, reliability, dimensionality, and item response theory. These topics culminate in overviews of validity and, finally, test evaluation.
+
+Validity and test evaluation are based on both qualitative and quantitative analysis of the properties and qualities of a measure. This book addresses the qualitative side using a simple argument-based approach. The quantitative side is addressed using descriptive and inferential statistical analyses, all of which are presented and visualized within the statistical environment R [@r2015].
+
+Knowledge of R is not a prerequisite to using this book. However, familiarity with basic data analysis and introductory statistics, especially ones used in the social sciences, is recommended. The intended audience for this book includes advanced undergraduate and graduate students, practitioners, researchers, and educators.
+
+## Perspectives on testing
+
+Testing has become a controversial topic in the context of education. Consider this summary by @nelson2013testing from a study on the costs of educational testing in school districts in the US:
+
+> Testing has spiraled out of control, and the related costs are unacceptably high and are taking their educational toll on students, teachers, principals and schools.
+
+The conclusions of this study reflect a sentiment that is shared by many in the educational community, that we often rely too heavily on testing in schools, and that we do so to the detriment of students.
+
+Those critical of educational testing in the US highlight two main problems with assessment mandated from the top down. The first is an over reliance on tests in decision making at all levels, including decisions that impact students, teachers, administrators, and other stakeholders. There are too many tests, given too often, with too high a cost, financially and in terms of lost instructional time. @nelson2013testing [p. 3] notes that "if testing were abandoned altogether, one school district in this study could add from 20 to 40 minutes of instruction to each school day for most grades."
+
+The second problem is a reliance on tests which are not relevant enough to what is being taught and learned in the classroom. There is a lack of cohesion, a mismatch in content, where teachers, students, and tests are not on the same page. As a result, the tests become frustrating, unpleasant, and less meaningful to the people who matter most, those who take them and those who administer or oversee them at the classroom level.
+
+Both of these problems identified in our testing agenda have to do with what is typically regarded as the pinnacle of testliness, the all-encompassing, all-powerful *validity*. Commenting over 50 years ago on its status for the test developer, @ebel1961must concluded with some religious imagery that "validity has long been one of the major deities in the pantheon of the psychometrician. It is universally praised, but the good works done in its name are remarkably few" [p. 640]. Arguably, nothing is more important in the testing process than validity, the extent to which test scores accurately represent what they're intended to measure. However, even today, it may be that "relatively few testing programs give validation the attention it deserves" [@brennan2013commentary, p. 81].
+
+Establishing validity evidence for a test has traditionally been the responsibility of the test developer, who may only have limited interaction with test users and secondhand familiarity with the issues they face. Yet, @kane2013validating notes that from early on in the testing movement in the US, the appropriateness of testing applications at the student level was a driving force in bringing validity to prominence. He cites @kelley1927interpretation, who observed:
+
+> The question of validity would not be raised so long as one man uses a test or examination of his own devising for his private purposes, but the purposes for which schoolmasters have used tests have been too intimately connected with the weal of their pupils to permit the validity of a test to go unchallenged. The pupil... is the dynamic force behind the validity movement. ... Further, now that the same tests are used in widely scattered places and that many very different tests all going by the same name are gently recommended by their respective authors, even the most complacent schoolmen, the most autocratic, and the least in touch with pupils, are beginning to question the real fitness of a test. [pp. 13-14]
+
+## Motivation for this book
+
+It appears that @kelley1927interpretation recognized in the early 1900s the same issue that we're dealing with today. Tests are recommended or required for a variety of applications, and we (even the most complacent and autocratic) often can only wonder about their fitness. Consumers and other stakeholders in testing need access to information and tools, provided by a test author, that allow them to understand and evaluate the quality of a test. Consumers need to be informed. In a way, @kelley1927interpretation was promoting accessible training in educational and psychological measurement.
+
+As a researcher and psychometrician, someone who studies methods for building and using measurement tools, I admire a good test, much like a computer programmer admires a seamless data access layer or an engineer admires a sturdy truss system. Testing can provide critical information to the systems it supports. It is essential to measuring key outcomes in both education and psychology, and can be used to enhance learning and encourage growth [e.g., @black1998inside, @meyer2013taking, @roediger2011test]. However, test content and methods can also become outdated and out of touch, and, as a result, they can waste time and even produce erroneous, biased, and damaging information [@santelices2010unfair].
+
+Like floppy disks and flying buttresses, certain forms and features of testing are becoming obsolete as the measurement and assessment processes evolve to meet the needs and capitalize on the capabilities of a high-tech world. Paper-and-pencil administration is turning over to computer administration. Even complex open-ended questions can now be automatically generated and automatically scored. With advances in computing technology, tests are becoming more flexible, more adaptive, and more efficient than ever. And yet, evidence of their effectiveness is often lacking. Rather than do away with testing, we need to refine and improve it. We need to clarify its function and ensure that it is fulfilling its purpose.
+
+In the end, there is clearly disagreement between the people at each end of the testing process, that is, those creating the tests and those taking them or witnessing firsthand their results, in terms of the validity or effectiveness of the endeavor. This disconnect may never go away completely, especially since an education system has many roles and objectives, inputs and outputs, not all of which are unanimously endorsed. However, there is definitely room for change and growth.
+
+This book will prepare you to contribute to the discussion by exposing you to a broad overview of the test development and evaluation processes. Given the broad scope, some deeper topics, like item response theory, are covered only superficially. The purpose of this book is not to make you an expert in every topic, but to help you:
+
+1. recognize what makes a test useful and understand the importance of valid testing; and
+2. gain some of the basic skills needed to build and evaluate effective tests.
+
+Note that this book addresses affective, non-cognitive, non-educational testing as well as cognitive, educational testing. Affective testing includes, for example, testing used to measure psychological attributes, perceptions, and behaviors, ones that are typically the target of clinical support rather than ones that are the target of instruction. This form of testing is just as relevant, but is also less controversial than educational testing, so it didn't make for as strong an opening to the book.
+
+## Structure of this book
+
+This book is divided into ten topic areas. For the most part, these are each discussed in separate chapters, though there will be some overlap and repetition of ideas. Most chapters involve some analysis of data in R. An introduction to R is given in Chapter \@ref(introduction), and example R code is provided throughout.
+
+1. [Introduction](#introduction)
+    
+    An intro to the resources we'll be using in this book, with an overview in R of some introductory statistical topics.
+2. Measurement, Scales, Scoring
+    
+    See what measurement really means, and look at the different procedures used to carry it out, with examples in R.
+3. Testing Applications
+    
+    Review features of the testing process and terms used to describe and categorize tests, with examples of some popular measures.
+4. Test Construction
+    
+    Background on noncognitive and cognitive test development, and then a thorough discussion of cognitive item writing.
+5. Reliability
+    
+    The second most popular topic in measurement, introduced via classical test theory, with lots of demonstrations in R.
+6. Item Analysis
+    
+    Dive right back into R with some classical descriptive analysis of item-level data.
+7. Dimensionality
+    
+    An overview of exploratory and confirmatory factor analysis, in R.
+8. Item Response Theory
+    
+    Also known as modern measurement theory, a latent variable modeling approach to item analysis and test construction.
+9. Validity
+    
+    How do we know an instrument is measuring what it's intended to measure?
+10. Test Evaluation
+    
+    See how topics from Chapters 1 through 9 come together in the evaluation and comparison of educational and psychological tests.
+
+## Learning objectives
+Each chapter in this book is structured around a set of learning objectives appearing at the end of the corresponding chapter. These learning objectives capture, on a superficial and summary level, all the material you'd be expected to master in a course accompanying this book. Any assignments, quizzes, or class discussions should be built around these learning objectives, or a subset of them.
+
+## Exercises
+Each chapter also ends with self assessments and other activities for stretching and building understanding. As this is a book on assessment, you'll frequently write your own questions, with the opportunity to submit them to an online learning community for feedback. More on this in Chapter \@ref(introduction).

@@ -1,0 +1,150 @@
+---
+knit: bookdown::preview_chapter
+---
+
+# Introduction {#introduction}
+
+This chapter will get you up to speed with the resources we'll be using throughout the book, including the assessment development tools at [Proola.org](http://proola.org), and the statistical software R.
+
+## Proola
+
+Proola is a web application for collaborative assessment development. It was created specifically for individuals looking for practice and support in the item writing process. There's a simple interface for creating assessment items, and features for reviewing and commenting on the items of your peers.
+
+You need to set up a free account at [proola.org/users/sign_up](http://proola.org/users/sign_up) before you can complete the item writing assignments in later chapters. Once you have an account, you can start writing and commenting on items.
+
+Some things to keep in mind as you get started:
+
+1. The site itself is still under development, with new features on the way. Report bugs or send suggestions to <contact@proola.org>.
+2. Everything you share is public. Don't post copyrighted items, images, or other information, and don't share items you need to keep secure.
+3. You can learn a lot from the successes and failures of others. Search the bank for items related to your content area, and then see where people struggle and what they do well.
+
+At this point, the Proola item writing process is broken down into four steps. Learn more at [proola.org/learn_more](http://proola.org/learn_more).
+
+1. Draft an item
+    Create a selected-response or constructed-response item. Give it a short but descriptive title, and choose from a variety of subjects, from Accounting to Writing, and a range of grade levels, Pre-K through College. Optionally add common core learning objectives, and share any other info in the comments.
+2. Get feedback from peers and assessment specialists
+    Once an item is saved as a draft, anyone can view and comment on it. Wait patiently for comments, or recruit peers in your grade level, subject area, school, district, and get them to sign up and leave feedback.
+3. Edit your item based on feedback
+    After input from peers, edit and improve your item. Focus on the item writing guidelines and your selected learning objective(s). Aim for the highest depth of knowledge. Double-check for clarity and correct spelling and grammar.
+4. Submit for review to share with the community
+    After submitting an item, there's no turning back. You and others can still comment, but edits are locked until a formal peer review is complete. When revisions are recommended, edits can only be made to a new version of the item. Previous versions are viewable but not editable.
+
+Revise and repeat this process as needed up to four times. Once approved, your item can be saved, printed, and exported by other users.
+
+More on item writing and using Proola in Chapters 3 and 4.
+
+## Intro stats in R
+
+### What are statistics?
+
+Many people are skeptical of statistics, and for good reasons. We often encounter statistics that contradict one another or that are appended to fantastic claims about the effectiveness of a product or service. At their heart, statistics are pretty innocent and shouldn't be blamed for all the confusion and misleading. Statistics are just numbers designed to summarize and capture the essential features of larger amounts of data or information.
+
+> Facts are stubborn things, but statistics are pliable. --- *Mark Twain*
+
+Statistics are important in measurement because they allow us to score and summarize the information collected with our tests and instruments. They're used to describe the reliability, validity, and predictive power of this information. They're also used to describe how well our test covers a domain of content or a network of constructs, including in relation to other content areas or constructs. We rely heavily on statistics here and in Chapters 2 and 5 through 8.
+
+### What is R?
+
+R is both a programming language and software environment for statistical analysis. It differs from other software like SPSS in three key ways:
+
+1. Cost - R is free, no strings (or warranties) attached. Download it at [cran.r-project.org](https://cran.r-project.org/) The most popular editor, RStudio, is also available for free at [rstudio.com](https://www.rstudio.com/).
+2. Sharing - R is open-source, with thousands of active contributors sharing add-on packages. See the full list at [cran.r-project.org/web/packages](https://cran.r-project.org/web/packages/) (there are currently over 8,000).
+3. Use - R is accessed primarily through code, rather than by pointing and clicking through drop-down menus and dialog windows.
+
+### Data
+
+
+
+### Central tendency
+\section{Some Terms}
+We'll begin this review with some basic statistical terms. First, a variable is a set of values that can differ for different people. For example, we often measure variables such as $age$ and $gender$. These are italicized to denote them as statistical variables, as opposed to words. The term \emph{variable} is synonymous with quality, attribute, trait, and property, which were used when describing the purpose of measurement in Chapter~\ref{chap:measurement}. Constructs are variables. Really, a variable is any value assigned to people that can potentially take on more than just a single constant value.
+
+Generic variables will be labeled using capital letters, usually $X$ and $Y$. Here, $X$ might represent a generic test score, for example, the total score across all the items in a test. It might also represent scores on a single item. The definition of a generic variable like $X$ depends on the context in which it is defined. Indexes can also be used to denote generic variables that are part of some sequence of variables. Most often this will be scores on items within a test, where, for example, $X_1$ is the first item, $X_2$ is the second, and $X_J$ is the last, with $J$ being the number of items in the test and $j$ representing a generic item. Subscripts can also be used to index individual people on a single variable. For example, test scores for a group of people could be denoted as $X_1$, $X_2$, \dots, $X_n$, where $n$ is the number of people and $i$ represents a generic person. Combining people and items, $X_ij$ would be the score for person $i$ on item $j$.
+
+The number of people is denoted by $n$ or sometimes $N$. Typically, the lowercase  $n$ represents sample size and the uppercase $N$ represents the population, however, not everyone is consistent with this. Greek and Arabic letters are used for other sample and population statistics. The sample mean is denoted by $m$ and the population mean by $\mu$, the standard deviation is $s$ or $\sigma$, variance is $s^2$ or $\sigma^2$, and correlation is $r$ or $\rho$. Note that the mean and standard deviation as sometimes abbreviated as $M$ and $SD$. Note also that distinctions between sample and population values often aren't necessary, in which case the population terms are used. If a distinction is necessary, it will be identified.
+
+Finally, you may see descriptive subscripts added to variable names and other terms, for example, $M_{control}$ might denote the mean of the control group. These subscripts depend on the situation and must be interpreted in context.
+
+\section{Distributions}
+A variable for a given sample can be summarized by counting up the numbers of people having the same values. The result is a \emph{frequency distribution}, where each total number of people is a \emph{frequency} denoted by $f$. For example, the categorical variable $X$ representing eye color may have three distinct values in a classroom of $n=20$ students: blue, brown, and green. A frequency distribution would simply total up the number of students with each color, e.g., $f_{blue} = 8$. A bar chart and histogram are visual representations of frequency distributions, where a bar chart shows each frequency and a histogram may collapse some bars to improve interpretation with continuous variables, that is, variables where people don't fit into a discrete set of categories.
+
+A frequency can be converted to a \emph{proportion} by dividing it by the sample size. For example, $p_{blue} = f_{blue}/n$. Multiplying by $100$ then gives you a percentage. Frequencies, proportions, and percentages all describe the same information for values within a distribution but in slightly different ways.
+
+Some distributions have notable shapes. For example, a distribution with the same or very similar amounts of people with each value is referred to as a uniform distribution. A distribution is normal when certain amounts of it fall within a central value, for example, 68\% within 1 standard deviation the mean, and frequencies decreasing and tapering off as they get further away from the center. A distribution that tapers off to the left but not the right is described as negatively skewed, whereas tapering to the right but not left is positive skew.
+
+\section{Central Tendency}
+Central tendency provides statistics that describe the middle, most common, or most normal value in a distribution. The mean, which is technically only appropriate for interval or ratio scaled variables, is the score that is closest to all other scores. The mean also represents the balancing point in a distribution, so that the further a score is from the center, the more pull it will have on the mean in a given direction. The mean for a variable $X$ is simply the sum of all the $X$ scores divided by the sample size:
+\begin{equation}
+\mu = \frac{\sum_{i=1}^{n}X_i}{n}
+\end{equation}
+The median is the middle score in a distribution, the score that divides a distribution into two halves with the same number of people on either side. The mode is simply the score or scores with the largest frequencies.
+
+The mean is by far the most popular measure of central tendency, in part because it forms the basis of many other statistics, including standard deviation, variance, and correlation. As a result, the mean is also the basis for regression and ANOVA.
+
+\section{Variability}
+Variability provides statistics that describe how much scores are spread out or differ from one another in a distribution. Variance and standard deviation tell us how much scores vary around the mean. As a result, they too are are technically only appropriate with variables measured on interval and ratio scales. The variance is the mean squared distance for each score from the mean, or the sum of squared distances from the mean divided by the sample size minus 1:
+\begin{equation}
+\sigma^2 = \frac{\sum_{i=1}^{n}(X_i - \mu)^2}{n - 1}
+\end{equation}
+Because it is expressed as a squared value, the metric of a variance is the squared score metric which typically does not have much practical use. As a result, variance is not often examined or reported as a standalone statistic. Instead, the square root is taken to obtain the standard deviation:
+\begin{equation}
+\sigma = \sqrt{\frac{\sum_{i=1}^{n}(X_i - \mu)^2}{n - 1}}
+\end{equation}
+The standard deviation is interpreted as the average distance from the mean, and it is expressed in the raw score metric making it more easy to interpret.
+
+\section{Covariability}
+Covariability, similar to variability, describes how much scores are spread out or differ from on another, but takes into account how similar these differences or changes are for each person from one variable to the other. As changes are more consistent across people from one variable to the other, covariability estimates increase.
+
+Covariability is used with bivariate score distributions. The covariance is then the bivariate equivalent of the variance for a univariate distribution, and it is calculated in much the same way:
+\begin{equation}
+\label{eqn:cov}
+\sigma_{XY} = \frac{\sum_{i=1}^{n}(X_i - \mu_X)(Y_i - \mu_Y)}{n - 1}
+\end{equation}
+Note that we now have two different variables, $X$ and $Y$, and our means are labeled accordingly. Covariance is often denoted by $\sigma_{XY}$.
+
+Like the variance, the covariance isn't very useful in and of itself because it is expressed in terms of products of scores, rather than in the more familiar raw score metric. However, square rooting the covariance doesn't help us because there are two raw score metrics involved in the calculation. The correlation solves this problem by removing these metrics entirely:
+\begin{equation}
+\label{eqn:cor}
+\rho_{XY} = \frac{\sigma_{XY}}{\sigma_X \sigma_Y}
+\end{equation}
+By dividing the covariance by the product of the standard deviations for $X$ and $Y$ we obtain a measure of the relationship between them that does not have an interpretable metric. The correlation coefficient is expressed as the shared variability between two variables relative to all the available variability between and within two variables. In this ratio form, the correlation is bound by -1 and 1. A correlation of 0 indicates that none of the available variability in two variables is shared commonly between them, whereas a -1 or 1 indicates that all of the variability is shared.
+
+%\section{Statistical Modeling}
+%Two of the most common statistical models are the linear regression and ANOVA models. A thorough review of either one is beyond the scope of this Appendix. However, a straightforward introduction for social scientists is provided by \citeA{gravetter2013statistics}. Good introductions to regression and ANOVA are also readily available online.
+
+%Simple linear regression describes the linear relationship between an outcome or dependent variable $Y$ and an explanatory or independent variable $X$ using the following linear equation:
+%\begin{equation}
+%Y_i = b_0 + b_1X_{i} + e
+%\end{equation}
+%Here, $b_0$ is the intercept or predicted value on $Y$ when $X$ is zero, and $b_1$ is the slope for $X$, or the predicted change in $Y$ for a one-point increase in $X$. The slope $b_1$ is similar to the correlation coefficient, and can be found as $b_1 = \rho_{XY}/\sigma_X$.
+
+%---------------------------------------------------------------------------------------------------------------
+% Summary
+
+\section{Summary}
+This appendix reviews some of the fundamental statistics and terms that will be used throughout this course, for example, to support our discussion of reliability, item analysis, and validity. Remember that some differences may show up in how these terms and definitions are used, and other statistical terms and concepts not shown here will come up later. This is just the beginning.
+
+\subsection{Learning objectives}
+\begin{enumerate}
+\item{Identify and use the following notation: $X$, $n$ and $N$, $\mu$, $\sigma$, $\sigma^2$, $\rho$ and $r$.}
+\item{Calculate and interpret frequencies, proportions, and percentages.}
+\item{Use a frequency distribution plot and histogram to describe the central tendency, variability, and shape of a distribution.}
+\item{Calculate and interpret measures of central tendency and describe what they represent, including the mean, median, and mode.}
+\item{Calculate and interpret measures of variability and describe what they represent, including the standard deviation and variance.}
+\item{Calculate and interpret the correlation between two variables and describe what it represents in terms of the shape, direction, and strength of the linear relationship between the variables.}
+\item{Interpret a scatterplot, including what it indicates about the shape, direction, and strength of the linear relationship between two variables.}
+%\item{Describe the purpose of statistical modeling}
+%\item{Describe the purpose of linear regression, the types of variables with which it is used, and interpret the results from a simple linear regression model.}
+%\item{Describe the purpose of analysis of variance (ANOVA), the types of variables with which it is used, and interpret the results from one-way and two-way ANOVA models.}
+\end{enumerate}
+
+## Summary and homework
+
+
+## Discussion questions
+1. Suppose we eliminated all forms of educational and psychological testing. How would our educational and psychological systems be impacted as a result?
+2. In what ways does Kelley (1927; see quote above) give meaning and value to validity? What are some modern day examples of the issues he raises?
+3. How can educational and psychological testing *promote* growth in addition to simply measuring it?
+4. Reflect on your most recent experience taking a high-stakes standardized test, such as the GRE. Could you articulate the purpose of the test? Do you know what it was intended to measure? How do you think the test could be improved?
+
+%---------------------------------------------------------------------------------------------------------------

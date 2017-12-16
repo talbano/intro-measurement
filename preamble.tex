@@ -1,1 +1,9 @@
+% bookdown::render_book("index.Rmd", output_format = bookdown::pdf_book(includes = list(in_header = "preamble.tex"), keep_tex = TRUE))
+
 \usepackage{booktabs}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+
+% Shading defined by bookdown
+\newenvironment{objectives}{\vspace{10pt}\begin{snugshade}}{\end{snugshade}}
+\newenvironment{learning-check}{\vspace{10pt}\begin{snugshade}}{\end{snugshade}}
+  

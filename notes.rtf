@@ -1,0 +1,86 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf830
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 ### Dynamic R apps\
+\
+The example R code you've seen so far is static, in the sense that it is fixed within the text of the book, and any R output associated with it is printed in place. If you download the HTML version of the book, you'll also have access to some dynamic R examples that let you interact with R and see how output changes as a result. These examples are built as small apps (using the Shiny app engine) that display within your web browser. Some of these apps will give you access to R code, others will present user interfaces with inputs like drop-downs, radio buttons, and search boxes. An example is shown at the end of this chapter.\
+\
+### Applications\
+\
+This R app compares descriptive statistics and score distributions by country for selected PISA student survey variables. Use it to apply what you've learned in this chapter by identifying how the distributions differ by country and across countries by variable. You can also use the app to confirm results from your own analyses in R.\
+\
+```\{r, echo=FALSE\}\
+#The online version of the app\
+#knitr::include_app("https://talbano.shinyapps.io/01-intro/")\
+source("apps/01-intro/app.R")\
+```\
+\
+Here are some questions to consider. Remember that all of these student survey variables were rescaled to have a mean of 0 and standard deviation of 1.\
+\
+1. Do any countries tend to score lower on average than others over the different student survey scales?\
+2. Are any countries consistently more or less variable than others? What information supports your conclusion?\
+\
+\
+As we transition into IRT\
+\
+IRT takes the same data plotted in Figure~\\ref\{fig:irtplot1\} and does two things with it. First, it estimates an ability parameter for each person. This is based on all the items in the test and it replaces the total score on the $x$-axis. The ability scale is arbitrary in IRT; it is usually centered at 0 and given a standard deviation of 1, like a $z$-score for a normal distribution. Second, in IRT we actually predict how likely a person is to get an item correct. In CTT, this prediction doesn't actually happen; the ITC can be represented by a line through the scatterplot, but this line isn't optimized to represent the observed data. The curvy discrimination line in IRT is intended to represent the observed data. It shows the predicted probability of getting an item correct given a person's ability level.\
+\
+Figure~\\ref\{fig:irtplot2\} shows what happens when we use the data from Figure~\\ref\{fig:irtplot1\} in an IRT model. Remember, the line represents the prediction based on the item discrimination, and the dots in this plot represent observed responses. Notice that the same general relationship is displayed in Figure~\\ref\{fig:irtplot2\} as in Figure~\\ref\{fig:irtplot1\}: as you become more able (moving right on the $x$-axis) you are predicted to do better on the item (the $y$-axis). However, in Figure~\\ref\{fig:irtplot2\} our prediction is curvilinear. It never goes below a certain horizontal value to the left (called the lower asymptote or guessing parameter, $c$), it never goes above 1 on the right, and it has a specific slope (called the discrimination parameter, $a$) at its center (called the difficulty parameter, $b$).\
+\
+\
+The item parameters are used to define the item response function, demonstrated by the curve in Figure \\@ref(fig:irtplot1). The IRF curve describes the relationship between theta and predicted performance on the item. As theta increases, we expect the probability of a correct response on an item to increase as well.\
+\
+We can combine the IRF from multiple items to get what's called a test response function (TRF). In essence, this is simply the IRF all added together, and it gives us the probability that you'll get all the items on the test correct. In other words, it tells us what *proportion* of the test we'd predict a person to get correct, based on theta. Again, as theta increases, we expect a person to do better and better on the test.\
+\
+We will evaluate changes in discriminating power across theta for an item and test using the item information function (IIF) and test information function (TIF). These curves summarize where on the theta scale our items provide the most discrimination power, that is, the most *information*. Information is synonymous with discriminating power.\
+\
+The opposite of the test information function is the test error function (TEF), which contains the different SEM for each theta level. SEM in IRT can be thought of as the opposite of information, so the TEF curve will have the opposite shape of the TIF curve. As information increases, SEM decreases. Remember that IRT gives us an SEM that varies by level on the construct. The SEM will tend to be lowest where the majority of items are found. SEM tends to increase the further you get from the distribution of items, that is, in the tails of the theta scale.\
+\
+\
+\
+\
+Recall that, for a single item in CTT, we have a $p$-value to represent performance on the item. This $p$-value tells us the mean performance for all people on the item. In IRT, we are interested in the mean performance *by ability level*. If the $p$-value for an entire sample of people is 0.5, would you expect the p-value for just the high ability examinees to be higher or lower than 0.5? And what would you expect the $p$-value to be for just the low ability examinees? It turns out, if you get lots of data and you plot these ability-specific $p$-values for a single item, you end up with a line that follows the curve like the one in Figure \\@ref(fig:irtplot1). The IRT model in Equation \\@ref(eq:irt3pl) is the equation that produces such a curve.\
+\
+### Applications\
+\
+Let's examine the IRF for a subset of items and see how well the curves approximate the raw data. First, for the raw data, we'll calculate a set of *conditional* $p$-values for each item. The $p$-values are calculated conditional on theta. Each $p$-value for an item will be calculated from all the students with a given theta score. The code for obtaining these $p$-values is a bit complex, and there's no need to understand it all. But you should look at the results in `pvalues`. This R object contains a column of all the *unique* theta scores produced by our Rasch analysis, along with one column per item containing the $p$-values for students having each theta score.\
+\
+```\{r\}\
+# Get mean pvalues for groups of students by theta score\
+# This is complex code - no need to understand the details\
+pvalues <- apply(irtgbr$data[, rsitems], 2, function(x)\
+  tapply(x, round(irtgbr$data$theta, 4), mean, na.rm = T))\
+pvalues <- data.frame(theta = as.numeric(rownames(pvalues)), pvalues,\
+  row.names = NULL)\
+```\
+\
+Next, we'll use the reading item parameters for Great Britain contained in `irtgbr$ip` to calculate and plot the IRF for two `PISA09` reading items. Figure \\@ref(fig:gbr-plots) shows IRF for items `r452q03s` and `r452q06s`, plotted over the conditional $p$-values.\
+\
+```\{r gbr-plots, fig.show='hold', out.width="33%", fig.cap="Conditional p-values as points and IRF as lines for GBR reading items `r452q03s`, `r452q04s`, and `r452q06s`."\}\
+# Get IRF for the set of GBR reading item parameters\
+irfgbr <- rirf(irtgbr$ip)\
+# Plot IRF over p-values by theta\
+pgbr <- ggplot(irfgbr, aes(theta)) +\
+  scale_y_continuous("Pr(X)")\
+pgbr + geom_point(aes(theta, r452q03s), data = pvalues) +\
+  geom_line(aes(theta, r452q03s), data = irfgbr)\
+pgbr + geom_point(aes(x = theta, y = r452q04s), data = pvalues) +\
+  geom_line(aes(theta, r452q04s), data = irfgbr)\
+pgbr + geom_point(aes(x = theta, y = r452q06s), data = pvalues) +\
+  geom_line(aes(theta, r452q06s), data = irfgbr)\
+```\
+\
+Notice that the $p$-values in Figure \\@ref(fig:gbr-plots) appear to follow curves, rather than the straight lines posited by CTT. However, the Rasch IRF miss the trend slightly for each item. The conditional $p$-values seem to show a steeper increase as theta increases, indicating a steeper discrimination parameter $a$ than is estimated in the Rasch model. Having $c$ fixed at 0 seems appropriate for each item, as $p$-values for the lowest theta scores are both 0.\
+\
+We can also use the results in `irtgbr` to examine SEM over theta. We'll contrast the conditional SEM from the Rasch model with the constant SEM produced by a CTT reliability analysis. The Rasch SEM is obtained using the `rtef()` function from epmr.\
+\
+```\{r\}\
+relgbr <- rstudy(pisagbr[, rsitems])\
+ggplot(rtef(irtgbr$ip), aes(theta, se)) +\
+  geom_hline(yint = relgbr$sem[1]) +\
+  geom_line()\
+```}

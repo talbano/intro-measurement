@@ -1,0 +1,128 @@
+---
+knit: bookdown::preview_chapter
+---
+
+# Testing Applications {#applications}
+
+> If my future were determined just by my performance on a standardized test, I wouldn't be here.  
+> --- Michelle Obama
+
+Standardized tests are often used to inform high-stakes decisions, including decisions that limit access to educational programs, career paths, and other valuable opportunities. Ideally, test scores supplement other relevant information in these decisions, from sources such as interviews, recommendations, observations, and portfolios of work. In many situations, standardized test scores are considered essential because they provide a common objective measure of knowledge, achievement, and skills.
+
+Unfortunately, standardized test scores can be misused when the information they provide is inaccurate or when they have an undue influence on these decisions. A number of studies and reports refer to bias in standardized tests and an over-reliance on scores in high-stakes decision making [e.g., @santelices2010unfair]. As noted in the quote above, some people do not perform well on standardized tests, despite having what it takes to succeed.
+
+This chapter gives an overview of the various different types of tests, including standardized and unstandardized ones, that are used to support decision making in education and psychology. Chapter \@ref(measurement) referred to a test's purpose as the starting point for determining its quality or effectiveness. In this chapter we'll compare types of tests in terms of their purposes. We'll examine how these purposes are associated with certain features in a test, and we'll look again at how the quality or validity of a test score can impact the effectiveness of score interpretations.
+
+```{block, type="objectives"}
+**Learning objectives**
+
+1. Provide examples of how testing supports low-stakes and high-stakes decision making in education and psychology.
+2. Describe the general purpose of aptitude testing and some common applications.
+3. Identify the distinctive features of aptitude tests and the main benefits and limitations in using aptitude tests to inform decision-making.
+4. Describe the general purpose of standardized achievement testing and some common applications.
+5. Identify the distinctive features of standardized achievement tests and the main benefits and limitations in using standardized achievement tests to inform decision-making.
+6. Compare and contrast different types of tests and test uses and identify examples of each, including  summative, formative, mastery, and performance.
+```
+
+## Tests and decision making
+
+As mentioned in Chapter \@ref(measurement), tests are designed for different purposes, for example, to inform decisions impacting accountability, admissions, employment, graduation, licensing, and placement (see Table \@ref(tab:testpurposes)). Test results can also impact decisions regarding treatment in mental health and counseling settings, interventions in special education, and policy and legal issues.
+
+### Educational decisions
+
+Educational tests support decision making in both *low-stakes* and *high-stakes* situations. These terms refer to the consequences and impact of test results for those involved, where low-stakes testing has low impact and high-stakes can have large or lasting impact. Low-stakes tests address decision making for instructional planning and student placement. The myIGDI testing program described in Chapter \@ref(measurement) involves low-stakes decisions regarding the selection of instructional interventions to support student learning. PISA could be considered a low-stakes test, at least for the student, as scores do not impact decisions made at the student level. Teacher-made classroom assessments and other tools for measuring student growth are also considered low-stakes tests.
+
+Let's look at one of the oldest and best known standardized tests as an example of high-stakes decision making. Development of the first college admissions test began in the late 1800s when a group of universities in the US came together to form the College Entrance Examination Board (now called the College Board). In 1901, this group administered the original version of what would later be called the SAT. This original version consisted only of essay questions in select subject areas such as Latin, history, and physics. Some of these questions resemble ones we might find in standardized tests today. For example, from the physics section:
+
+> A steamer is moving eastward at the rate of 240 meters per minute. A man runs northward across her deck at the rate of 180 meters per minute. Show by a drawing his actual path and compute his actual velocity in centimeters per second.
+
+The original test was intended only for limited use within the College Board. However, in 1926, the SAT was redesigned to appeal to institutions across the US. The 1926 version included nine content areas: analogies, antonyms, arithmetic, artificial classification, language, logical inference, number series, reading, and word definitions. It was based almost entirely on multiple-choice questions. For additional details, see [sat.collegeboard.org](http://sat.collegeboard.org).
+
+The College Board notes that the SAT was initially intended to be a universal measure of preparation for college. It was the first test to be utilized across multiple institutions, and it provided the only common metric with which to evaluate applicants. In this way, the authors assert it helped to level the playing field for applicants of diverse socio-economic backgrounds, to "democratize access to higher education for all students" [@college2012sat, p. 3]. For example, those who may have otherwise received preferential treatment because of connections with alumni could be compared directly to applicants without legacy connections.
+
+Since it was formally standardized in 1926, the SAT has become the most widely used college admissions exam, with over 1.5 million administrations annually (as of 2015). The test itself has changed substantially over the years; however, its stated purpose remains the same [@college2012sat]:
+
+> Today the SAT serves as both a measure of students' college readiness and as a valid and reliable predictor of college outcomes. Developed with input from teachers and educators, the SAT covers core content areas presented as part of a rigorous high school curriculum and deemed critical for success in college ? critical reading, mathematics and writing. The SAT measures knowledge and skills that are considered important by both high school teachers and college faculty.
+
+As we'll see in Chapter \@ref(validity), test developers such as the College Board are responsible for backing up claims such as these with validity evidence. However, in the end, colleges must evaluate whether or not these claims are met, and, if not, whether admission decisions can be made without a standardized test. Colleges are responsible for choosing how much weight test scores have in admissions decisions, and whether or not minimum cutoff scores are used.
+
+Criticism of the SAT, primarily regarding perceived bias in item content and scoring [e.g., @santelices2010unfair], has led a number of colleges to drop it as an admissions requirement. These colleges base admissions decisions on other information, such as in-person interviews with applicants [@miller2014test].
+
+A 2009 survey of 246 colleges in the US found that 73% used the SAT in admissions decisions [@briggs2009preparation]. Of those colleges using the SAT, 78% reported using scores holistically, that is, as supporting information within a portfolio of work contained in an application. On the other hand, 31% reported using SAT scores for quantitative rankings of applicants, and 21% reported further to have defined cut-off scores below which applicants would be disqualified for admission.
+
+Another controversial high-stakes use of educational testing involves accountability decisions within the US education system. For reviews of these issues in the context of the No Child Left Behind Act of 2001 (NCLB; Public Law 107-110), see @hursh2005growth and @linn2002accountability. @abedi2004nclb discusses validity implications of NCLB for English language learners.
+
+### Psychological decisions
+
+As an example of decision making in the context of psychology, we'll look at one of the most widely used standardized personality tests. In the 1930s and 1940s, two researchers at the University of Minnesota pioneered an empirical and atheoretical method for developing personality and pathology scales. This method involved administering hundreds of short items to patients with known diagnoses. Items measuring specific personality traits and pathologies were identified based on consistent patterns of response for patients with those traits and pathologies. For example, patients diagnosed with depression responded in similar ways across certain items. Regardless of the content of the items (hence the atheoretical nature of the method), if depressed individuals responded in consistent ways, the items were assumed to measure depression. Table \@ref(tab:mmpi) contains names and descriptions for the original clinical scales of the Minnesota Multiphasic Personality Inventory (MMPI; for details, see [wikipedia.org](http://en.wikipedia.org/wiki/Minnesota_Multiphasic_Personality_Inventory)).
+
+```{r mmpi, echo=FALSE}
+knitr::kable(cbind("Scale" = c("Hypochondriasis", "Depression", "Hysteria",
+  "Psychopathic Deviate", "Masculinity/Femininity", "Paranoia",
+  "Psychasthenia", "Schizophrenia", "Hypomania", "Social Introversion"),
+  "What is measured" = c("Concern with bodily symptoms", "Depressive symptoms",
+  "Awareness of problems and vulnerabilities", "Conflict, struggle, anger, respect for rules", "Stereotypical interests and behaviors", "Level of trust, suspiciousness, sensitivity", "Worry, anxiety, tension, doubts, obsessiveness",
+  "Odd thinking and social alienation", "Level of excitability",
+  "People orientation"), "Items" = c(32, 57, 60, 50, 56, 40, 48, 78, 46, 69)),
+  caption = "Original Clinical Scales of the MMPI")
+```
+
+The MMPI and other personality and psychopathology measures are used to support decisions in a variety of clinical settings, including diagnosis and treatment and therapy planning and evaluation. They are also used in personnel selection, where certain personality traits have been shown to correlate strongly with certain aspects of job performance. However, because of its emphasis on pathology and implications regarding mental illness, the MMPI can only be used in the US in employment decisions for high-risk or security-related positions such as police officer and fire fighter. Measures such as the MMPI can also be used in forensics, criminal investigations, and in court [@pope2006mmpi]. Given their impact on mental health outcomes, career choices, and legal proceedings, these could all be considered high-stakes decisions.
+
+## Test types and features
+
+Over the past hundred years numerous terms have been introduced to distinguish different tests from one another based on certain features of the tests themselves and what they are intended to measure. Educational tests have been described as measuring constructs that are the focus of instruction and learning, whereas psychological tests measure constructs that are not the focus of teaching and learning. Thus, educational and psychological tests differ in the constructs they measure. Related distinctions are made between cognitive and affective tests, and achievement and aptitude tests. Other distinctions include summative versus formative, mastery versus growth, and knowledge versus performance.
+<!-- Removed standardized versus not, and perceptions and attitudes versus personality traits and pathologies. -->
+
+### Cognitive and affective
+
+Cognitive testing refers to testing where the construct of interest is a cognitive ability. Cognition includes mental processes related to knowledge, comprehension, language acquisition and production, memory, reasoning, problem solving, and decision making. Intelligence tests, achievement tests, and aptitude tests are all considered cognitive tests because they assess constructs involving cognitive abilities and processing. Other examples of cognitive tests include educational admissions tests and licensure and certification tests.
+
+In affective testing, the construct of interest relates to psychological attributes not involving mental processing. Affective constructs include personality traits, psychopathologies, interests, attitudes, and perceptions, as discussed below. Note that cognitive measures are often used in both educational and psychological settings. However, affective measures are more common in psychological settings.
+
+### Achievement and aptitude
+
+Achievement and aptitude describe two related forms of cognitive tests. Both types of tests measure similar cognitive abilities and processes, but typically for slightly different purposes. Achievement tests are intended to describe learning and growth, for example, in order to identify how much content students have mastered in a unit of study. Accountability tests required by NCLB are achievement tests built on the educational curricula for states in the US. State curricula are divided into what are called *learning standards* or *curriculum standards*. These standards operationalize the curriculum in terms of what proficient students should know or be able to do.
+
+In contrast to achievement tests, aptitude tests are typically intended to measure cognitive abilities that are predictive of future performance. This future performance could be measured in terms of the same or a similar cognitive ability, or in terms of performance on other constructs and in other situations. For example, intelligence or IQ tests are used to identify individuals with developmental and learning disabilities and to predict job performance [e.g., @carter2002matching]. The Stanford Binet Intelligence Scales, originally developed in the early 1900s, were the first standardized aptitude tests. Others include the Wechsler Scales and the Woodcock-Johnson Psycho-Educational Battery.
+
+Intelligence tests and related measures of cognitive functioning have traditionally been used in the US to identify students in need of special education services. However, an over-reliance on test scores in these screening and placement decisions has led to criticism of the practice. A federal report [@us2002revitalizing, p. 25] concluded that,
+
+> Eliminating IQ tests from the identification process would help shift the emphasis in special education away from the current focus, which is on determining whether students are eligible for services, towards providing students the interventions they need to successfully learn.
+
+The myIGDI testing program discussed in Chapter \@ref(measurement) is one example of a special education screening and placement measure that focuses on intervention to support student learning. Note that the emphasis on student learning in this context has resulted in tests that measure both aptitude and achievement, as they predict future performance while also describing student learning. Thus, tests for screening and placement of students with disabilities are now designed for multiple purposes.
+
+Tests that distinctly measure either achievement or aptitude usually differ in content and scope as well as purpose. Achievement tests are designed around a well defined content domain using a *test outline* (discussed further in Chapter \@ref(development)). The test outline presents the content areas and learning standards or objectives needed to represent the underlying construct. An achievement test includes test questions that map directly to these content areas and objectives. As a result, a given question on an achievement test should have high *face validity*, that is, it should be clear what content the question is intended to measure. Furthermore, a correct response to such a question should depend directly on an individual's learning of that content.
+
+On the other hand, aptitude tests, which are not intended to assess learning or mastery of a specific content domain, need not be restricted to specific content. They are still designed using a test outline. However, this outline captures the abilities and skills that are most related to or predictive of the construct, rather than content areas and learning objectives. Aptitude tests typically measure abilities and skills that generalize to other constructs and outcomes. As a result, the content of an aptitude question is not as important as the cognitive reasoning or processes used to respond correctly. Aptitude questions may not have high face validity, that is, it may not be clear what they are intended to measure and how the resulting scores will be used.
+
+### Other distinctions
+
+In the 1970s and 1980s, researchers in the areas of education and school psychology began to highlight a need for educational assessments tied directly to the curriculum and instructional objectives of the classroom in which they would be used. The term *performance assessment* was introduced to describe a more authentic form of assessment requiring students to demonstrate skills and competencies relevant to key outcomes of instruction [@mehrens1992using, @stiggins1987design]. Various types of performance assessment were developed specifically as alternatives to the summative tests that were then often created outside the classroom. For example, curriculum-based measurement (CBM), developed in the early 1980s [@deno1985curriculum], involved brief, performance-based measures used to monitor student progress in core subject areas such as reading, writing, and math. Reading CBM assessed students' oral reading fluency in the basal texts for the course; the content of the reading assessments came directly from the readings that students would encounter during the academic year. These assessments produced scores that could be used to model growth, and predict performance on end-of-year tests [@deno2001using, @fuchs1999monitoring].
+
+Although CBM and other forms of performance assessment remain popular today, the term *formative assessment* is now commonly used as a general label for the classroom-focused alternative to the traditional *summative* or end-of-year test. The main distinction between formative and summative is in the purpose or intended use of the resulting test score. Formative assessments are described as measuring incrementally, where the purpose is to directly encourage student growth [@black1998inside]. They can be spread across multiple administrations, or used in conjunction with other versions of an assessment, so as to monitor and promote progress. Thus, formative assessments are designed to inform teaching and form learning. They seek to answer the question, "how are we doing?" @wiliam1996meanings further assert that in order to be formative, an assessment must provide information that is used to address a need or a gap in the student's understanding; in other words, beyond an intent, there must be an attempt to apply the results. Note that it is less appropriate to label a test as formative, and preferable to instead label the process or use of scores as formative.
+
+On the other hand, summative assessments, or assessments used summatively, measures conclusively, usually at a single time point, where the intention is to describe current status. Summative assessment encourages growth only indirectly. In contrast to formative, it is designed to sum or summarize, to answer the question, "how did we do?" @cizek2010introduction describes summative as an assessment that is administered at the end of an instructional unit the purpose of which is "primarily to categorize the performance of a student or system." @wiliam1996meanings go further by saying that summative assessments cannot be formative, by definition.
+
+Despite debate over what specifically constitutes a formative assessment [e.g., @bennett2011formative], numerous studies have documented at least some positive impact resulting from the use of assessments that inform instruction during the school year [@black1998inside]. Formative assessments have become a key component in many educational assessment systems [@militello2010formative].
+
+### Summary
+
+Although a variety of terms are available for describing educational and psychological tests, many tests can be described in different ways. The myIGDI measures was mentioned as an example of how achievement and aptitude tests can be difficult to distinguish from one another. Summative and formative tests often overlap as well, where a test can be used to both summarize and inform learning. In the end, the purpose of the test should be the main source of information for determining what type of test you're dealing with and what that test is intended to do.
+
+## Finding test information
+
+Information for commercially available tests can usually be found by searching online, with test publishers sharing summaries and technical documentation for their tests. Repositories of test information are also available online. ETS provides a searchable data base of over 25,000 tests at [www.ets.org/test_link](https://www.ets.org/test_link/). A search for the term "creativity" returns 213 records, including the Adult Playfulness Scale, "a personality measure which assesses the degree to which an individual tends to define an activity in an imaginative, nonserious or metaphoric manner so as to enhance intrinsic enjoyment, involvement, and satisfaction," and the Fantasy Measure, where "Children complete stories in which the main character is a child under stress of failure." In addition to a title and abstract, the data base includes basic information on publication date and authorship, sometimes with links to publisher websites.
+
+The Buros Center for Testing [buros.org](http://buros.org/) also publishes a comprehensive data base of educational and psychological measures. In addition to descriptive information, they include peer evaluations of the psychometric properties of tests in what is called the *Mental Measurements Yearbook*. Buros peer reviews are available through university library subscriptions, or can be accessed online for a fee.
+
+## Summary
+
+This chapter provides an overview of how different types of tests are designed to inform a variety of decisions in education and psychology. For the most part, tests are designed merely to *inform* decision making processes, and test authors are often careful to clarify that no decision should be made based solely on test scores. Online data bases provide access to descriptive summaries and peer reviews of tests.
+
+### Exercises
+
+1. Is it appropriate for colleges and graduate programs to have minimum cutoffs when reviewing standardized test scores in the admissions process? How would you recommend that scores from admissions tests be incorporated into admissions decisions?
+2. Describe the challenges involved in using a single test for multiple purposes, such as to measure both achievement and aptitude, or both status and growth, or both formative and summative information.
+3. Would you describe admissions tests like the SAT and GRE as aptitude or achievement tests? Explain your reasoning.
+4. Conduct an online search for information on one of the tests referenced in this chapter or in Chapter \@ref(measurement). Look for details on the publication date, authors, and accessibility of the test. From the available information, summarize the test using the terms presented in this chapter.

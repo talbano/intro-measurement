@@ -21,3 +21,13 @@ pre {
 pre code {
   white-space: inherit;
 }
+div.objectives {
+  margin: 2em 1em 2em 0;
+  padding: 15px 20px;
+  background: #fafafa;
+}
+div.learning-check {
+  margin: 2em 1em 2em 0;
+  padding: 15px 20px 5px;
+  background: #fafafa;
+}

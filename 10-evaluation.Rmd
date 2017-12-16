@@ -1,0 +1,134 @@
+---
+knit: bookdown::preview_chapter
+---
+
+# Test Evaluation {#evaluation}
+
+Test evaluation summarizes many of the topics that precede it in this book, including test purpose, study design and results for reliability and validity, scoring and reporting guidelines, and recommendations for test use. The new material for this chapter includes the process of evaluating this information within a test review or technical manual when considering one or more tests for a particular use. Our perspective will be that of a test consumer, for example, a researcher or practitioner in the market for a test to inform some application, for example, a research question or some decision making process.
+
+This chapter utilizes the construct of *creativity*, specifically, *creative problem solving*, to demonstrate some of the more important considerations in the test evaluation process. Within this context, a few published tests are reviewed, and recommendations are provided regarding test purpose, study design, reliability, validity, scoring, and test use within a hypothetical measurement application.
+
+```{block, type="objectives"}
+**Learning objectives**
+
+1. Review and critique the documentation contained in a test review, test manual, or technical report, including:  
+    a. Data collection and test administration designs,  
+    b. Reliability analysis results,  
+    c. Validity analysis results,  
+    d. Scoring and reporting guidelines,  
+    e. Recommendations for test use.  
+2. Compare and contrast tests using reported information.  
+3. Use information reported for a test to determine the appropriateness of the test for a given application.
+```
+
+## Test purpose
+
+We'll begin, as usual, with a review of test purpose. Suppose you have a research question that requires measurement of some kind, and you don't have the time or resources to develop your own test. So, you start looking for an existing measure that will meet your needs. How do you go about finding such a measure?
+
+It is possible that the gold standard measures for your field or area of work will be well known to you. But, if they aren't, you will need to compare tests based on their stated purposes. Some initial questions are, what construct(s) are you hoping to measure, for what population, and for what reason? And what tests have purposes that match your particular application?
+
+As noted above, in this chapter we'll consider a scenario involving the construct of *creativity*. In the late 1990s, a national committee in Britain reported on the critical importance of creative and cultural education, both of which, it was argued, were missing in many education systems [@robinson1999all]. Creative education was defined as "forms of education that develop young people's capacities for original ideas and action." Cultural education referred to "forms of education that enable them [students] to engage positively with the growing complexity and diversity of social values and ways of life." The report sought to dispell a common myth that creativity is an inborn and static ability. Instead, it was argued that creativity can and must be taught, both to teachers and students, if our education systems are to succeed.
+
+This idea that creativity is critical to effective education provides a backdrop for the hypothetical testing application we'll focus on in this chapter. Suppose we are studying the efficacy of different classroom curriculae for improving teachers' and students' creative thinking. In addition to qualitative measures of effectiveness, for example, interviews and reports on participants' experiences, we also need a standardized, quantitative measure of creativity that we can administer to participants at the start and end of our program.
+
+To research and evaluate potential measures of creativity, we turn to the Buros test database [buros.org/](http://buros.org/). The Buros Center for Testing includes a test review library. The library is physically located at the University of Nebraska-Lincoln. Electronic access to library resources is available online. Each year, Buros solicits and publishes reviews of newly published tests in what is called the *Mental Measurements Yearbook* (MMY). These reviews are written by testing professionals and they summarize and evaluate the information that test users need to know about a test before using it. This review information is essentially what we will cover in this chapter.
+
+If you have access to the electronic version of MMY, for example, through a university library, you should go there and search for a test of creative problem solving. If you use the search terms "creative problem solving," you probably won't get many results. I only had ten at the time of writing this. Judging by their titles, some of the results sounded like they might be appropriate, but I decided to try again with just the search term "creativity." This returned 182 results.
+
+> Creativity is the process of having original ideas that have value. Creativity now, in education, is as important as literacy. And we should treat it with the same status.  
+> --- Sir Ken Robinson
+
+As you browse through these tests, think about the construct of creative problem solving, and creativity in general. How could we test a construct like this? What types of tasks would we expect children to respond to, and how would we score their responses? It turns out, creativity is not easily measured, primarily because a standardized test with a structured scoring guide does not leave room for responses that come from "outside the box," or that represent divergent thinking, or that we would consider novel or... "creative." In a way, the term *standardized* suggests the opposite of creativity. Still, quite a few commercial measures of creativity exist.
+
+```{r creativity, echo=FALSE}
+ctab <- cbind("CAPSAT" = c("2011", "Self-administered", "4", "36",
+  "0 to 100", "Criterion", "Adults 17 to 40"), "CAP" = c("1980",
+  "Parent and teacher ratings", "8", "48 SR, 4 CR",
+  "Three-point frequency scale", "Norm", "Children 6 to 18"))
+rownames(ctab) <- c("Publication year", "Format", "Number of scales",
+  "Number of items", "Score scale range", "Referencing", "Population")
+knitr::kable(ctab, caption = "Comparison of Two Tests of Creativity")
+```
+
+Table \@ref(tab:creativity) contains information for two tests of creativity, the Creativity and Problem-Solving Aptitude Test (CAPSAT) and the Creativity Assessment Packet (CAP). Only one test (the CAP) is available in the electronic version of MMY. When you perform your search on MMY with search term "creativity" you should see the CAP near the top of your results. Neither test purpose is stated clearly in the technical documentation, so we'll have to assume that they're both intended to describe creativity and problem-solving for the stated populations. The intended uses of these tests are also not clear.
+
+Given the limited information in Table \@ref(tab:creativity), which test would be more appropriate for our program? The CAP seems right, given that it's designed for children 6 to 18. Unfortunately, as we dig deeper into the technical information for the test, we discover that there is essentially no reliability or validity evidence for it. One MMY review states that test-retest reliability and criterion validity were established for the CAP in the 1960s, but no coefficients are actually reported in the CAP documentation.
+
+No matter how well a test purpose matches our own, a lack of reliability and validity evidence makes a test unusable. The only solution for the CAP would be to conduct our own reliability and validity studies. Technical documentation for the CAPSAT indicates that internal consistency (alpha) for the entire test is 0.90, with subscales having coefficient alphas between 0.72 and 0.87. Those are all acceptable. However, as noted in the MMY reviews, validity information for the CAPSAT is missing.
+
+We clearly need a better test. In MMY, let's search for information on the Torrance Tests of Creative Thinking (TTCT). Read through the two reviews and try to find any weaknesses or limitations that put this test in the unusable category, along with the CAPSAT and the CAP. First, you need to make sure that the test purpose is acceptable, since there's no point in using a test that has been validated for the wrong purpose.
+
+For the uninitiated, the MMY provides a brief statement of purpose for the TTCT: "to identify and evaluate creative potential through words (verbal forms) and pictures (figural forms)." And here's a short summary of the TTCT from one reviewer:
+
+> In the complex and still-evolving domain of creativity assessment, the TTCT can be recommended as sound examples of instruments useful for research, evaluation, and general instructional planning decisions.
+
+Given this background information, the TTCT sounds like a viable solution. Next, we need to look into the reliability and validity information for the test.
+
+## Study design
+
+Because the CAPSAT and the CAP both lacked reliability and validity evidence, there really wasn't anything to evaluate. Most tests will include some form of evidence supporting reliability and validity, and we will need to evaluate this evidence both in terms of its *strength* and its *relevance to the test purpose*.
+
+In Chapters \@ref(reliability) and \@ref(validity), we discussed how to evaluate the reliability and validity evidence for a test. Whether or not reliability and validity coefficients are acceptable depends on guidelines established in a particular field, based on previous work. This also depends on the test purpose. For example, when making high-stakes decisions, coefficients should be in the 0.90s. When making low-stakes decisions, lower values are acceptable. A minimum of 0.70 reliability is sometimes discussed, but values below it are common and may not be cause for alarm, depending on the context, such as with shorter tests. Validity coefficients, correlations with a criterion variable, can vary widely and must be interpreted in-context.
+
+To interpret and evaluate reliability and validity, we should first consider the strength of the reliability or validity *study designs*. Keep in mind that reliability and validity are based on actual test data (except for a theoretical foundation in construct validity). The quality of data depends on the quality of the test administration design and data collection procedures. Here are some basic questions to ask when evaluating reliability and validity study designs for a test.
+
+* Is the study sample representative?  
+* Is the sample randomly or intentionally selected?  
+* Are appropriate age/gender/ethnic other groups included?  
+* Are administration conditions standardized?  
+* Are accommodations made when necessary, and do they impact results?
+
+Regardless of strength or magnitude, reliability and validity coefficients may be irrelevant if they are based on a weak (e.g., non-random or biased) study design or the wrong population. These questions help us determine how relevant and appropriate the reliability and validity evidence is. Note that answers to these questions will typically not be found in test reviews. Instead, you may have to go to published articles or the technical documentation published with the test. For example, a number of reliability and validity studies have been conducted with the TTCT [e.g., @torrance1981empirical; @torrance1981predicting].
+
+## Reliability
+
+Here are some of the questions that you need to ask when evaluating the relevance of reliability evidence for your test purpose. What types of reliability are estimated? Are these types appropriate given the test purpose? Are the study designs appropriate given the chosen types? Are the resulting reliability estimates strong or supportive? These, along with the questions presented below, simply review what we have covered in previous chapters. The point here is to highlight how these features of a test (reliability, validity, scoring, and test use) are important when evaluating a test for a particular use.
+
+So, what type of reliability is reported for the TTCT? The test reviews note that a "collection of reliability and validity data" are available. Tests of creativity, like the TTCT, require that individuals create things, that is, perform tasks. Given that the TTCT involves performance assessment, we need to know about interrater consistency. One review highlights interrater reliabilities ranging from 0.66 to 0.99 for trained scorers and classroom teachers. The 0.66 is low, but acceptable, given the low-stakes nature of our test use. The 0.99 is optimal, and is something we would expect when correlating scores given by two well trained test administrators. Are we concerned that correlations were reported, and not generalizability coefficients? Given the ordinal/interval nature of the scale (discussed further below), percentage agreement and kappa are not as appropriate. Generalizability coefficients, taking into account systematic scoring differences, would be more informative than correlations.
+
+According to the test reviews, we also have test-retest reliabilities from the 0.50s in one study to 0.93 in another. A reviewer notes that these different results could be due to differences in the variability in the samples of students used in each study; a wider age range was used to obtain the test-retest of 0.93. Other studies reported test-retest reliabilities in the 0.60s and 0.70s, which the reviewer states are acceptable, given the number of weeks that pass between administrations.
+
+## Validity
+
+Here are some questions that you need to ask when evaluating the relevance of validity evidence for your test purpose. These are essentially the same as the questions for reliability. What types of validity evidence are examined? Are these types appropriate given the test purpose? Are the study designs appropriate given the chosen types of validity evidence? Does the resulting evidence support the intended uses and inferences of the test?
+
+Remember, factors impacting construct validity fall into two categories. Construct underrepresentation is failure to represent what the construct contains or consists of. Construct misrepresentation happens when we measure other constructs or factors, including measurement error.
+
+One reviewer of the TTCT notes that "validity data are provided relating TTCT scores to various measures of personality and intelligence without structuring a theory of creativity to describe what the relationship of these variables to creativity should be." However, the same reviewer then makes this comment, which is especially relevant to our purpose:
+
+> A second type of construct validation deals with the impact of treatment to alter creative performance and its relation to changing scores on the TTCT. If the theory says that treatment X should increase scores on tests of creativity, then pre and posttest differences should be found on the TTCT, with treatment intervening. The manual reports a broad summary of these studies, and the conclusion is that when the treatment deals with tasks somewhat like those on the test, posttest scores do indeed show significant gains on the TTCT.
+
+Although we don't have specific details, I think we can be confident, based on this MMY review, that the TTCT is suitable for a test-retest study. In reality, we would go to the specific studies in the references that provide this information.
+
+## Scoring
+
+Methods for creating and reporting scores for a test can vary widely from one test to the next. However, there are a few key questions to ask when evaluating the scoring that is implemented with a test. What types of scores are produced? That is, what type of measurement scale is used? What is the score scale range? How is meaning given to scores? And what type of score referencing is used, and does this seem reasonable? Finally, what kinds of score reporting guidelines are provided, and do they seem appropriate? As with reliability and validity, these questions should be considered in reference to the purpose of the test.
+
+As with many educational and psychological tests, the score scale for the TTCT is based on a sum of individual item/task scores. In this case, scores come from a trained rater. We assume this is an interval scale of measurement. The score scale range isn't important for our test purpose, as long as it can capture growth, which we assume it can, given the information presented above. However, note that a small scale range, for example, 1 to 5 points, might be problematic in a pre/post test administration, depending on how much growth is expected to take place.
+
+Regarding scoring, one MMY reviewer notes:
+
+> The scoring system for the tests also has some problems. For example, the assignment of points to responses on the Originality scale was based on the frequency of appearance of these responses among 500 unspecified test takers. For the Asking subtest, for example, responses that appeared in less than 2\% of the protocols receive a weight of 2. What is the basis for setting this criterion? How would it alter scores if 2s were assigned to 10%, for example? Or 7%? How does one decide? No empirical basis for this scoring decision is given. Further, not all tests use the same frequency criteria. This further complicates the rationale. Also, 2s may be awarded for unlisted items on the basis of their "creative strength." A feel for this "variable" is hard to get.
+
+This statement clarifies how meaning is given to scores. If an individual's response only matches with 2% or less of the sample of 500 test takers, it is considered creative enough to merit 2 points, instead of, presumably, 1. Although the appropriateness of this process is questioned by this reviewer, it should be evident what type of score referencing this is.
+
+In terms of evaluating the scoring process, the reference to "500 unspecified test takers" and the use of different percentages without empirical basis is concerning. This weighting in the scoring process could introduce bias that leads to construct misrepresentation. But this is an issue we might be willing to overlook, as it only seems to influence the relative weighting of scores for each task, in comparison to one another, as opposed to the overall score given. In other words, we could assume this would introduce a systematic error that could impact how creative we determine a student or teacher to be at a given test administration, but not how much change in creativity we measure over time.
+
+## Test use
+
+As a final general consideration, we need to examine the recommended uses for the test we are evaluating. Here are the questions we should ask. What are the recommended uses or test score inferences or interpretations? Do these uses match the test purpose? Does the test development process support the intended use? And are there appropriate cautions against unsupported test uses?
+
+Regarding the TTCT, the test purpose according to the MMY summary is broad and vague: "To identify and evaluate creative potential through words (verbal forms) and pictures (figural forms)." However, research and technical information cited in the reviews demonstrates test use in pre/post studies similar to the hypothetical one we have devised here. Thus, the TTCT does appear to match our test purpose.
+
+Note that we did not get into the development process of the TTCT. This would require a literature review. Established tests like the TTCT typically have published research documenting their development and use in practice. For example, after using the test, we could publish our own reliability and validity evidence, and other important results from our study. This would contribute to the body of work supporting (or not) its further use.
+
+## Summary
+
+This chapter provides a brief overview of the test evaluation process, using tests of creative problem solving as a context. Some key questions are discussed, including questions about test purpose, study design, reliability, validity, scoring, and test use.
+
+### Exercises
+
+1. Suppose you are asked to provide measurement advice to a university committee tasked with evaluating a new test of English as a foreign language for use in student admissions. Summarize the advice you would give in this scenario, based on the considerations presented in this chapter.
+2. Why is it important to consider first the purpose of a test when evaluating it for use in your own work or research?  
+3. Conduct a literature review on the TTCT summarizing the main themes that have been addressed in previous studies.  
+4. Search the MMY reviews for a test on a topic that interests you. Use the information in the reviews for a given test to evaluate the test for its intended purpose.

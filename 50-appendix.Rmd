@@ -1,0 +1,423 @@
+---
+knit: bookdown::preview_chapter
+---
+
+# (APPENDIX) Appendix {-}
+
+# Learning Objectives {#appendix0}
+
+```{r child = 'objectives.Rmd'}
+```
+
+# R Code {#appendix2}
+
+**Chapter 1: Introduction**
+
+```{r, ref.label = knitr::all_labels(append == TRUE && chap == 1), echo = TRUE, eval = FALSE}
+```
+
+**Chapter 2: Measurement, Scales, and Scoring**
+
+```{r, ref.label = knitr::all_labels(append == TRUE && chap == 2), echo = TRUE, eval = FALSE}
+```
+
+**Chapter 5: Reliability**
+
+```{r, ref.label = knitr::all_labels(append == TRUE && chap == 5), echo = TRUE, eval = FALSE}
+```
+
+**Chapter 6: Item Analysis**
+
+```{r, ref.label = knitr::all_labels(append == TRUE && chap == 6), echo = TRUE, eval = FALSE}
+```
+
+**Chapter 7: Item Response Theory**
+
+```{r, ref.label = knitr::all_labels(append == TRUE && chap == 7), echo = TRUE, eval = FALSE}
+```
+
+**Chapter 8: Factor Analysis**
+
+```{r, ref.label = knitr::all_labels(append == TRUE && chap == 8), echo = TRUE, eval = FALSE}
+```
+
+**Chapter 9: Validity**
+
+```{r, ref.label = knitr::all_labels(append == TRUE && chap == 9), echo = TRUE, eval = FALSE}
+```
+
+# PISA Reading Items {#appendixa}
+
+The items and scoring information below are excerpted from the Reading Literacy Items and Scoring Guides document available at [nces.ed.gov/surveys/pisa/educators.asp](https://nces.ed.gov/surveys/pisa/educators.asp) [@pisa2009ritems]. Note that the format and content of the items and scoring information have been modified slightly for presentation here. In the PISA 2009 study, these items were administered in the context of other reading items and some general instructions not shown here were also given to students.
+
+Three sets of reading items are included here under the headings [Cell phone safety](#cellphone), [The play's the thing](#theplay), and [Telecommuting](#telecommuting). Each set contains multiple items, some of them selected-response and some constructed-response. Scoring rubrics are provided for the constructed-response items. These item sets correspond to `PISA09` items: `r414q02`, `r414q11`, `r414q06`, and `r414q09` for cell phone safety; `r452q03`, `r452q04`, `r452q06`, and `r452q07` for the play's the thing; and  `r458q01`, `r458q07`, and `r458q04` for telecommuting.
+
+## Cell phone safety {#cellphone}
+
+```{r pisa-cell-item2, echo = FALSE, out.width='100%'}
+knitr::include_graphics("images/pisa-cell-item.png")
+```
+
+_____
+
+"Cell Phone Safety" above is from a website. Use "Cell Phone Safety" to answer the questions that follow.
+
+**Question 1** (R414Q02)
+
+What is the purpose of the **Key points**?
+
+A. To describe the dangers of using cell phones.  
+B. To suggest that debate about cell phone safety is ongoing. 
+C. To describe the precautions that people who use cell phones should take.   
+D. To suggest that there are no known health problems caused by cell phones.  
+
+*Scoring*
+
+Correct: Answer B. To suggest that debate about mobile phone safety is ongoing.
+
+Incorrect: Other responses.
+
+_____
+
+**Question 2** (R414Q11)
+
+"It is difficult to prove that one thing has definitely caused another."
+
+What is the relationship of this piece of information to the Point 4 **Yes** and **No** statements in the table **Are cell phones dangerous**?
+
+A. It supports the Yes argument but does not prove it.  
+B. It proves the Yes argument.  
+C. It supports the No argument but does not prove it.  
+D. It shows that the No argument is wrong.  
+
+*Scoring*
+
+Correct: Answer C. It supports the No argument but does not prove it.
+
+Incorrect: Other responses.
+
+_____
+
+**Question 3** (R414Q06)
+
+Look at Point 3 in the **No** column of the table. In this context, what might one of these "other factors" be? Give a reason for your answer.
+
+*Scoring*
+
+Correct: Answers which identify a factor in modern lifestyles that could be related to fatigue, headaches, or loss of concentration. The explanation may be self-evident, or explicitly stated.
+
+Incorrect: Answers which give an insufficient or vague response.
+
+Fatigue. [Repeats information in the text.]
+
+Tiredness. [Repeats information in the text.]
+
+Answers which show inaccurate comprehension of the material or are implausible or irrelevant.
+
+_____
+
+**Question 4** (R414Q09)
+
+Look at the table with the heading **If you use a cell phone...**
+
+Which of these ideas is the table based on?
+
+A. There is no danger involved in using cell phones.  
+B. There is a proven risk involved in using cell phones.  
+C. There may or may not be danger involved in using cell phones, but it is worth taking precautions.  
+D. There may or may not be danger involved in using cell phones, but they should not be used until we know for sure.  
+E. The **Do** instructions are for those who take the threat seriously, and the **Don't** instructions are for everyone else. 
+
+*Scoring*
+
+Correct: Answer C. There may or may not be danger involved in using cell phones, but it is worth taking precautions.
+
+Incorrect: Other responses.
+
+## The play's the thing {#theplay}
+
+*Takes place in a castle by the beach in Italy.*
+
+**FIRST ACT**
+*Ornate guest room in a very nice beachside castle. Doors on the right and left. Sitting room set in the middle of the stage: couch, table, and two armchairs. Large windows at the back. Starry night. It is dark on the stage. When the curtain goes up we hear men conversing loudly behind the door on the left. The door opens and three tuxedoed gentlemen enter. One turns the light on immediately. They walk to the center in silence and stand around the table. They sit down together, Gál in the armchair to the left, Turai in the one on the right, Ádám on the couch in the middle. Very long, almost awkward silence. Comfortable stretches. Silence. Then:*
+
+GAL: Why are you so deep in thought?
+
+TURAI: I'm thinking about how difficult it is to begin a play. To introduce all the principal characters in the beginning, when it all starts.
+
+ADAM: I suppose it must be hard.
+
+TURAI: It is - devilishly hard. The play starts. The audience goes quiet. The actors enter the stage and the torment begins. It's an eternity, sometimes as much as a quarter of an hour before the audience finds out who's who and what they are all up to.
+
+GAL: Quite a peculiar brain you've got. Can't you forget your profession for a single minute?
+
+TURAI: That cannot be done.
+
+GAL: Not half an hour passes without you discussing theatre, actors, plays. There are other things in this world.
+
+TURAI: There aren't. I am a dramatist. That is my curse.
+
+GAL: You shouldn't become such a slave to your profession.
+
+TURAI: If you do not master it, you are its slave. There is no middle ground. Trust me, it's no joke starting a play well. It is one of the toughest problems of stage mechanics. Introducing your characters promptly. Let's look at this scene here, the three of us. Three gentlemen in tuxedoes. Say they enter not this room in this lordly castle, but rather a stage, just when a play begins. They would have to chat about a whole lot of uninteresting topics until it came out who we are. Wouldn't it be much easier to start all this by standing up and introducing ourselves? *Stands up.* Good evening. The three of us are guests in this castle. We have just arrived from the dining room where we had an excellent dinner and drank two bottles of champagne. My name is Sandor Turai, I'm a playwright, I've been writing plays for thirty years, that's my profession. Full stop. Your turn.
+
+GAL: Stands up. My name is Gal, I'm also a playwright. I write plays as well, all of them in the company of this gentleman here. We are a famous playwright duo. All playbills of good comedies and operettas read: written by Gal and Turai. Naturally, this is my profession as well.
+
+GAL and TURAI: *Together.* And this young man...
+
+ADAM: *Stands up.* This young man is, if you allow me, Albert Adam, twenty-five years old, composer. I wrote the music for these kind gentlemen for their latest operetta. This is my first work for the stage. These two elderly angels have discovered me and now, with their help, I'd like to become famous. They got me invited to this castle. They got my dress-coat and tuxedo made. In other words, I am poor and unknown, for now. Other than that I'm an orphan and my grandmother raised me. My grandmother has passed away. I am all alone in this world. I have no name, I have no money.
+
+TURAI: But you are young.
+
+GAL: And gifted.
+
+ADAM: And I am in love with the soloist.
+
+TURAI: You shouldn't have added that. Everyone in the audience would figure that out anyway.
+
+*They all sit down.*
+ 
+TURAI: Now wouldn't this be the easiest way to start a play?
+
+GAL: If we were allowed to do this, it would be easy to write plays.
+
+TURAI: Trust me, it's not that hard. Just think of this whole thing as...
+
+GAL: All right, all right, all right, just don't start talking about the theatre again. I'm fed up with it. We'll talk tomorrow, if you wish.
+
+_____
+
+*"The Play's the Thing" is the beginning of a play by the Hungarian dramatist Ferenc Molnar.*
+
+*Use "The Play's the Thing" to answer the questions that follow. (Note that line numbers are given in the margin of the script to help you find parts that are referred to in the questions.)*
+
+**Question 1** (R452Q03)
+
+What were the characters in the play doing just before the curtain went up?
+
+*Scoring*
+
+Correct: Answer which refer to dinner or drinking champagne. May paraphrase or quote the text directly.
+
+They have just had dinner and champagne.
+
+"We have just arrived from the dining room where we had an excellent dinner." [direct quotation]
+
+"An excellent dinner and drank two bottles of champagne." [direct quotation]
+
+Incorrect: Answers which give an insufficient or vague response, show inaccurate comprehension of the material, or are implausible or irrelevant.
+
+_____
+
+**Question 2** (R452Q04)
+
+"It's an eternity, sometimes as much as a quarter of an hour..." (lines 29-30)
+
+According to Turai, why is a quarter of an hour "an eternity"?
+
+A. It is a long time to expect an audience to sit still in a crowded theatre. 
+B. It seems to take forever for the situation to be clarified at the beginning of a play. 
+C. It always seems to take a long time for a dramatist to write the beginning of a play.  
+D. It seems that time moves slowly when a significant event is happening in a play. 
+
+*Scoring*
+
+Correct: Answer B. It seems to take forever for the situation to be clarified at the beginning of a play.
+
+Incorrect: Other responses.
+
+_____
+
+**Question 3** (R452Q06)
+
+A reader said, "Adam is probably the most excited of the three characters about staying at the castle."
+
+What could the reader say to support this opinion? Use the text to give a reason for your answer.
+ 
+*Scoring*
+
+Correct: Indicates a contrast between Adam and the other two characters by referring to one or more of the following: Adam's status as the poorest or youngest of the three characters; his inexperience (as a celebrity).
+
+* Adam is poor, he must be excited to stay at a fancy castle. 
+* He must be happy to be with the two guys who can make him famous. 
+* He is writing music with two really famous people.  
+* He is young, and young people just get more excited about things, it's a fact!  
+* He's young to stay at the castle. [minimal] 
+* He has the least experience. [minimal]  
+
+Incorrect: Answers which give an insufficient or vague response.
+
+* He is excited. [Repeats stem.]  
+
+Answers which show inaccurate comprehension of the material or give an implausible or irrelevant response.
+
+* He is an artist.  
+* He has fallen in love. [not an explanation of why he is excited to be staying at the castle] 
+* Adam must be excited; surely the soloist will show up. [no support in the text] 
+* He has been given a tuxedo. [an explanatory detail, not the reason itself]  
+
+_____
+
+**Question 4** (R452Q07)
+
+Overall, what is the dramatist Molnar doing in this extract?
+
+A. He is showing the way that each character will solve his own problems. 
+B. He is making his characters demonstrate what an eternity in a play is like.  
+C. He is giving an example of a typical and traditional opening scene for a play. 
+D. He is using the characters to act out one of his own creative problems.  
+
+*Scoring*
+
+Correct: Answer D. He is using the characters to act out one of his own creative problems.
+
+Incorrect: Other responses.
+
+## Telecommuting {#telecommuting}
+
+**The way of the future, by Molly**
+
+Just imagine how wonderful it would be to "telecommute"^1^ to work on the electronic highway, with all your work done on a computer or by phone! No longer would you have to jam your body into crowded buses or trains or waste hours and hours travelling to and from work. You could work wherever you want to – just think of all the job opportunities this would open up!
+
+**Disaster in the making, by Richard**
+
+Cutting down on commuting hours and reducing the energy consumption involved is obviously a good idea. But such a goal should be accomplished by improving public transportation or by ensuring that workplaces are located near where people live. The ambitious idea that telecommuting should be part of everyone's way of life will only lead people to become more and more self-absorbed. Do we really want our sense of being part of a community to deteriorate even further?
+
+^1^"Telecommuting" is a term coined by Jack Nilles in the early 1970s to describe a situation in which workers work on a computer away from a central office (for example, at home) and transmit data and documents to the central office via telephone lines.
+
+_____
+
+*Use "Telecommuting" above to answer the questions that follow.*
+
+**Question 1** (R458Q01)
+
+What is the relationship between "The way of the future" and "Disaster in the making"?
+
+A. They use different arguments to reach the same general conclusion. 
+B. They are written in the same style but they are about completely different topics. 
+C. They express the same general point of view, but arrive at different conclusions.  
+D. They express opposing points of view on the same topic.  
+
+*Scoring*
+
+Correct: Answer D. They express opposing points of view on the same topic.
+
+Incorrect: Other responses.
+
+_____
+
+**Question 2** (R458Q07)
+
+What is one kind of work for which it would be difficult to telecommute? Give a reason for your answer.
+
+*Scoring*
+
+Correct: Answers which identify a kind of work and give a plausible explanation as to why a person who does that kind of work could not telecommute. Responses MUST indicate (explicitly or implicitly) that it is necessary to be physically present for the specific work.
+
+* Building. It's hard to work with the wood and bricks from just anywhere.  
+* Sportsperson. You need to really be there to play the sport.  
+* Plumber. You can't fix someone else's sink from your home!  
+* Digging ditches because you need to be there. 
+* Nursing – it's hard to check if patients are ok over the Internet.  
+
+Incorrect: Answers which identify a kind of work but include no explanation OR provide an explanation that does not relate to telecommuting.
+
+* Digging ditches.  
+* Fire fighter. 
+* Student.  
+* Digging ditches because it would be hard work. [Explanation does not show why this would make it difficult to telecommute.]  
+* Gives an insufficient or vague response.  
+* You need to be there. 
+* Shows inaccurate comprehension of the material or gives an implausible or irrelevant response. 
+* Manager. No one takes any notice of you anyway. [irrelevant explanation]  
+
+_____
+
+**Question 3** (R458Q04)
+
+Which statement would **both** Molly and Richard agree with?
+
+A. People should be allowed to work for as many hours as they want to.  
+B. It is not a good idea for people to spend too much time getting to work. 
+C. Telecommuting would not work for everyone. 
+D. Forming social relationships is the most important part of work. 
+
+*Scoring*
+
+Correct: Answer B. It is not a good idea for people to spend too much time getting to work.
+
+Incorrect: Other responses.
+
+# Subset of PISA Survey Items {#appendixb}
+
+This appendix contains a subset of items from the PISA 2009 student questionnaire.
+
+## Approaches to learning
+
+The items in question 27 constitute the *approaches to learning* scale. Students rated how often they used each of 13 study strategies. The response scale included four frequency ratings: almost never, sometimes, often, and almost always.
+
+The 13 items were grouped into three subscales based on the type of learning strategy involved, whether memorization (labeled memor below), elaboration (elab), or control (cstrat). Note that the question numbers and subscale labels were not presented to students, and the rating scale is not shown.
+
+**Question 27**
+
+When you are studying, how often do you do the following?
+(Please tick only one box in each row)
+
+```{r q27tab, echo=FALSE}
+qitems <- c(paste0("ST27Q0", 1:9), paste0("ST27Q", 10:13))
+qtext <- c("When I study, I try to memorize everything that is covered in the text.",
+  "When I study, I start by figuring out what exactly I need to learn.",
+  "When I study, I try to memorize as many details as possible.",
+  "When I study, I try to relate new information to prior knowledge acquired in other subjects.",
+  "When I study, I read the text so many times that I can recite it.",
+  "When I study, I check if I understand what I have read.",
+  "When I study, I read the text over and over again.",
+  "When I study, I figure out how the information might be useful outside school.",
+  "When I study, I try to figure out which concepts I still haven’t really understood.",
+  "When I study, I try to understand the material better by relating it to my own experiences.",
+  "When I study, I make sure that I remember the most important points in the text.",
+  "When I study, I figure out how the text information fits in with what happens in real life.",
+  "When I study and I don’t understand something, I look for additional information to clarify this.")
+qscale <- c("Almost never", "Sometimes", "Often", "Almost always")
+q27tab <- cbind(qitems, qtext, "&#x25a2;", "&#x25a2;", "&#x25a2;", "&#x25a2;")
+colnames(q27tab) <- c("", "", qscale)
+alscales <- c("memor", "cstrat", "memor", "elab", "memor", "cstrat",
+  "memor", "elab", "cstrat", "elab", "cstrat", "elab", "cstrat")
+#knitr::kable(q27tab)
+#knitr::kable(cbind("Variable" = toupper(q27tab[, 1]), Subscale = alscales, Statement = q27tab[, 2]))
+```
+
+|Variable |Subscale |Statement                                                                                         |
+|:--------|:--------|:-------------------------------------------------------------------------------------------------|
+|ST27Q01  |memor    |When I study, I try to memorize everything that is covered in the text.                           |
+|ST27Q02  |cstrat   |When I study, I start by figuring out what exactly I need to learn.                               |
+|ST27Q03  |memor    |When I study, I try to memorize as many details as possible.                                      |
+|ST27Q04  |elab     |When I study, I try to relate new information to prior knowledge acquired in other subjects.      |
+|ST27Q05  |memor    |When I study, I read the text so many times that I can recite it.                                 |
+|ST27Q06  |cstrat   |When I study, I check if I understand what I have read.                                           |
+|ST27Q07  |memor    |When I study, I read the text over and over again.                                                |
+|ST27Q08  |elab     |When I study, I figure out how the information might be useful outside school.                    |
+|ST27Q09  |cstrat   |When I study, I try to figure out which concepts I still haven’t really understood.               |
+|ST27Q10  |elab     |When I study, I try to understand the material better by relating it to my own experiences.       |
+|ST27Q11  |cstrat   |When I study, I make sure that I remember the most important points in the text.                  |
+|ST27Q12  |elab     |When I study, I figure out how the text information fits in with what happens in real life.       |
+|ST27Q13  |cstrat   |When I study and I don’t understand something, I look for additional information to clarify this. |
+
+## Attitude toward school
+
+The attitude toward school scale contained the four questions shown below. Students responded using an agreement scale with categories for strongly disagree, disagree, agree, and strongly agree.
+
+**Question 37**
+
+Thinking about what you have learned in school: To what extent do you agree or disagree with the following statements?
+
+```{r q33tab, echo=FALSE}
+q33items <- c(paste0("ST33Q0", 1:4))
+q33text <- c("School has done little to prepare me for adult life when I leave school.", "School has been a waste of time", "School helped give me confidence to make decisions.", "School has taught me things which could be useful in a job")
+q33scale <- c("Strongly disagree", "Disagree", "Agree", "Strongly agree")
+q33tab <- cbind(q33items, q33text, "&#x25a2;", "&#x25a2;", "&#x25a2;", "&#x25a2;")
+colnames(q33tab) <- c("", "", q33scale)
+#knitr::kable(q33tab)
+knitr::kable(cbind("Variable" = toupper(q33tab[, 1]), Statement = q33tab[, 2]))
+```
+

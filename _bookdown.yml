@@ -1,2 +1,5 @@
 book_filename: "intro-measurement"
 chapter_name: "Chapter "
+repo: https://github.com/talbano/intro-measurement/
+output_dir: _book
+clean: [intro-measurement.bib, intro-measurement.bbl]

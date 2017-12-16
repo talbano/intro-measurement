@@ -1,0 +1,167 @@
+**Chapter 1: Introduction**  
+  
+  
+  
+1. Identify and use statistical notation for variables, sample size, mean, standard deviation, variance, and correlation.  
+2. Calculate and interpret frequencies, proportions, and percentages.  
+3. Create and use frequency distribution plots to describe the central tendency, variability, and shape of a distribution.  
+4. Calculate and interpret measures of central tendency and describe what they represent, including the mean, median, and mode.  
+5. Calculate and interpret measures of variability and describe what they represent, including the standard deviation and variance.  
+6. Apply and explain the process of rescaling variables using means and standard deviations for linear transformations.  
+7. Calculate and interpret the correlation between two variables and describe what it represents in terms of the shape, direction, and strength of the linear relationship between the variables.  
+8. Create and interpret a scatter plot, explaining what it indicates about the shape, direction, and strength of the linear relationship between two variables.  
+  
+  
+**Chapter 2: Measurement, Scales, and Scoring**  
+  
+  
+  
+1. Define the process of measurement.  
+2. Define the term *construct* and describe how constructs are used in measurement, with examples.  
+3. Compare and contrast measurement scales, including nominal, ordinal, interval, and ratio, with examples, and identify their use in context.  
+4. Compare and contrast dichotomous and polytomous scoring.  
+5. Describe how rating scales are used to create composite scores.  
+6. Explain the benefits of composites over component scores.  
+7. Create a generic measurement model and define its components.  
+8. Define norm referencing and identify contexts in which it is appropriate.  
+9. Compare three examples of norm referencing: grade, age, and percentile norms.  
+10. Define criterion referencing and identify contexts in which it is appropriate.  
+11. Describe how standards and performance levels are used in criterion referencing with standardized state tests.  
+12. Compare and contrast norm and criterion score referencing, and identify their uses in context.  
+  
+  
+**Chapter 3: Testing Applications**  
+  
+  
+  
+1. Provide examples of how testing supports low-stakes and high-stakes decision making in education and psychology.  
+2. Describe the general purpose of aptitude testing and some common applications.  
+3. Identify the distinctive features of aptitude tests and the main benefits and limitations in using aptitude tests to inform decision-making.  
+4. Describe the general purpose of standardized achievement testing and some common applications.  
+5. Identify the distinctive features of standardized achievement tests and the main benefits and limitations in using standardized achievement tests to inform decision-making.  
+6. Compare and contrast different types of tests and test uses and identify examples of each, including  summative, formative, mastery, and performance.  
+  
+  
+**Chapter 4: Test Development**  
+  
+  
+  
+*Cognitive*  
+  
+1. Describe the purpose of a cognitive learning objective or learning outcome statement, and demonstrate the effective use of learning objectives in the item writing process.  
+2. Describe how a test outline or test plan is used in cognitive test development to align the test to the content domain and learning objectives.  
+3. Compare items assessing different cognitive levels or depth of knowledge, for example, higher-order thinking such as synthesizing and evaluating information versus lower-order thinking such as recall and definitional knowledge.  
+4. Identify and provide examples of SR item types (multiple-choice, true/false, matching) and CR item types (short-answer, essay).  
+5. Compare and contrast SR and CR item types, describing the benefits and limitations of each type.  
+6. Identify the main theme addressed in the item writing guidelines, and how each guideline supports this theme.  
+7. Create and use a scoring rubric to evaluate answers to a CR question.  
+8. Write and critique cognitive test items that match given learning objectives and depths of knowledge and that follow the item writing guidelines.  
+  
+*Noncognitive*  
+  
+9. Define affective measurement and contrast it with cognitive measurement in terms of applications and purposes, the types of constructs assessed, and the test construction process.  
+10. Compare affective test construction strategies, with examples of their use, and the strengths and limitations of each.  
+11. Compare and contrast item types and response types used in affective measurement, describing the benefits and limitations of each type, and demonstrating their use.  
+12. Define the main affective response sets, and demonstrate strategies for reducing their effects.  
+13. Write and critique effective affective items using empirical guidelines.  
+  
+  
+**Chapter 5: Reliability**  
+  
+  
+  
+*CTT reliability*  
+  
+1. Define reliability, including potential sources of reliability and unreliability in measurement, using examples.  
+2. Describe the simplifying assumptions of the classical test theory (CTT) model and how they are used to obtain true scores and reliability.  
+3. Identify the components of the CTT model ($X$, $T$, and $E$) and describe how they relate to one another, using examples.  
+4. Describe the difference between systematic and random error, including examples of each.  
+5. Explain the relationship between the reliability coefficient and standard error of measurement, and identify how the two are distinguished in practice.  
+6. Calculate the standard error of measurement and describe it conceptually.  
+7. Compare and contrast the three main ways of assessing reliability, test-retest, parallel-forms, and internal consistency, using examples, and identify appropriate applications of each.  
+8. Compare and contrast the four reliability study designs, based on 1 to 2 test forms and 1 to 2 testing occasions, in terms of the sources of error that each design accounts for, and identify appropriate applications of each.  
+9. Use the Spearman-Brown formula to predict change in reliability.  
+10. Describe the formula for coefficient alpha, the assumptions it is based on, and what factors impact it as an estimate of reliability.  
+11. Estimate different forms of reliability using statistical software, and interpret the results.  
+12. Describe factors related to the test, the test administration, and the examinees, that affect reliability.  
+  
+*Interrater reliability*  
+  
+13. Describe the purpose of measuring interrater reliability, and how interrater reliability differs from traditional reliability.  
+14. Describe the difference between interrater agreement and interrater reliability, using examples.  
+15. Calculate and interpret indices of interrater agreement and reliability, including proportion agreement, Kappa, Pearson correlation, and g coefficients.  
+16. Identify appropriate uses of each interrater index, including the benefits and drawbacks of each.  
+17. Describe the three main considerations involved in using g coefficients.  
+  
+  
+**Chapter 6: Item Analysis**  
+  
+  
+  
+1. Explain how item bias and measurement error negatively impact the quality of an item, and how item analysis, in general, can be used to address these issues.  
+2. Describe general guidelines for collecting pilot data for item analysis, including how following these guidelines can improve item analysis results.  
+3. Identify items that may have been keyed or scored incorrectly.  
+4. Recode variables to reverse their scoring or keyed direction.  
+5. Use the appropriate terms to describe the process of item analysis with cognitive vs noncognitive constructs.  
+6. Calculate and interpret item difficulties and compare items in terms of difficulty.  
+7. Calculate and interpret item discrimination indices, and describe what they represent and how they are used in item analysis.  
+8. Describe the relationship between item difficulty and item discrimination and identify the practical implications of this relationship.  
+9. Calculate and interpret alpha-if-item-removed.  
+10. Utilize item analysis to distinguish between items that function well in a set and items that do not.  
+11. Remove items from an item set to achieve a target level of reliability.  
+12. Evaluate selected-response options using option analysis.  
+  
+  
+**Chapter 7: Item Response Theory**  
+  
+  
+  
+1. Compare and contrast IRT and CTT in terms of their strengths and weaknesses.  
+2. Identify the two main assumptions that are made when using a traditional IRT model, regarding dimensionality and functional form or the number of model parameters.  
+3. Identify key terms in IRT, including probability of correct response, logistic curve, theta, IRF, TRF, SEM, and information functions.  
+4. Define the three item parameters and one ability parameter in the traditional IRT models, and describe the role of each in modeling performance with the IIF.  
+5. Distinguish between the 1PL, 2PL, and 3PL IRT models in terms of assumptions made, benefits and limitations, and applications of each.  
+6. Describe how IRT is utilized in item analysis, test development, item banking, and computer adaptive testing.  
+  
+  
+**Chapter 8: Factor Analysis**  
+  
+  
+  
+1. Compare and contrast the factor analytic model with other measurement models, including CTT and IRT, in terms of their applications in instrument development.  
+2. Describe the differing purposes of exploratory and confirmatory factor analysis.  
+3. Explain how an EFA is implemented, including the type of data required and steps in setting up and fitting the model.  
+4. Interpret EFA results, including factor loadings and eigenvalues.  
+5. Use a scree plot to visually compare factors in an EFA.  
+6. Explain how a CFA is implemented, including the type of data required and steps in setting up and fitting the model.  
+5. Interpret CFA results, including factor loadings and fit indices.  
+  
+  
+**Chapter 9: Validity**  
+  
+  
+  
+1. Define validity in terms of test score interpretation and use, and identify and describe examples of this definition in context.  
+2. Compare and contrast three main types of validity evidence (content, criterion, and construct), with examples of how each type is established, including the validation process involved with each.  
+3. Explain the structure and function of a test blueprint, and how it is used to provide evidence of content validity.  
+4. Calculate and interpret a validity coefficient, describing what it represents and how it supports criterion validity.  
+5. Describe how unreliability can attenuate a correlation, and how to correct for attenuation in a validity coefficient.  
+6. Identify appropriate sources of validity evidence for given testing applications and describe how certain sources are more appropriate than others for certain applications.  
+7. Describe the unified view of validity and how it differs from and improves upon the traditional view of validity.  
+8. Identify threats to validity, including features of a test, testing process, or score interpretation or use, that impact validity. Consider, for example, the issues of content underrepresentation and misrepresentation, and construct irrelevant variance.  
+  
+  
+**Chapter 10: Test Evaluation**  
+  
+  
+  
+1. Review and critique the documentation contained in a test review, test manual, or technical report, including:    
+    a. Data collection and test administration designs,    
+    b. Reliability analysis results,    
+    c. Validity analysis results,    
+    d. Scoring and reporting guidelines,    
+    e. Recommendations for test use.    
+2. Compare and contrast tests using reported information.    
+3. Use information reported for a test to determine the appropriateness of the test for a given application.  
+  
+  

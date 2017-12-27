@@ -1,6 +1,6 @@
 --- 
 title: "Introduction to Educational and Psychological Measurement Using R"
-author: "Anthony D. Albano"
+author: "Tony Albano"
 date: "December 16, 2017"
 knit: "bookdown::render_book"
 documentclass: book

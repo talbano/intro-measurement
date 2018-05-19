@@ -4,7 +4,7 @@ knit: bookdown::preview_chapter
 
 # Introduction {#introduction}
 
-This chapter introduces two resources we'll be using throughout the book, including the assessment development tools at [Proola.org](http://proola.org), and the statistical software R. The chapter ends with an introductory statistics review. The learning objectives focus on understanding statistical terms, and calculating and interpreting some introductory statistics.
+This chapter introduces two resources we'll be using throughout the book, the assessment development tools at [Proola.org](http://proola.org), and the statistical software R. The chapter ends with an introductory statistics review. The learning objectives focus on understanding statistical terms, and calculating and interpreting some introductory statistics.
 
 ```{block, type="objectives"}
 **Learning objectives**
@@ -33,7 +33,7 @@ Some things to keep in mind as you get started:
 
 The Proola item writing process is broken down into four general steps (see [proola.org/learn_more](http://proola.org/learn_more)).
 
-First, create a new item by clicking "Share" in the top navbar. This takes you to a series of text boxes and drop-downs where you'll provide basic information about your item. See Figure \@ref(fig:proola-interface) for an example. Give the item a short but descriptive title. Next, link the item to a learning objective. Learning objectives can be imported from other users, or you can organize your own objectives in Proola. Then, choose from a variety of intended subject areas and grade levels. The item itself then consists of a stem, where the question statement or prompt resides, and a response format, whether selected-response or constructed-response. Any other background information you'd like to share can go in the comments that become available once your question is saved.
+First, create a new item by clicking "Create" in the top navbar. This takes you to a series of text boxes and drop-downs where you'll provide basic information about your item. See Figure \@ref(fig:proola-interface) for an example. Give the item a short but descriptive title. Next, link the item to a learning objective. Learning objectives can be imported from other users, or you can organize your own objectives in Proola. Then, choose from a variety of intended subject areas and grade levels. The item itself then consists of a stem, where the question statement or prompt resides, and a response format, whether selected-response or constructed-response. Any other background information you'd like to share can go in the comments that become available once your question is saved.
 
 ```{r proola-interface, echo=FALSE, out.width='75%', fig.cap="Proola interface for drafting a new item."}
 knitr::include_graphics("images/proola-draft-item.png")
@@ -49,7 +49,7 @@ Finally, submit for review to share with the community. After submitting an item
 
 Revise and repeat this process as needed up to four times. Once approved, your item can be saved, printed, and exported by other users.
 
-The test development and item writing processes will be covered in detail in Chapter \@ref(development). For now, you should sign up for an account and become familiar with how the site is organized. At the end of this chapter are some item writing activities to try.
+The test development and item writing processes will be covered in detail in Chapter \@ref(development). For now, you should sign up for an account and become familiar with how the site is organized.
 
 ## R
 
@@ -70,9 +70,10 @@ At this point you should download and install R and RStudio using the links abov
 We'll start our tour of R with a summary of how R code is used to interact with R via the console. In this book, blocks of example R code are offset from the main text as shown below. Comments within code blocks start with a single hash `#`, the code itself has nothing consistent preceding it, and output from my R console is preceded by a double hash `##`. You can copy and paste example code directly into your R console. Anything after the `#` will be ignored.
 
 ```{r first-example, append=TRUE, chap=1}
-# This is a comment within a block of R code. Comments start with the
-# hash sign and are ignored by R. The code below will be interpreted
-# by R once you paste or type it into the console.
+# This is a comment within a block of R code. Comments 
+# start with the hash sign and are ignored by R. The code 
+# below will be interpreted by R once you paste or type it
+# into the console.
 x <- c(4, 8, 15, 16, 23, 42)
 mean(x)  # Only code after the hash is ignored
 sd(x)
@@ -109,8 +110,10 @@ Packages published to the official R website CRAN are initially installed using 
 devtools, knitr, and ggplot2 are on CRAN. The development version of epmr is not yet on CRAN and must be installed using `devtools::install_github()`.
 
 ```{r, eval=FALSE, append=TRUE, chap=1}
-# Some examples require data and functions from add-on R packages
-# This will install required packages - you only need to do this once
+# Some examples require data and functions from add-on R 
+# packages
+# This will install required packages - you only need to 
+# do this once
 install.packages("devtools")
 install.packages("knitr")
 install.packages("ggplot2")
@@ -123,7 +126,8 @@ devtools::install_github("talbano/epmr")
 ```
 
 ```{r, append=TRUE, chap=1}
-# Load required packages - do this every time you restart R
+# Load required packages - do this every time you
+# restart R
 library("epmr")
 library("ggplot2")
 ```
@@ -231,7 +235,8 @@ A frequency can be converted to a *proportion* by dividing it by the sample size
 Lets look at some frequencies within the PISA data. The first variable in `PISA09`, named `cnt`, is classified as a factor in R, and it contains the country that each student was tested in. We can check the class and then use a frequency `table()` to see the number of students from each country.
 
 ```{r, append=TRUE, chap=1}
-# Check the class of the country variable and create a frequency table
+# Check the class of the country variable and create a 
+# frequency table
 class(PISA09$cnt)
 table(PISA09$cnt)
 ```
@@ -240,7 +245,8 @@ To convert the frequencies of students by country into percentages, we can divid
 
 
 ```{r, append=TRUE, chap=1}
-# Convert a frequency table for country to percentages, then round the result
+# Convert a frequency table for country to percentages, 
+# then round the result
 cntpct <- table(PISA09$cnt) / nrow(PISA09) * 100
 round(cntpct, 2)
 ```
@@ -254,7 +260,8 @@ Bar charts and histograms are visual representations of frequency distributions,
 ```{r barplot-cnt, append=TRUE, chap=1, fig.show='hold', out.width='50%', fig.cap="A bar plot of student frequencies by country in the first plot, and a histogram of memor scores in the second."}
 # Create a bar chart for the number of students by country
 ggplot(PISA09, aes(cnt)) + geom_bar(stat = "count")
-# Histograms are more appropriate for continuous or somewhat continuous scores
+# Histograms are more appropriate for continuous or 
+# somewhat continuous scores
 qplot(PISA09$memor, binwidth = .5)
 ```
 
@@ -299,8 +306,8 @@ When using certain functions in R, such as `mean()` and `sd()`, you'll have to t
 Variability describes how much scores are spread out or differ from one another in a distribution. Some simple measures of variability are the minimum and maximum, which together capture the range of scores for a variable.
 
 ```{r, append=TRUE, chap=1}
-# Check out the minimum, maximum, and range (a shortcut for the min and max)
-# for the age variable
+# Check out the minimum, maximum, and range (a shortcut 
+# for the min and max) for the age variable
 min(PISA09$age)
 max(PISA09$age)
 range(PISA09$age)
@@ -325,7 +332,8 @@ Because it is expressed as a squared value, the metric of a variance is the squa
 The standard deviation is interpreted as the average distance from the mean, and it is expressed in the raw score metric, making it more easy to interpret. The standard deviation of `sd(PISA09$age)` `r sd(PISA09$age)` tells us that students in `PISA09` vary on average by about 0.3 years, or 3.5 months.
 
 ```{r, append=TRUE, chap=1}
-# Check the standard deviations on a survey item for Hong Kong and Germany 
+# Check the standard deviations on a survey item for Hong 
+# Kong and Germany 
 sd(PISA09$st33q01[PISA09$cnt == "HKG"], na.rm = TRUE)
 sd(PISA09$st33q01[PISA09$cnt == "DEU"], na.rm = TRUE)
 ```
@@ -359,11 +367,13 @@ By dividing the covariance by the product of the standard deviations for $X$ and
 In R, `cov()` and `cor()` are used to obtain covariances and correlations. When we only have two variables, we separate them with a comma. To get the covariance or correlation for two or more different combinations of variables, we can provide a matrix or data.frame.
 
 ```{r, append=TRUE, chap=1}
-# Get the covariance and correlation for different variables
+# Get the covariance and correlation for different 
+# variables
 # The use argument specifies how to handle missing data
 # See ?cor for details
 cov(PISA09$age, PISA09$grade, use = "complete")
-cor(PISA09[, c("elab", "cstrat", "memor")], use = "complete")
+cor(PISA09[, c("elab", "cstrat", "memor")],
+  use = "complete")
 ```
 
 The argument `use = "complete"` is used to obtain covariances or correlations only based on individuals with data on all variables.
@@ -373,8 +383,9 @@ Correlations are commonly used to index the strength and direction of the linear
 ```{r usa-cor, append=TRUE, chap=1, out.width='75%', fig.cap="Scatter plot for the elab and cstrat PISA learning strategy scales for the US."}
 # Scatter plot for two learning strategies variables
 # geom_point() adds the points to the plot
-# position_jitter() wiggles them around a little, to uncover the densities
-# of points that would otherwise overlap
+# position_jitter() wiggles them around a little, to
+# uncover the densities of points that would otherwise
+# overlap
 ggplot(PISA09[PISA09$cnt == "USA", ], aes(elab, cstrat)) +
   geom_point(position = position_jitter(w = 0.1, h = 0.1))
 ```
@@ -417,9 +428,11 @@ Scale transformations are often employed in testing for one of two reasons. Firs
 Let's transform `PISA09$age` to z-scores. Then, we'll rescale the result to have a new mean and standard deviation. You should check the mean and SD of each variable below, and compare them to the original values. Note that R sometimes represents zero as an infinitely small number, using scientific notation, instead of just reporting 0.
 
 ```{r, append=TRUE, chap=1}
-# Convert age to z-scores, then rescale to have a new mean and SD
+# Convert age to z-scores, then rescale to have a new mean
+# and SD
 # You should check the mean and SD of both zage and newage
-# Also, see setmean() and setsd() from epmr, and scale() from base R
+# Also, see setmean() and setsd() from epmr, and scale()
+# from base R
 zage <- (PISA09$age - mean(PISA09$age)) / sd(PISA09$age)
 newage <- (zage * 150) + 500
 ```

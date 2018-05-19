@@ -1,9 +1,11 @@
 --- 
 title: "Introduction to Educational and Psychological Measurement Using R"
 author: "Tony Albano"
-date: "December 16, 2017"
+date: "May 18, 2018"
+description: "This book introduces the theory and practice of measurement in education and psychology, with applications in the statistical software R using open-source data and functions."
 knit: "bookdown::render_book"
-documentclass: book
+favicon: "images/favicon.jpeg"
+documentclass: scrbook
 bibliography: intro-measurement.bib
 biblio-style: apalike
 link-citations: yes
@@ -17,7 +19,7 @@ output:
         before: |
           <li><a href="./">Intro to Measurement</a></li>
         after: |
-          <li><a href="https://cehs01.unl.edu/aalbano" target="_blank">About the author</a></li>
+          <li><a href="http://www.thetaminusb.com/" target="_blank">About the author</a></li>
           <li><a href="https://github.com/talbano/intro-measurement" target="_blank">Book source</a></li>
           <li><a href="http://proola.org" target="_blank">proola.org</a></li>
           <li><a href="https://github.com/talbano/epmr" target="_blank">epmr R package</a></li>
@@ -28,6 +30,10 @@ output:
     latex_engine: pdflatex
     citation_package: natbib
     keep_tex: yes
+    toc_unnumbered: no
+    toc_appendix: yes
+    highlight_bw: yes
+    template: null
   bookdown::html_chapters:
     toc_depth: 3
     number_sections: true
@@ -35,17 +41,23 @@ output:
 ---
 
 ```{r, include = FALSE}
+# Update the intro-measurement.bib file from local bib
 source("R/getbib.R")
 renewbib(ext = c("tex", "rnw", "rmd"), newfile = "intro-measurement.bib",
   bibfile = "/users/talbano/library/texmf/bibtex/bib/superbibfile.bib")
+# Update appendices with code and objective lists
 source("R/getblock.R")
 renew_obj(files = c("01-intro.Rmd", "02-measurement.Rmd", "03-applications.Rmd",
   "04-development.Rmd", "05-reliability.Rmd", "06-itemanalysis.Rmd", "07-irt.Rmd",
   "08-dimensionality.Rmd", "09-validity.Rmd", "10-evaluation.Rmd" ), chapi = 5,
-  newfile = "objectives.Rmd")
+  newfile = "_objectives.Rmd")
 #renew_exe()
 knitr::opts_chunk$set(collapse = TRUE)
 options(warn = -1)
+# Set code width for latex output
+if (!knitr:::is_html_output()) options(width = 58)
+# To build the PDF separately
+#bookdown::render_book("index.Rmd", "bookdown::pdf_book")
 ```
 
 # Preface {-}
@@ -55,10 +67,6 @@ This book provides an introduction to the theory and application of measurement 
 Validity and test evaluation are based on both qualitative and quantitative analysis of the properties of a measure. This book addresses the qualitative side using a simple argument-based approach. The quantitative side is addressed using descriptive and inferential statistical analyses, all of which are presented and visualized within the statistical environment R [@r2017].
 
 The intended audience for this book includes advanced undergraduate and graduate students, practitioners, researchers, and educators. Knowledge of R is not a prerequisite to using this book. However, familiarity with data analysis and introductory statistics concepts, especially ones used in the social sciences, is recommended.
-
-## License {-}
-
-This book is published under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/), which allows for adaptation and redistribution as long as appropriate credit is given. The source code for the book is available at [https://github.com/talbano/intro-measurement](https://github.com/talbano/intro-measurement). Comments and contributions are welcome.
 
 ## Perspectives on testing {-}
 
@@ -91,7 +99,7 @@ This book will prepare you to contribute to the discussion by giving you a broad
 1. recognize what makes a test useful and understand the importance of valid testing; and
 2. gain some of the basic skills needed to build and evaluate effective tests.
 
-This book addresses affective and non-cognitive testing as well as cognitive, educational testing. Affective testing includes, for example, testing used to measure psychological attributes, perceptions, and behaviors, ones that are typically the target of clinical support rather than ones that are the target of instruction. This form of testing is just as relevant, but is also less controversial than educational testing, so it didn't make for as strong an opening to the book.
+This book addresses affective and non-cognitive testing as well as cognitive, educational testing. Affective testing includes, for example, testing used to measure psychological attributes, perceptions, and behaviors, ones that are typically the target of clinical support rather than ones that are the target of instruction. This form of testing is just as relevant, but is also somewhat less controversial than educational testing, so it didn't make for as strong an opening to the book.
 
 A handful of other books provide thorough introductions to psychometric theory and applications of measurement. This book differs from the rest in its exclusive focus on introductory topics for readers with a limited background in mathematics or statistics. Experience with introductory statistical concepts is helpful but not essential. This book also provides extensive reproducible examples in R with a single, dedicated R package encapsulating most of the needed functionality.
 
@@ -117,3 +125,7 @@ Each chapter in this book is structured around a set of learning objectives appe
 ## Exercises {-}
 
 Each chapter ends with self assessments and other activities for stretching and building understanding. These exercises include discussion questions and analyses in R. As this is a book on assessment, you'll also write your own questions, with the opportunity to submit them to an online learning community for feedback.
+
+## License {-}
+
+This book is published under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/), which allows for adaptation and redistribution as long as appropriate credit is given. The source code for the book is available at [https://github.com/talbano/intro-measurement](https://github.com/talbano/intro-measurement). Comments and contributions are welcome.

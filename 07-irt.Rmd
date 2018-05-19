@@ -68,12 +68,15 @@ The main limitation of IRT is that it is a complex model requiring much larger s
 
 ```{r, append=TRUE, chap=7}
 # Prepping data for examples
-# Create subset of data for Great Britain, then reduce to complete data
-ritems <- c("r414q02", "r414q11", "r414q06", "r414q09", "r452q03",
-  "r452q04", "r452q06", "r452q07", "r458q01", "r458q07", "r458q04")
+# Create subset of data for Great Britain, then reduce to 
+# complete data
+ritems <- c("r414q02", "r414q11", "r414q06", "r414q09",
+  "r452q03", "r452q04", "r452q06", "r452q07", "r458q01",
+  "r458q07", "r458q04")
 rsitems <- paste0(ritems, "s")
 PISA09$rtotal <- rowSums(PISA09[, rsitems])
-pisagbr <- PISA09[PISA09$cnt == "GBR", c(rsitems, "rtotal")]
+pisagbr <- PISA09[PISA09$cnt == "GBR",
+  c(rsitems, "rtotal")]
 pisagbr <- pisagbr[complete.cases(pisagbr), ]
 ```
 
@@ -81,15 +84,18 @@ Another key difference between IRT and CTT has to do with the shape of the relat
 
 ```{r irtplot1, append=TRUE, chap=7, out.width="75%", fig.cap="Scatter plots showing the relationship between total scores on the x-axis and scores from PISA item `r452q06s` on the y-axis. Lines represent the relationship between the construct and item scores for CTT (straight) and IRT (curved)."}
 # Get p-values conditional on rtotal
-# tapply() applies a function to the first argument over subsets of data
-# defined by the second argument
-pvalues <- data.frame(rtotal = 0:11, p = tapply(pisagbr$r452q06s,
-  pisagbr$rtotal, mean))
-# Plot CTT discrimination over scatter plot of scored item responses
+# tapply() applies a function to the first argument over
+# subsets of data defined by the second argument
+pvalues <- data.frame(rtotal = 0:11,
+  p = tapply(pisagbr$r452q06s, pisagbr$rtotal, mean))
+# Plot CTT discrimination over scatter plot of scored item
+# responses
 ggplot(pisagbr, aes(rtotal, r414q06s)) +
-  geom_point(position = position_jitter(w = 0.1, h = 0.1)) +
+  geom_point(position = position_jitter(w = 0.1,
+    h = 0.1)) +
   geom_smooth(method = "lm", fill = NA) +
-  geom_point(aes(rtotal, p), data = pvalues, col = "green", size = 3)
+  geom_point(aes(rtotal, p), data = pvalues,
+    col = "green", size = 3)
 ```
 
 In IRT, the relationship between item and construct is similar to CTT, but the line follows what's called a logistic curve. To demonstrate the usefulness of a logistic curve, we calculate a set of $p$-values for item `r452q06s` *conditional on the construct*. In Figure \@ref(fig:irtplot1), the green points are $p$-values calculated within each group of people having the same total reading score. For example, the $p$-value on this item for students with a total score of 3 is about 0.20. As expected, people with lower totals have more incorrect than correct responses. As total scores increase, the number of people getting the item correct steadily increases. At a certain total score, around 5.5, we see roughly half the people get the item correct. Then, as we continue up the theta scale, more and more people get the item correct. IRT is used to capture the trend shown by the conditional $p$-values in Figure \@ref(fig:irtplot1).
@@ -143,8 +149,10 @@ Figure \@ref(fig:irtplot2) contains IRF for five items with different item param
 # Make up a, b, and c parameters for five items
 # Get IRF using the rirf() function from epmr and plot
 # rirf() will be demonstrated again later
-ipar <- data.frame(a = c(2, 1, .5, 1, 1.5), b = c(3, 2, -.5, 0, -1),
-  c = c(0, .2, .25, .1, .28), row.names = paste0("item", 1:5))
+ipar <- data.frame(a = c(2, 1, .5, 1, 1.5),
+  b = c(3, 2, -.5, 0, -1),
+  c = c(0, .2, .25, .1, .28),
+  row.names = paste0("item", 1:5))
 ggplot(rirf(ipar), aes(theta)) + scale_y_continuous("Pr(X)") +
   geom_line(aes(y = item1), col = 1) +
   geom_line(aes(y = item2), col = 2) +
@@ -212,8 +220,8 @@ The epmr package contains functions for estimating and manipulating results from
 Here, we estimate the Rasch model for `PISA09` students in Great Britain. The data set was created at the beginning of the chapter. The `irtstudy()` function in epmr runs the Rasch model and prints some summary results, including model fit indices and variability estimates for random effect. Note that the model is being fit as a generalized linear model with random person and random item effects, using the lme4 package [@bates2015lme4]. The estimation process won't be discussed here. For details, see @doran2007estimating and @deboeck2011estimation.
 
 ```{r, append=TRUE, chap=7}
-# The irtstudy() function estimates theta and b parameters for a set of
-# scored item responses
+# The irtstudy() function estimates theta and b parameters
+# for a set of scored item responses
 irtgbr <- irtstudy(pisagbr[, rsitems])
 irtgbr
 ```
@@ -227,10 +235,13 @@ head(irtgbr$ip)
 Figure \@ref(fig:gbr-irf) shows the IRF for a subset of the `PISA09` reading items based on data from Great Britain. These items pertain to the prompt "The play's the thing" in Appendix \@ref(theplay). Item parameters are taken from `irtgbr$ip` and supplied to the `rirf()` function from epmr. This function is simply Equation \@ref(eq:irt3pl) translated into R code. Thus, when provided with item parameters and a vector of thetas, `rirf()` returns the corresponding $\Pr(X = 1)$.
 
 ```{r gbr-irf, append=TRUE, chap=7, fig.asp='.25', fig.cap='IRF for `PISA09` reading items from "The play’s the thing" based on students in Great Britain.'}
-# Get IRF for the set of GBR reading item parameters and a vector of thetas
-# Note the default thetas of seq(-4, 4, length = 100) could also be used
+# Get IRF for the set of GBR reading item parameters and a
+# vector of thetas
+# Note the default thetas of seq(-4, 4, length = 100)
+# could also be used
 irfgbr <- rirf(irtgbr$ip, seq(-6, 6, length = 100))
-# Plot IRF for items r452q03s, r452q04s, r452q06s, and r452q07s
+# Plot IRF for items r452q03s, r452q04s, r452q06s, and
+# r452q07s
 ggplot(irfgbr, aes(theta)) + scale_y_continuous("Pr(X)") +
   geom_line(aes(y = irfgbr$r452q03s, col = "r452q03")) +
   geom_line(aes(y = irfgbr$r452q04s, col = "r452q04")) +
@@ -256,8 +267,8 @@ ggplot(rtef(irtgbr$ip), aes(theta, se)) + geom_line() +
 The `rtef()` function is used above with the default vector of theta `seq(-4, 4, length = 100)`. However, SEM can be obtained for any theta based on the item parameters provided. Suppose we want to estimate the SEM for a high ability student who only takes low difficulty items. This constitutes a mismatch in item and construct, which produces a higher SEM. These SEM are interpreted like SEM from CTT, as the average variability we'd expect to see in a score due to measurement error. They can be used to build confidence intervals around theta for an individual.
 
 ```{r, append=TRUE, chap=7}
-# SEM for theta 3 based on the four easiest and the four most
-# difficult items
+# SEM for theta 3 based on the four easiest and the four
+# most difficult items
 rtef(irtgbr$ip[c(4, 6, 9, 11), ], theta = 3)
 rtef(irtgbr$ip[c(2, 7, 8, 10), ], theta = 3)
 ```

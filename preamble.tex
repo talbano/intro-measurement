@@ -3,7 +3,55 @@
 \usepackage{booktabs}
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
 
-% Shading defined by bookdown
-\newenvironment{objectives}{\vspace{10pt}\begin{snugshade}}{\end{snugshade}}
-\newenvironment{learning-check}{\vspace{10pt}\begin{snugshade}}{\end{snugshade}}
-  
+% Formatting boxes for grouped text
+\newenvironment{objectives}{%
+\vspace{10pt}%
+\begin{snugshade}%
+\vspace{8pt}%
+\begin{list}{}{%
+\setlength{\leftmargin}{8pt}%
+\setlength{\rightmargin}{8pt}%
+}%
+\item[]}
+{\end{list}\vspace{8pt}\end{snugshade}}
+\newenvironment{learning-check}{\begin{objectives}}{\end{objectives}}
+
+% R code chunk comments and output are spilling over - should be a bookdown
+% argument specific to pdf_book
+% Added option(width = 58)) to index.Rmd
+% Went through and manually wrapped code to newlines
+
+% Preface and Bibliography aren't in TOC
+
+% Syntax highlighting is ugly, orange, brown, gray
+
+% Add some top padding to R code chunks via Sweave
+% In final tex, it's the Shaded environment
+\renewenvironment{Shaded}
+{
+  \vspace{10pt}%
+  \begin{snugshade}%
+}{%
+  \end{snugshade}%
+}
+
+% scrbook
+% WITH BLEED
+% US Trade => 6x9, with a 0.125 bleed
+% Adjust images size and gutter so tabs bleed by .125
+% See https://www.createspace.com/Products/Book/InteriorPDF.jsp
+\KOMAoptions{paper=6.125in:9.25in,pagesize=pdftex,fontsize=10pt}
+\recalctypearea
+% Paper width
+% W = 6.125in (6+0.125 --- bleed)
+% Paper height
+% H = 9.25in (9+2*.125 --- bleed)
+% Paper gutter
+% BCOR = 0.375in (0.5+0.5-0.625 --- margin with bleed)
+% Margin (0.5in imposed on lulu, recommended on createspace)
+% m = 0.625in (0.5+0.125 --- bleed)
+% Text height
+% h = H - 2m = 8in
+% Text width
+% w = W - 2m - BCOR = 4.5in
+\areaset[0.375in]{4.5in}{8in}

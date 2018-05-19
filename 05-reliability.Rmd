@@ -51,15 +51,20 @@ In this chapter, we'll conduct reliability analses on `PISA09` data using epmr, 
 
 ```{r, append=TRUE, chap=5}
 # R setup for this chapter
-# Required packages are assumed to be installed - see chapter 1
+# Required packages are assumed to be installed,
+# see chapter 1
 library("epmr")
 library("ggplot2")
 # Functions we'll use in this chapter
-# set.seed(), rnorm(), sample(), and runif() to simulate data
+# set.seed(), rnorm(), sample(), and runif() to simulate
+# data
 # rowSums() for getting totals by row
-# rsim() and setrange() from epmr to simulate and modify scores
-# rstudy(), alpha(), and sem() from epmr to get reliability and SEM
-# geom_point(), geom_abline(), and geom_errorbar() for plotting
+# rsim() and setrange() from epmr to simulate and modify
+# scores
+# rstudy(), alpha(), and sem() from epmr to get
+# reliability and SEM
+# geom_point(), geom_abline(), and geom_errorbar() for
+# plotting
 # diag() for getting the diagonal elements from a matrix
 # astudy() from epmr to get interrater agreement
 # gstudy() from epmr to run a generalizability study
@@ -114,9 +119,11 @@ So, having a cold produces $E = -2$ and $X = 18$, compared to your true score of
 According to CTT, over infinite administrations of a test without practice effects, your true score will always be the same, and error scores will vary completely randomly, some being positive, others being negative, but being on average zero. Given these assumptions, what should your average observed score be across infinite administrations of the test? And what should be the standard deviation of your observed score over these infinite observed scores? In responding to these questions, you don't have to identify specific values, but you should instead reference the means and standard deviations that you'd expect $T$ and $E$ to have. Remember that $X$ is expressed entirely as a function of $T$ and $E$, so we can derive properties of the composite from its components.
 
 ```{r, append=TRUE, chap=5}
-# Simulate a constant true score, and randomly varying error scores from
+# Simulate a constant true score, and randomly varying
+# error scores from
 # a normal population with mean 0 and SD 1
-# set.seed() gives R a starting point for generating random numbers
+# set.seed() gives R a starting point for generating
+# random numbers
 # so we can get the same results on different computers
 # You should check the mean and SD of E and X
 # Creating a histogram of X might be interesting too
@@ -128,21 +135,25 @@ myx <- myt + mye
 
 Here is an explanation of the questions above. We know that your average observed score would be your true score. Error, because it varies randomly, would cancel itself out in the long run, and your mean $X$ observed score would simply be $T$. The standard deviation of these infinite observed scores $X$ would then be entirely due to error. Since truth does not change, any change in observed scores must be error variability. This standard deviation is referred to as the *standard error of measurement* (SEM), discussed more below. Although it is theoretically impossible to obtain the actual SEM, since you can never take a test an infinite number of times, we can estimate SEM using data from a sample of test takers. And, as we'll see below, reliability will be estimated as the opposite of measurement error.
 
-Figure \@ref(fig:cttplot1) demonstrates the parts of the CTT model using `PISA09` total reading scores for students from Belgium. We're transitioning here from lots of $X$ and $E$ scores for an individual with a constant $T$, to an $X$, $T$, and $E$ score per individual within a sample. Total reading scores on the x-axis represent $X$, and simulated $T$ scores are on the y-axis. The solid line represents what we'd expect if there were no error, in which case $X$ = $T$. As a result, the horizontal scatter in the plot represents $E$. Note that $T$ are simulated to be continuous and to range from 0 to 11. $X$ scores are discrete, but they've been "jittered" slightly left to right to reveal the densities of points in the plot.
+Figure \@ref(fig:cttplot1) presents the three pieces of the CTT model using `PISA09` total reading scores for students from Belgium. We're transitioning here from lots of $X$ and $E$ scores for an individual with a constant $T$, to an $X$, $T$, and $E$ score per individual within a sample. Total reading scores on the x-axis represent $X$, and simulated $T$ scores are on the y-axis. These total scores are calculated as $T = X - E$. The solid line represents what we'd expect if there were no error, in which case $X$ = $T$. As a result, the horizontal scatter in the plot represents $E$. Note that $T$ are simulated to be continuous and to range from 0 to 11. $X$ scores are discrete, but they've been "jittered" slightly left to right to reveal the densities of points in the plot.
 
 ```{r cttplot1, append=TRUE, chap=5, out.width='75%', fig.cap = "PISA total reading scores with simulated error and true scores based on CTT."}
 # Calculate total reading scores, as in Chapter 2
-ritems <- c("r414q02", "r414q11", "r414q06", "r414q09", "r452q03",
-  "r452q04", "r452q06", "r452q07", "r458q01", "r458q07", "r458q04")
+ritems <- c("r414q02", "r414q11", "r414q06", "r414q09", 
+  "r452q03", "r452q04", "r452q06", "r452q07", "r458q01",
+  "r458q07", "r458q04")
 rsitems <- paste0(ritems, "s")
-xscores <- rowSums(PISA09[PISA09$cnt == "BEL", rsitems], na.rm = TRUE)
-# Simulate error scores based on known SEM of 1.4, which we'll calculate
-# later, then create true scores
-# True scores are truncated to fall bewteen 0 and 11 using setrange()
+xscores <- rowSums(PISA09[PISA09$cnt == "BEL", rsitems],
+  na.rm = TRUE)
+# Simulate error scores based on known SEM of 1.4, which
+# we'll calculate later, then create true scores
+# True scores are truncated to fall bewteen 0 and 11 using
+# setrange()
 escores <- rnorm(length(xscores), 0, 1.4)
 tscores <- setrange(xscores - escores, y = xscores)
 # Combine in a data frame and create a scatterplot
-scores <- data.frame(x1 = xscores, t = tscores, e = escores)
+scores <- data.frame(x1 = xscores, t = tscores,
+  e = escores)
 ggplot(scores, aes(x1, t)) +
   geom_point(position = position_jitter(w = .3)) +
   geom_abline(col = "blue")
@@ -172,14 +183,15 @@ What type of error does the standard deviation *not* capture? Systematic error d
 
 ## Reliability and unreliability
 
-### Reliability
+### Reliability {#reliability2}
 
 Figure \@ref(fig:cttplot2) contains a plot similar to the one in Figure \@ref(fig:cttplot1) where we identified $X$, $T$, and $E$. This time, we have scores on two reading test forms, with the first form is now called $X_1$ and second form is $X_2$, and we're going to focus on the overall distances of the points from the line that goes diagonally across the plot. Once again, this line represents truth. A person with a true score of 11 on $X_1$ will score 11 on $X_2$, based on the assumptions of the CTT model.
 
 Although the solid line represents what we'd expect to see for true scores, we don't actually know anyone's true score, even for those students who happen to get the same score on both test forms. The points in Figure \@ref(fig:cttplot2) are all observed scores. The students who score the same on both test forms do indicate more consistent measurement. However, it could be that their true score still differs from observed. There's no way to know. To calculate truth, we would have to administer the test an infinite number of times, and then take the average, or simply simulate it, as in Figure \@ref(fig:cttplot1).
 
 ```{r cttplot2, append=TRUE, chap=5, out.width='75%', fig.cap = "PISA total reading scores and scores on a simulated second form of the reading test."}
-# Simulate scores for a new form of the reading test called y
+# Simulate scores for a new form of the reading test 
+# called y
 # rho is the made up reliability, which is set to 0.80
 # x is the original reading total scores
 # Form y is slightly easier than x with mean 6 and SD 3
@@ -217,19 +229,23 @@ This correlation is estimated as the covariance, or the shared variance between 
 There are other methods for estimating reliability from a single form of a test. The only ones presented here are split-half reliability and coefficient alpha. Split-half is only presented because of its connection to what's called the Spearman-Brown reliability formula. The split-half method predates coefficient alpha, and is computationally simpler. It takes scores on a single test form, and separates them into scores on two halves of the test, which are treated as separate test forms. The correlation between these two halves then represents an indirect estimate of reliability, based on Equation \@ref(eq:rel1).
 
 ```{r, append=TRUE, chap=5}
-# Split half correlation, assuming we only had scores on one test form
-# With an odd number of reading items, one half has 5 items and the
-# other has 6
-xsplit1 <- rowSums(PISA09[PISA09$cnt == "BEL", rsitems[1:5]])
-xsplit2 <- rowSums(PISA09[PISA09$cnt == "BEL", rsitems[6:11]])
+# Split half correlation, assuming we only had scores on 
+# one test form
+# With an odd number of reading items, one half has 5 
+# items and the other has 6
+xsplit1 <- rowSums(PISA09[PISA09$cnt == "BEL", 
+  rsitems[1:5]])
+xsplit2 <- rowSums(PISA09[PISA09$cnt == "BEL", 
+  rsitems[6:11]])
 cor(xsplit1, xsplit2, use = "complete")
 ```
 
 The Spearman-Brown formula was originally used to correct for the reduction in reliability that occurred when correlating two test forms that were only half the length of the original test. In theory, reliability will increase as we add items to a test. Thus, Spearman-Brown is used to estimate, or predict, what the reliability would be if the half-length tests were made into full-length tests.
 
 ```{r, append=TRUE, chap=5}
-# sbr() in the epmr package uses the Spearman-Brown formula to estimate how
-# reliability would change when test length changes by a factor k
+# sbr() in the epmr package uses the Spearman-Brown 
+# formula to estimate how reliability would change when 
+# test length changes by a factor k
 # If test length were doubled, k would be 2
 sbr(r = cor(xsplit1, xsplit2, use = "complete"), k = 2)
 ```
@@ -255,9 +271,11 @@ r = \alpha = \left(\frac{J}{J - 1}\right)\left(\frac{\sigma^2_X - \sum\sigma^2_{
 where $J$ is the number of items on the test, $\sigma^2_X$ is the variance of observed total scores on $X$, and $\sum\sigma^2_{X_j}$ is the sum of variances for each item $j$ on $X$. To see how it relates to the CTT definition of reliability in Equation \@ref(eq:rel1), consider the top of the second fraction in Equation \@ref(eq:alpha). The total test variance $\sigma^2_X$ captures all the variability available in the total scores for the test. We're subtracting from it the variances that are unique to the individual items themselves. What's left over? Only the shared variability among the items in the test. We then divide this shared variability by the total available variability. Within the formula for alpha you should see the general formula for reliability, true variance over observed.
 
 ```{r, append=TRUE, chap=5}
-# epmr includes rstudy() which estimates alpha and a related form of
-# reliability called omega, along with corresponding SEM
-# You can also use alpha() to obtain coefficient alpha directly
+# epmr includes rstudy() which estimates alpha and a 
+# related form of reliability called omega, along with 
+# corresponding SEM
+# You can also use epmr::alpha() to obtain coefficient 
+# alpha directly
 rstudy(PISA09[, rsitems])
 ```
 
@@ -285,20 +303,25 @@ Confidence intervals for `PISA09` can be estimated in the same way. First, we ch
 
 ```{r cttplot3, append=TRUE, chap=5, out.width='75%', fig.cap = "The PISA09 reading scale shown with 68 and 95 percent confidence intervals around each point."}
 # Get alpha and SEM for students in Belgium
-# ggplot2 also has a function called alpha, so we have to specify the
-# package name
+# ggplot2 also has a function called alpha, so we have to 
+# specify the package name
 bela <- epmr::alpha(PISA09[PISA09$cnt == "BEL", rsitems])
-# The sem function from epmr also overlaps with sem from another package
-# so we're spelling it out here in long form
-belsem <- epmr::sem(r = bela, sd = sd(scores$x1, na.rm = T))
+# The sem function from epmr also overlaps with sem from 
+# another package so we're spelling it out here in long 
+# form
+belsem <- epmr::sem(r = bela, sd = sd(scores$x1,
+  na.rm = T))
 # Plot the 11 possible total scores against themselves
-# Error bars are shown for 1 SEM, giving a 68% confidence interval
-# and 2 SEM, giving the 95% confidence interval
-# x is converted to factor to show discrete values on the x-axis
+# Error bars are shown for 1 SEM, giving a 68% confidence
+# interval and 2 SEM, giving the 95% confidence interval
+# x is converted to factor to show discrete values on the 
+# x-axis
 beldat <- data.frame(x = 1:11, sem = belsem)
 ggplot(beldat, aes(factor(x), x)) +
-  geom_errorbar(aes(ymin = x - sem * 2, ymax = x + sem * 2), col = "violet") +
-  geom_errorbar(aes(ymin = x - sem, ymax = x + sem), col = "yellow") +
+  geom_errorbar(aes(ymin = x - sem * 2,
+    ymax = x + sem * 2), col = "violet") +
+  geom_errorbar(aes(ymin = x - sem, ymax = x + sem),
+    col = "yellow") +
   geom_point()
 ```
 
@@ -313,8 +336,14 @@ In general, reliabilities for educational and psychological tests can be interpr
 A few additional considerations are necessary when interpreting coefficient alpha. First, alpha assumes that all items measure the same single construct. Items are also assumed to be equally related to this construct, that is, they are assumed to be parallel measures of the construct. When the items are not parallel measures of the construct, alpha is considered a lower-bound estimate of reliability, that is, the true reliability for the test is expected to be higher than indicated by alpha. Finally, alpha is not a measure of dimensionality. It is frequently claimed that a strong coefficient alpha supports the unidimensionality of a measure. However, alpha does not index dimensionality. It is impacted by the extent to which all of the test items measure a single construct, but it does not necessarily go up or down as a test becomes more or less unidimensional.
 
 ```{r interpretr, echo=FALSE}
+if (!knitr:::is_latex_output()) {
 knitr::kable(cbind("Reliability" = c("$\\geq 0.90$", "$0.80 \\leq r < 0.90$", "$0.70 \\leq r < 0.80$", "$0.60 \\leq r < 0.70$", "$0.50 \\leq r < 0.60$", "$0.20 \\leq r < 0.50$", "$0.00 \\leq r < 0.20$"), "High Stakes Interpretation" = c("Excellent", "Good", "Acceptable", "Borderline", "Low", "Unacceptable", "Unacceptable"), "Low Stakes Interpretation" = c("Excellent", "Excellent", "Good", "Acceptable", "Borderline", "Low", "Unacceptable")),
   digits = 2, caption = "General Guidelines for Interpreting Reliability Coefficients")
+} else {
+knitr::kable(cbind("Reliability" = c("$>= 0.90$", "$0.80 <= r < 0.90$", "$0.70 <= r < 0.80$", "$0.60 <= r < 0.70$", "$0.50 <= r < 0.60$", "$0.20 <= r < 0.50$", "$0.00 <= r < 0.20$"), "High Stakes Interpretation" = c("Excellent", "Good", "Acceptable", "Borderline", "Low", "Unacceptable", "Unacceptable"), "Low Stakes Interpretation" = c("Excellent", "Excellent", "Good", "Acceptable", "Borderline", "Low", "Unacceptable")),
+  digits = 2, caption = "General Guidelines for Interpreting Reliability Coefficients")
+}
+
 ```
 
 ### Reliability study designs
@@ -351,7 +380,8 @@ To see the effects of chance, let's simulate scores from two judges where rating
 
 ```{r, append=TRUE, chap=5}
 # Simulate random coin flips for two raters
-# runif() generates random numbers from a uniform distribution
+# runif() generates random numbers from a uniform 
+# distribution
 flip1 <- round(runif(30))
 flip2 <- round(runif(30))
 table(flip1, flip2)
@@ -365,19 +395,23 @@ Let's find the proportion agreement for the simulated coin flip data. The questi
 Data for the next few examples were simulated to represent scores given by two raters with a certain correlation, that is, a certain reliability. Thus, agreement here isn't simply by chance. In the population, scores from these raters correlated at 0.90. The score scale ranged from 0 to 6 points, with means set to 4 and 3 points for the raters 1 and 2, and SD of 1.5 for both. We'll refer to these as essay scores, much like the essay scores on the analytical writing section of the GRE. Scores were also dichotomized around a hypothetical cut score of 3, resulting in either a "Fail" or "Pass."
 
 ```{r, append=TRUE, chap=5}
-# Simulate essay scores from two raters with a population correlation of
-# 0.90, and slightly different mean scores, with score range 0 to 6
+# Simulate essay scores from two raters with a population 
+# correlation of 0.90, and slightly different mean scores,
+# with score range 0 to 6
 # Note the capital T is an abbreviation for TRUE
-essays <- rsim(100, rho = .9, meanx = 4, meany = 3, sdx = 1.5, sdy = 1.5,
-  to.data.frame = T)
+essays <- rsim(100, rho = .9, meanx = 4, meany = 3,
+  sdx = 1.5, sdy = 1.5, to.data.frame = T)
 colnames(essays) <- c("r1", "r2")
 essays <- round(setrange(essays, to = c(0, 6)))
-# Use a cut off of greater than or equal to 3 to determine pass versus
-# fail scores
-# ifelse() takes a vector of TRUEs and FALSEs as its first argument, and
-# returns here "Pass" for TRUE and "Fail" for FALSE
-essays$f1 <- factor(ifelse(essays$r1 >= 3, "Pass", "Fail"))
-essays$f2 <- factor(ifelse(essays$r2 >= 3, "Pass", "Fail"))
+# Use a cut off of greater than or equal to 3 to determine
+# pass versus fail scores
+# ifelse() takes a vector of TRUEs and FALSEs as its first
+# argument, and returns here "Pass" for TRUE and "Fail" 
+# for FALSE
+essays$f1 <- factor(ifelse(essays$r1 >= 3, "Pass", 
+  "Fail"))
+essays$f2 <- factor(ifelse(essays$r2 >= 3, "Pass", 
+  "Fail"))
 table(essays$f1, essays$f2)
 ```
 
@@ -396,18 +430,20 @@ knitr::kable(table(essays$r1, essays$r2), caption = "Crosstab of Scores From Rat
 Proportion agreement for the full rating scale, as shown in Table \@ref(tab:pa1), can be calculated by summing the agreement frequencies within the diagonal elements of the table, and dividing by the total number of people.
 
 ```{r, append=TRUE, chap=5}
-# Pull the diagonal elements out of the crosstab with diag(), sum
-# them, and divide by the number of people
+# Pull the diagonal elements out of the crosstab with 
+# diag(), sum them, and divide by the number of people
 sum(diag(table(essays$r1, essays$r2))) / nrow(essays)
 ```
 
 Finally, let's consider the impact of chance agreement between one of the hypothetical human raters and a monkey who randomly applies ratings, regardless of the performance that is demonstrated, as with a coin toss.
 
 ```{r, append=TRUE, chap=5}
-# Randomly sample from the vector c("Pass", "Fail"), nrow(essays) times,
-# with replacement
-# Without replacement, we'd only have 2 values to sample from
-monkey <- sample(c("Pass", "Fail"), nrow(essays), replace = TRUE)
+# Randomly sample from the vector c("Pass", "Fail"), 
+# nrow(essays) times, with replacement
+# Without replacement, we'd only have 2 values to sample 
+# from
+monkey <- sample(c("Pass", "Fail"), nrow(essays),
+  replace = TRUE)
 table(essays$f1, monkey)
 ```
 
@@ -453,8 +489,8 @@ The main limitation of the correlation coefficient is that it ignores *systemati
 This limitation is evident in our simulated essay scores, where rater 2 gave lower scores on average than rater 1. If we subtract 1 point from every score for rater 2, the scores across raters will be more similar, as shown in Figure \@ref(fig:essays), but we still get the same interrater reliability.
 
 ```{r, append=TRUE, chap=5}
-# Certain changes in descriptive statistics, like adding constants
-# won't impact correlations
+# Certain changes in descriptive statistics, like adding 
+# constants won't impact correlations
 cor(essays$r1, essays$r2)
 dstudy(essays[, 1:2])
 cor(essays$r1, essays$r2 + 1)

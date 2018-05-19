@@ -65,9 +65,10 @@ As a second example, consider a test construct that interests you. What construc
 ### Sources of validity evidence
 
 The information gathered to support a test purpose, and establish validity evidence for the intended uses of a test, is often categorized into three main areas of validity evidence. These are content, criterion, and construct validity. Nowadays, these are referred to as *sources of validity evidence*, where
-- **content** focuses on the test content and procedures for developing the test,
-- **criterion** focuses on external measures of the same target construct, and
-- **construct** focuses on the theory underlying the construct and includes relationships with other measures.
+
+- **content** focuses on the test content and procedures for developing the test,  
+- **criterion** focuses on external measures of the same target construct, and  
+- **construct** focuses on the theory underlying the construct and includes relationships with other measures.  
 In certain testing situations, one source of validity evidence may be more relevant than another. However, all three are often used together to argue that the evidence supporting a test is "adequate."
 
 We will review each source of validity evidence in detail, and go over some practical examples of when one is more relevant than another. In this discussion, consider your own example, and examples of other tests you've encountered, and what type of validity evidence could be used to support their use.
@@ -153,14 +154,17 @@ Here's a demonstration of how attenuation works, based on PISA. Suppose we find 
 
 ```{r, append=TRUE, chap=9}
 # Get the vector of reading items names
-ritems <- c("r414q02", "r414q11", "r414q06", "r414q09", "r452q03",
-  "r452q04", "r452q06", "r452q07", "r458q01", "r458q07", "r458q04")
+ritems <- c("r414q02", "r414q11", "r414q06", "r414q09", 
+  "r452q03", "r452q04", "r452q06", "r452q07", "r458q01", 
+  "r458q07", "r458q04")
 rsitems <- paste0(ritems, "s")
 # Calculate total reading scores
 pisausa <- PISA09[PISA09$cnt == "USA", rsitems]
 rtotal <- rowSums(pisausa, na.rm = TRUE)
-# Simulate a criterion - see Chapter 5 for another example using rsim
-criterion <- rsim(rho = .8, x = rtotal, meany = 24, sdy = 6)
+# Simulate a criterion - see Chapter 5 for another example
+# using rsim
+criterion <- rsim(rho = .8, x = rtotal, meany = 24,
+  sdy = 6)
 # Check the correlation
 cor(rtotal, criterion$y)
 ```

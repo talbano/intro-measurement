@@ -272,7 +272,7 @@ Affective tests are used in a variety of contexts. For example, test results can
 
 The Myers-Briggs Type Indicator (MBTI), first mentioned in Chapter \@ref(measurement), is a popular but somewhat controversial personality test based on the work of Carl Jung, who is famous, in part, for his research on *psychological archetypes*. Jung's original archetypes were defined by the extraversion-introversion and perception-judgment dichotomies. For each of these dichotomies, Jung claimed that people tend to find themselves at one end, for example, extraversion, more than the other, introversion.
 
-The MBTI seeks to measure combinations of these original archetypes with the additional dichotomies of sensing-intuition and thinking-feeling. It does do using simple questions such as the following [from @myers1998manual]:
+The MBTI seeks to measure combinations of these original archetypes with the additional dichotomies of sensing-intuition and thinking-feeling. It does so using simple questions such as the following [from @myers1998manual]:
 
 > I am most comfortable being  
 >   * Spontaneous  

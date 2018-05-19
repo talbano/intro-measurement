@@ -6,7 +6,7 @@ knit: bookdown::preview_chapter
 
 # Learning Objectives {#appendix0}
 
-```{r child = 'objectives.Rmd'}
+```{r child = '_objectives.Rmd'}
 ```
 
 # R Code {#appendix2}
@@ -384,24 +384,15 @@ colnames(q27tab) <- c("", "", qscale)
 alscales <- c("memor", "cstrat", "memor", "elab", "memor", "cstrat",
   "memor", "elab", "cstrat", "elab", "cstrat", "elab", "cstrat")
 #knitr::kable(q27tab)
-#knitr::kable(cbind("Variable" = toupper(q27tab[, 1]), Subscale = alscales, Statement = q27tab[, 2]))
+if (!knitr:::is_latex_output()) {
+  knitr::kable(cbind("Variable" = toupper(q27tab[, 1]),
+    Subscale = alscales, Statement = q27tab[, 2]))
+} else {
+  knitr::kable(cbind("Variable" = toupper(q27tab[, 1]),
+    Subscale = alscales, Statement = q27tab[, 2]),
+    align = c("p{.15\\linewidth}", "p{.15\\linewidth}", "p{.5\\linewidth}"))
+}
 ```
-
-|Variable |Subscale |Statement                                                                                         |
-|:--------|:--------|:-------------------------------------------------------------------------------------------------|
-|ST27Q01  |memor    |When I study, I try to memorize everything that is covered in the text.                           |
-|ST27Q02  |cstrat   |When I study, I start by figuring out what exactly I need to learn.                               |
-|ST27Q03  |memor    |When I study, I try to memorize as many details as possible.                                      |
-|ST27Q04  |elab     |When I study, I try to relate new information to prior knowledge acquired in other subjects.      |
-|ST27Q05  |memor    |When I study, I read the text so many times that I can recite it.                                 |
-|ST27Q06  |cstrat   |When I study, I check if I understand what I have read.                                           |
-|ST27Q07  |memor    |When I study, I read the text over and over again.                                                |
-|ST27Q08  |elab     |When I study, I figure out how the information might be useful outside school.                    |
-|ST27Q09  |cstrat   |When I study, I try to figure out which concepts I still haven’t really understood.               |
-|ST27Q10  |elab     |When I study, I try to understand the material better by relating it to my own experiences.       |
-|ST27Q11  |cstrat   |When I study, I make sure that I remember the most important points in the text.                  |
-|ST27Q12  |elab     |When I study, I figure out how the text information fits in with what happens in real life.       |
-|ST27Q13  |cstrat   |When I study and I don’t understand something, I look for additional information to clarify this. |
 
 ## Attitude toward school
 
@@ -418,6 +409,13 @@ q33scale <- c("Strongly disagree", "Disagree", "Agree", "Strongly agree")
 q33tab <- cbind(q33items, q33text, "&#x25a2;", "&#x25a2;", "&#x25a2;", "&#x25a2;")
 colnames(q33tab) <- c("", "", q33scale)
 #knitr::kable(q33tab)
-knitr::kable(cbind("Variable" = toupper(q33tab[, 1]), Statement = q33tab[, 2]))
+if (!knitr:::is_latex_output()) {
+  knitr::kable(cbind("Variable" = toupper(q33tab[, 1]),
+    Statement = q33tab[, 2]))
+} else {
+  knitr::kable(cbind("Variable" = toupper(q33tab[, 1]),
+    Statement = q33tab[, 2]),
+    align = c("p{.15\\linewidth}", "p{.65\\linewidth}"))
+}
 ```
 

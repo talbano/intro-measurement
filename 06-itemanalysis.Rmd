@@ -31,7 +31,8 @@ In this chapter, we'll run item and option analyses on `PISA09` data using epmr,
 
 ```{r, append=TRUE, chap=6}
 # R setup for this chapter
-# Required packages are assumed to be installed - see Chapter 1
+# Required packages are assumed to be installed,
+# see chapter 1
 library("epmr")
 library("ggplot2")
 # Functions we'll use in this chapter
@@ -67,12 +68,13 @@ The item analysis statistics discussed here are based on the CTT model of test p
 After piloting a set of items, raw item responses are organized into a data frame with test takers in rows and items in columns. The `str()` function is used here to summarize the structure of the unscored items on the `PISA09` reading test. Each unscored item is coded in R as a factor with four to eight factor levels. Each factor level represents different information about a student's response.
 
 ```{r, append=TRUE, chap=6}
-# Recreate the item name index and use it to check the structure
-# of the unscored reading items
-# The strict.width argument is optional, making sure the results fit
-# in the console window
-ritems <- c("r414q02", "r414q11", "r414q06", "r414q09", "r452q03",
-  "r452q04", "r452q06", "r452q07", "r458q01", "r458q07", "r458q04")
+# Recreate the item name index and use it to check the 
+# structure of the unscored reading items
+# The strict.width argument is optional, making sure the
+# results fit in the console window
+ritems <- c("r414q02", "r414q11", "r414q06", "r414q09",
+  "r452q03", "r452q04", "r452q06", "r452q07", "r458q01",
+  "r458q07", "r458q04")
 str(PISA09[, ritems], strict.width = "cut")
 ```
 
@@ -81,8 +83,10 @@ In addition to checking the structure of the data, it's good practice to run fre
 `PISA09` items that include a code or factor level of "0" are constructed-response items, scored by raters. The remaining factor levels for these CR items are coded "1" for full credit, "7" for not administered, "9" for missing, and "r" for not reached, where the student ran out of time before responding to the item. Selected-response items do not include a factor level of "0." Instead, they contain levels "1" through up to "5," which correspond to multiple-choice options one through five, and then codes of "7" for not administered, "8" for an ambiguous selected response, "9" for missing, and "r" again for not reached.
 
 ```{r, append=TRUE, chap=6}
-# Subsets of the reading item index for constructed and selected items
-# Check frequency tables by item (hence the 2 in apply) for CR items
+# Subsets of the reading item index for constructed and
+# selected items
+# Check frequency tables by item (hence the 2 in apply)
+# for CR items
 critems <- ritems[c(3, 5, 7, 10)]
 sritems <- ritems[c(1:2, 4, 6, 8:9, 11)]
 apply(PISA09[, critems], 2, table, exclude = NULL)
@@ -109,11 +113,13 @@ Scoring item responses also requires that direction, that is, decreases and incr
 rsitems <- paste0(ritems, "s")
 crsitems <- paste0(critems, "s")
 srsitems <- paste0(sritems, "s")
-# Tabulate unscored and scored responses for the first CR item
+# Tabulate unscored and scored responses for the first CR
+# item
 # exclude = NULL shows us NAs as well
-# raw and scored are not arguments to table, but are used simply
-# to give labels to the printed output
-table(raw = PISA09[, critems[1]], scored = PISA09[, crsitems[1]],
+# raw and scored are not arguments to table, but are used
+# simply to give labels to the printed output
+table(raw = PISA09[, critems[1]],
+  scored = PISA09[, crsitems[1]],
   exclude = NULL)
 # Create the same type of table for the first SR item
 ```
@@ -122,7 +128,8 @@ For a psychological example, we revisit the attitude toward school items present
 
 ```{r, append=TRUE, chap=6}
 # Check the structure of raw attitude items
-str(PISA09[, c("st33q01", "st33q02", "st33q03", "st33q04")])
+str(PISA09[, c("st33q01", "st33q02", "st33q03",
+  "st33q04")])
 # Rescore two items
 PISA09$st33q01r <- recode(PISA09$st33q01)
 PISA09$st33q02r <- recode(PISA09$st33q02)
@@ -159,13 +166,14 @@ Although difficult questions may be frustrating for students, sometimes they're 
 This same argument applies to noncognitive testing. To measure the full range of a clinical disorder, personality trait, or attitude, we need items that can be endorsed by individuals all along the continuum for our construct. Consider again the attitude toward school scale. All four items have mean scores above 2. On average, students agree with these attitude items, after reverse coding the first two, more often than not. If we recode scores to be dichotomous, with disagreement as 0 and agreement as 1, we can get $p$-values for each item as well. These $p$-values are interpreted as agreement rates. They tell us that at least 70% of students agreed with each attitude statement.
 
 ```{r, append=TRUE, chap=6}
-# Index for attitude toward school items, with the first two items
-# recoded
-atsitems <- c("st33q01r", "st33q02r", "st33q03", "st33q04")
+# Index for attitude toward school items, with the first
+# two items recoded
+atsitems <- c("st33q01r", "st33q02r", "st33q03",
+  "st33q04")
 # Check mean scores
 round(colMeans(PISA09[, atsitems], na.rm = T), 2)
-# Convert polytomous to dichotomous, with any disagreement coded as 0
-# and any agreement coded as 1
+# Convert polytomous to dichotomous, with any disagreement
+# coded as 0 and any agreement coded as 1
 ats <- apply(PISA09[, atsitems], 2, recode,
   list("0" = 1:2, "1" = 3:4))
 round(colMeans(ats, na.rm = T), 2)
@@ -198,16 +206,18 @@ round(colMeans(PISA09[PISA09$rtotal > 6, crsitems],
 Although calculating $p$-values for different groups of individuals is still a useful approach to examining item discrimination, we lose information when we reduce scores on our construct to categories such as "high" and "low." Item discrimination is more often estimated using the correlation between item responses and construct scores. In the absence of scores on the construct, total scores are typically used as a proxy. The resulting correlation is referred to as an *item-total correlation* (ITC). When responses on the item are dichotomously scored, it is also sometimes called a point-biserial correlation.
 
 ```{r, echo=FALSE}
-pisadeu <- PISA09[PISA09$cnt == "DEU", c(crsitems, "rtotal")]
+pisadeu <- PISA09[PISA09$cnt == "DEU", c(crsitems,
+  "rtotal")]
 pisadeu <- pisadeu[complete.cases(pisadeu), ]
 ```
 
 Here, we take a subset of `PISA09` including CR item scores and the total reading score for German students. The correlation matrix for these five variables shows how scores on the items relate to one another, and to the total score. Relationships between items and the total are ITC estimates of item discrimination. The first item, with ITC of `r 0.70`, is best able to discriminate between students of high and low ability.
 
 ```{r, append=TRUE, chap=6}
-# Create subset of data for German students, then reduce to complete
-# data
-pisadeu <- PISA09[PISA09$cnt == "DEU", c(crsitems, "rtotal")]
+# Create subset of data for German students, then reduce
+# to complete data
+pisadeu <- PISA09[PISA09$cnt == "DEU", c(crsitems,
+  "rtotal")]
 pisadeu <- pisadeu[complete.cases(pisadeu), ]
 round(cor(pisadeu), 2)
 ```
@@ -229,8 +239,8 @@ Suppose you had to guess a student's reading ability based only on their score f
 Next, we calculate the ITC and CITC "by hand" for the first attitude toward school item, which was reverse coded as `st33q01r`. There is a sizable difference between the ITC and the CITC for this item, likely because the scale is so short to begin with. By removing the item from the total score, we reduce our scale length by 25%, and, presumably, our total score becomes that much less representative of the construct. Discrimination for the remaining attitude items will be examined later.
 
 ```{r, append=TRUE, chap=6}
-# Caculate ITC and CITC by hand for one of the attitude toward
-# school items
+# Caculate ITC and CITC by hand for one of the attitude
+# toward school items
 PISA09$atstotal <- rowSums(PISA09[, atsitems])
 cor(PISA09$atstotal, PISA09$st33q01r, use = "c")
 cor(PISA09$atstotal - PISA09$st33q01r,
@@ -254,7 +264,8 @@ To clarify, it is bad news for an item if the AID is higher than the overall alp
 The `istudy()` function in the epmr package estimates AID, along with the other item statistics presented so far. AID is shown in the last column of the output. For the `PISA09` reading items, the overall alpha is `r round(ris$alpha, 4)`, which is an acceptable level of internal consistency for a low-stakes measure like this (see Table \@ref(tab:interpretr)). The AID results then tell us that alpha never increases beyond its original level after removing individual items, so, good news. Instead, alpha  decreases to different degrees when items are removed. The lowest AID is `r round(min(ris$items$aid), 4)` for item `r414q06`. Removal of this item results in the largest decrease in internal consistency.
 
 ```{r, append=TRUE, chap=6}
-# Estimate item analysis statistics, including alpha if item deleted
+# Estimate item analysis statistics, including alpha if
+# item deleted
 istudy(PISA09[, rsitems])
 ```
 
@@ -269,7 +280,8 @@ Suppose we needed to identify a brief but effective subset of `PISA09` reading i
 ```{r, append=TRUE, chap=6}
 # Subset of data for Hong Kong, scored reading items
 pisahkg <- PISA09[PISA09$cnt == "HKG", rsitems]
-# Spearman-Brown based on original alpha and new test length of 8 items
+# Spearman-Brown based on original alpha and new test
+# length of 8 items
 sbr(r = epmr::alpha(pisahkg), k = 8/11)
 ```
 
@@ -349,7 +361,7 @@ Item analysis, as described in this chapter, is based on a CTT model of test per
 ### Exercises
 
 1. Explain why we should be cautious about interpreting item analysis results based on pilot data.
-2. For an item with high discrimination, how should $p$-values on the item compare for two groups known to differ in their true mean abilities?
+2. For an item with high discrimination, how should $p$-values on the item compare when calculated separately for two groups that differ in their true mean abilities?
 3. Why is discrimination usually lower for CITC as compared with ITC for a given item?
 4. What features of certain response options, in terms of the item content itself, would make them stand out as problematic within a option analysis?
 5. Explain how AID is used to identify items contributing to internal consistency.

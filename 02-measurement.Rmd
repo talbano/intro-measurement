@@ -9,7 +9,7 @@ knit: bookdown::preview_chapter
 
 The [Preface](#preface) to this book introduced a few perspectives on testing, with an emphasis on validity as a measure of the effectiveness of test scores. Validity is an overarching issue that encompasses all stages in the test development and administration processes, from blueprint to bubble sheet, including the stage wherein we choose the empirical operations that will assign numbers or labels to test takers based on their performance or responses.
 
-In this chapter, we examine the measurement process at its most fundamental or basic level, the measurement level. We'll define three requirements for measurement, and consider the simplicity of physical measurement in comparison to the complexities of educational and psychological measurement where the thing we measure is often intractable and best represented using item sets and composite scores. Along the way, we'll describe four types of measurement scales that are available, with examples from the PISA data set, and we'll look into why @stevens1946theory concluded that not all scales are created equal. Last are scoring and score referencing, including examples of norm and criterion referencing.
+In this chapter, we examine the measurement process at its most fundamental or basic level, the measurement level. We'll define three requirements for measurement, and consider the simplicity of physical measurement in comparison to the complexities of educational and psychological measurement where the thing we measure is often intractable and best represented using item sets and composite scores. Along the way, we'll describe a popular framework for distinguishing measurement scales, with examples from the PISA data set, and we'll look into why @stevens1946theory concluded that not all scales are created equal. Last are scoring and score referencing, including examples of norm and criterion referencing.
 
 ```{block, type="objectives"}
 **Learning objectives**
@@ -32,19 +32,24 @@ In this chapter, we'll analyze and create plots with `PISA09` data using the epm
 
 ```{r, append=TRUE, chap=2}
 # R setup for this chapter
-# Required packages are assumed to be installed - see chapter 1
+# Required packages are assumed to be installed,
+# see chapter 1
 library("epmr")
 library("ggplot2")
 # Functions we'll use in this chapter
 # data(), class(), factor(), c(), from chapter 1
-# head() to print the first six rows or values in an object
-# paste0() for pasting together text and using it to index a data set
-# apply() for applying a function over rows or columns of a data set
+# head() to print the first six rows or values in an 
+# object
+# paste0() for pasting together text and using it to index
+# a data set
+# apply() for applying a function over rows or columns of 
+# a data set
 # tapply() for applying a function over groups
 # dstudy() from the epmr package for getting descriptives
 # ggplot(), aes(), and geom_boxplot() for plotting
 # round(), nrow(), and with() for examining data
-# We'll use a data set included in the base R packages called state.x77
+# We'll use a data set included in the base R packages 
+# called state.x77
 ```
 
 ## What is measurement?
@@ -72,17 +77,17 @@ Note that `state.x77` is a matrix, which means we can't index columns using `$`.
 
 ### From physical to intangible
 
-With most physical measurements, the property that we're trying to represent or capture with our values can be clearly defined and consistently measured. For example, amounts of food are commonly measured in grams. A cup of cola has about 44 grams of sugar in it. When you see that number printed on your can of soda pop or fizzy water, the meaning is pretty clear, and there's really no need to question if its accurate. Cola has an absurd amount of sugar in it.
+With most physical measurements, the property that we're trying to represent or capture with our values can be clearly defined and consistently measured. For example, amounts of food are commonly measured in grams. A cup of cola has about 44 grams of sugar in it. When you see that number printed on your can of soda pop or fizzy water, the meaning is pretty clear, and there's really no need to question if its accurate. Cola has a shocking amount of sugar in it.
 
 But, just as often, we take a number like the amount of sugar in our food and use it to represent something abstract or intangible like how healthy or nutritious the food is. A food's healthiness isn't as easy to define as its mass or volume. A measurement of healthiness or nutritional value might account for the other ingredients in the food and how many calories they boil down to. Furthermore, different foods can be more or less nutritional for different people, depending on a variety of factors. Healthiness, unlike physical properties, is intangible and difficult to measure.
 
 Most of the variables in `state.x77` are relatively easy to measure, as they involve observable quantities, such as numbers of dollars for `state.x77[, "Income"]`, years for `state.x77[, "Life Exp"]`, and days for `state.x77[, "Frost"]`. On the other hand, illiteracy rates are not as easily measured. A variable such as illiteracy is not countable or directly observable, which makes it subject to measurement error.
 
-The social sciences of education and psychology typically focus on the measurement of *constructs*, intangible and unobservable qualities, attributes, or traits that we assume are causing certain observable behavior or responses. In this book, our objects of measurement are typically people, and our goal is to give these people numbers or labels that tell us something meaningful about constructs such as their intelligence, reading ability, or social anxiety. Constructs such as these are difficult to measure. That's why we need an entire book to discuss how to best measure them.
+The social sciences of education and psychology typically focus on the measurement of *constructs*, intangible and unobservable qualities, attributes, or traits that we assume are causing certain observable behavior or responses. In this book, our objects of measurement are typically people, and our goal is to give these people numbers or labels that tell us something meaningful about constructs such as their intelligence, reading ability, or social anxiety. Constructs like these are difficult to measure. That's why we need an entire book to discuss how to best measure them.
 
-A good question to ask at this point is, how can we measure and provide values for something that's unobservable? How do we score a person's math ability if we can't observe it directly? What we need is an *operationalization* of our construct, an observable behavior or response that increases or decreases as a person moves up or down on the construct. With math ability, that operationalization might be the number of math questions a person answers correctly out of 20. With social anxiety, it might be the frequency of feeling anxious over a given period of time. With illiteracy, the operationalization might be the number of words read correctly from a passage of text. Or it could be a simple "yes" or "no," in response to the question, "Can you read?"
+A good question to ask at this point is, how can we measure and provide values for something that's unobservable? How do we score a person's math ability if we can't observe it directly? The approach commonly taken is to identify an *operationalization* of our construct, an observable behavior or response that increases or decreases, we assume, as a person moves up or down on the construct. With math ability, that operationalization might be the number of math questions a person answers correctly out of 20. With social anxiety, it might be the frequency of feeling anxious over a given period of time. With illiteracy, the operationalization might be the number of words read correctly from a passage of text. Or it could be a simple "yes" or "no," in response to the question, "Can you read?"
 
-When using a proxy for our construct, we have to assume or *infer* that the operationalization we're actually observing and measuring accurately represents the underlying quality or property that we're interested in. This brings us to the overarching question addressed in this book.
+When using a proxy for our construct, we *infer* that the operationalization we're actually observing and measuring accurately represents the underlying quality or property that we're interested in. This inference, which some consider to be unfounded [e.g., @michell2000normal], brings us to the overarching question addressed in this book.
 
 ### What makes measurement good?
 
@@ -211,26 +216,31 @@ Based on this argument, a mean sociability score is only as useful as the scale 
 Let's look at the `PISA09` reading scores as a final example. All of the scored item responses in `PISA09` have only two possible values, 0 and 1, representing incorrect and correct responses. These scored item responses could all be considered at least on ordinal scales, as 1 represents more of the measured construct than 0. The total score across all reading items could also be considered at least ordinal.
 
 ```{r, append=TRUE, chap=2}
-# Names of all reading items, to be used as an indexing object
-ritems <- c("r414q02", "r414q11", "r414q06", "r414q09", "r452q03",
-  "r452q04", "r452q06", "r452q07", "r458q01", "r458q07", "r458q04")
+# Names of all reading items, to be used as an indexing 
+# object
+ritems <- c("r414q02", "r414q11", "r414q06", "r414q09",
+  "r452q03", "r452q04", "r452q06", "r452q07", "r458q01", 
+  "r458q07", "r458q04")
 # Paste an "s"" to the end of each name, for scored items
 rsitems <- paste0(ritems, "s")
-# apply() applies to a data set (the first argument) across either
-# rows or columns (the second argument) the function named (in the
-# third argument). See also rowSums(). Here, we treat missings as
-# 0s, by excluding them from the sum.
-PISA09$rtotal <- apply(PISA09[, rsitems], 1, sum, na.rm = TRUE)
+# apply() applies to a data set (the first argument) 
+# across either
+# rows or columns (the second argument) the function named
+# (in the third argument). See also rowSums(). Here, we 
+# treat missings as 0s, by excluding them from the sum.
+PISA09$rtotal <- apply(PISA09[, rsitems], 1, sum,
+  na.rm = TRUE)
 dstudy(PISA09$rtotal)
 ```
 
 The challenge in identifying a measurement scale is interpreting the meaningfulness of the intervals between scale values, for an interval scale, and the meaningfulness of a zero value, for a ratio scale. Do increments in the total reading score have a consistent meaning, relative to the construct of reading ability, across the scale? The answer depends on our interpretation of the items themselves and the mechanisms used to score them.
 
 ```{r qplot-rtotal, append=TRUE, chap=2, fig.asp='.5', out.width='75%', fig.cap="A bar plot of total scores on PISA09 scored reading items."}
-# Bar plot of reading totals, which are, ironically, converted to
-# a factor before plotting, so ggplot treats them as a discrete
-# scale rather than continuous. Continuous defaults to a histogram
-# which isn't as useful.
+# Bar plot of reading totals, which are, ironically, 
+# converted to a factor before plotting, so ggplot treats 
+# them as a discrete
+# scale rather than continuous. Continuous defaults to a 
+# histogram which isn't as useful.
 ggplot(PISA09, aes(factor(rtotal))) + geom_bar()
 ```
 
@@ -251,10 +261,11 @@ Dichotomous scoring refers to the assignment of one of two possible values based
 Multiple-choice questions, discussed further in Chapter \@ref(development), are usually scored dichotomously. Most cognitive tests involve at least some dichotomously scored items. The PISA 2009 study implemented both dichotomously and polytomously scored items. However, all of the reading items in `PISA09` are dichotomously scored.
 
 ```{r, append=TRUE, chap=2}
-# The apply() function again, used to iterate through reading items,
-# and for each column (hence the 2), run a frequency table.
-# Then, divide the result by the number of students, and round
-# to 2 decimal places.
+# The apply() function again, used to iterate through 
+# reading items, and for each column (hence the 2), run a 
+# frequency table.
+# Then, divide the result by the number of students, and 
+# round to 2 decimal places.
 rtab <- apply(PISA09[, rsitems], 2, table)
 round(rtab / nrow(PISA09), 2)
 ```
@@ -295,9 +306,10 @@ PISA09$st33q01r <- recode(PISA09$st33q01)
 PISA09$st33q02r <- recode(PISA09$st33q02)
 ```
 ```{r, echo=FALSE}
-stitems <- c("st27q01", "st27q02", "st27q03", "st27q04", "st27q05", "st27q06",
-  "st27q07", "st27q08", "st27q09", "st27q10", "st27q11", "st27q12", "st27q13",
-  "st41q01", "st41q02", "st41q03", "st41q04", "st41q05", "st41q06",
+stitems <- c("st27q01", "st27q02", "st27q03", "st27q04", 
+  "st27q05", "st27q06", "st27q07", "st27q08", "st27q09", 
+  "st27q10", "st27q11", "st27q12", "st27q13", "st41q01", 
+  "st41q02", "st41q03", "st41q04", "st41q05", "st41q06",
   "st42q01", "st42q02", "st42q03", "st42q04", "st42q05")
 ```
 
@@ -310,11 +322,16 @@ When I was in graduate school, the professor for my introductory measurement cla
 The scaling technique demonstrated by @likert1932technique involves, first, the scoring of individual rating scale items using polytomous scales. For example, response options for one set of survey questions in @likert1932technique included five categories, ranging from strongly disapprove to undecided to strongly approve, similar to the PISA survey items. These categories were assigned score values of 1 through 5. Then, a total score was obtained across all items in the set. Low scores were interpreted as indicating strong disapproval and high scores were interpreted as indicating strong approval. This process could be referred to as Likert scaling. But in this book we'll simply refer to it as scaling, or creating a total or average score across multiple items.
 
 ```{r, append=TRUE, chap=2}
-# Names of all attitude toward school items, to be used as an indexing object
-# Note the added "r" in the names for the first two items, which were recoded
-atsitems <- c("st33q01r", "st33q02r", "st33q03", "st33q04")
-# Calculate total scores again using apply(), and look at descriptives
-PISA09$atotal <- apply(PISA09[, atsitems], 1, sum, na.rm = TRUE)
+# Names of all attitude toward school items, to be used as
+# an indexing object
+# Note the added "r" in the names for the first two items,
+# which were recoded
+atsitems <- c("st33q01r", "st33q02r", "st33q03", 
+  "st33q04")
+# Calculate total scores again using apply(), and look at 
+# descriptives
+PISA09$atotal <- apply(PISA09[, atsitems], 1, sum,
+  na.rm = TRUE)
 dstudy(PISA09$atotal)
 ```
 
@@ -343,7 +360,7 @@ The simpler methods for creating composites, by averaging and totaling across it
 
 Whereas a simple sum or average over a set of items lets each item contribute the same amount to the overall score, more complex measurement models can be used to estimate the different contributions of individual items to the underlying construct. These contributions can be examined in a variety of ways, as discussed in Chapters \@ref(reliability), \@ref(irt), and \@ref(dimensionality). Together, they can provide useful information about the quality of a measure, as they help us understand the relationship between our operationalization of the construct, in terms of individual items, and the construct itself.
 
-Measurement models represent an unobservable construct by formally incorporating a measurement theory into the measurement process. We will review two formal measurement theories in this book. The first is called classical test theory, presented in Chapter \@ref(reliability), and the second is item response theory, presented in Chapter \@ref(irt). [for a comparison, see @hambleton1993comparison]. For now, we'll just look at the basics of what a measurement model does.
+Measurement models represent an unobservable construct by formally incorporating a measurement theory into the measurement process. We will review two formal measurement theories in this book. The first is called classical test theory, presented in Chapter \@ref(reliability), and the second is item response theory, presented in Chapter \@ref(irt) [for a comparison, see @hambleton1993comparison]. For now, we'll just look at the basics of what a measurement model does.
 
 Figure \@ref(fig:simple-model) contains a visual representation of a simple measurement model where the underlying construct of sociability, shown in an oval, causes, in part, the observed responses in a set of three questions, shown in rectangles as Item 1, Item 2, and Item 3. Unobservable quantities in a measurement model are typically represented by ovals, and observable quantities by rectangles. Causation is then represented by the arrows which point from the construct to the item responses. The numbers over each arrow from the construct are the scaled factor loadings reported in @nelson2010italian, which represent the strength of the relationship between the items and the construct which they together define. As with a correlation coefficient, the larger the factor loading, the stronger the relationship. Thus, item 1 has the strongest relationship with the sociability factor, and item 3 has the weakest.
 
@@ -374,14 +391,14 @@ Norms are also frequently encountered in admissions testing. If you took somethi
 The two examples above involve simple percentile norms, where scores are compared to the full score distribution for a given norm group. Two other common types of norm referencing are grade and age norms, which are obtained by estimating the typical or average performance on a test by grade level or age. For example, we can give meaning to `PISA09` reading scores by comparing them to the medians by grade.
 
 ```{r, append=TRUE, chap=2}
-# tapply() is like apply() but instead of specifying rows or columns of
-# a matrix, we provide an index variable. Here, median() will be applied
-# over subsets of rtotal by grade. with() is used to subset only German
-# students.
+# tapply() is like apply() but instead of specifying rows
+# or columns of a matrix, we provide an index variable.
+# Here, median() will be applied over subsets of rtotal by
+# grade. with() is used to subset only German students.
 with(PISA09[PISA09$cnt == "DEU", ],
   tapply(rtotal, grade, median, na.rm = TRUE))
-# Most German students are in 9th grade. Medians aren't as useful for
-# grades 7, 11, and 12.
+# Most German students are in 9th grade. Medians aren't as
+# useful for grades 7, 11, and 12.
 table(PISA09$grade[PISA09$cnt == "DEU"])
 ```
 
@@ -391,8 +408,8 @@ Again, norms give meaning to a score by comparing it to the score distribution f
 
 ```{r boxplots-rtotal, append=TRUE, chap=2, out.width='75%', fig.cap="Bar plots of total scores on PISA09 scored reading items for Germany by grade."}
 # Get box plots of reading total scores
-ggplot(PISA09[PISA09$cnt == "DEU" & PISA09$grade %in% 8:10, ],
-  aes(x = factor(grade), y = rtotal)) +
+ggplot(PISA09[PISA09$cnt == "DEU" & PISA09$grade %in% 
+  8:10, ], aes(x = factor(grade), y = rtotal)) +
   geom_boxplot()
 ```
 

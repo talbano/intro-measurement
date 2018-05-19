@@ -76,7 +76,8 @@ Here's an example. In Chapters \@ref(measurement) and \@ref(development) we refe
 The epmr package contains data from the BDI-II in the form of correlation and covariance matrices, as reported in Table 2 of @whisman2000factor. Each value in the correlation matrix is a correlation between scores on a given pair of BDI-II items. These are based on an administration of the BDI-II to 576 undergraduate students. See `?BDI` for details. In the interest of space, we'll just print the first four rows and columns of the correlation matrix. Note that the diagonal elements of the matrix are all 1.00, as a variable always correlates perfectly with itself.
 
 ```{r, append=TRUE, chap=8}
-# Subset of correlations from BDI data set in the epmr package
+# Subset of correlations from BDI data set in the epmr 
+# package
 BDI$R[1:4, 1:4]
 ```
 
@@ -149,14 +150,17 @@ Note that the `PISA09` data set includes IRT theta scores on each subscale, as e
 
 ```{r, append=TRUE, chap=8}
 # Prepping PISA approaches to learning data for EFA
-# Vectors of item names for memorization, elaboration, and control strategies
+# Vectors of item names for memorization, elaboration, and
+# control strategies
 mitems <- c("st27q01", "st27q03", "st27q05", "st27q07")
 eitems <- c("st27q04", "st27q08", "st27q10", "st27q12")
-citems <- c("st27q02", "st27q06", "st27q09", "st27q11", "st27q13")
+citems <- c("st27q02", "st27q06", "st27q09", "st27q11", 
+  "st27q13")
 alitems <- c(mitems, eitems, citems)
 # Reduce to complete data for Great Britain
 pisagbr <- PISA09[PISA09$cnt == "GBR", ]
-pisagbr <- pisagbr[complete.cases(pisagbr[, c(mitems, eitems, citems)]), ]
+pisagbr <- pisagbr[complete.cases(pisagbr[, c(mitems, 
+  eitems, citems)]), ]
 # Fit EFA with three factors
 alefa <- fastudy(pisagbr[, alitems], factors = 3)
 ```
@@ -200,8 +204,8 @@ The factor loadings tend to support the alignment of the approaches to learning 
 ```{r, append=TRUE, chap=8}
 # Correlations between PISA approaches to learning scores
 # for Great Britain
-round(cor(PISA09[PISA09$cnt == "GBR", c("memor", "elab", "cstrat")],
-  use = "c"), 2)
+round(cor(PISA09[PISA09$cnt == "GBR", c("memor", "elab", 
+  "cstrat")], use = "c"), 2)
 ```
 
 Next, we can look at the eigenvalues for the factors, to determine the amount of total score variability they each capture. The R output labels the eigenvalues as `SS loadings`, since they are calculated as the sum of the squared loadings for each factor. The EFA results show eigenvalues of 1.85, 1.84, and 1.73, which each represent about 14% of the total score variability, for a cumulative variance explained of 42%. These results aren't encouraging, as they indicate that the majority of variability in approaches to learning scores is still unexplained.
@@ -219,7 +223,8 @@ With other types of tests where one or two strong underlying constructs are pres
 
 ```{r, append=TRUE, chap=8}
 # Plot of eigenvalues for BDI
-bdiefa <- fastudy(covmat = BDI$R, factors = 12, n.obs = 576)
+bdiefa <- fastudy(covmat = BDI$R, factors = 12,
+  n.obs = 576)
 plot(bdiefa, ylim = c(0, 3))
 ```
 
@@ -284,17 +289,20 @@ The model is fit using the `cfa()` function. We supply the model specification o
 # Comments within the model statement are ignored
 bdimod <- lavaanify(model = "
   # Latent variable definitions
-  cog =~ sadness + crying + failure + guilt + punish + dislike + critical +
-    pessimism + nopleasure + nointerest + noworth + suicide + indecisive +
+  cog =~ sadness + crying + failure + guilt + punish +
+    dislike + critical + pessimism + nopleasure +
+    nointerest + noworth + suicide + indecisive +
     irritable + agitated + nosex
-  som =~ tired + noenergy + noconcentrate + appetite + sleep
+  som =~ tired + noenergy + noconcentrate + appetite +
+    sleep
   # Covariances
   sadness ~~ crying
   dislike ~~ critical
   nopleasure ~~ nointerest",
   auto.var = TRUE, auto.cov.lv.x = TRUE, std.lv = TRUE)
 # Fit the model
-bdicfa <- cfa(bdimod, sample.cov = BDI$S, sample.nobs = 576)
+bdicfa <- cfa(bdimod, sample.cov = BDI$S,
+  sample.nobs = 576)
 ```
 
 **3. Evaluate the model**
@@ -318,15 +326,18 @@ Let's quickly examine a CFA where all items load on a single factor. We no longe
 
 ```{r, append=TRUE, chap=8}
 # Specify the factor structure
-# Comments within the model statement are ignored as comments
+# Comments within the model statement are ignored as
+# comments
 bdimod2 <- lavaanify(model = "
-  depression =~ sadness + crying + failure + guilt + punish + dislike +
-  critical + pessimism + nopleasure + nointerest + noworth + suicide +
-  indecisive + irritable + agitated + nosex + tired + noenergy +
-  noconcentrate + appetite + sleep",
+  depression =~ sadness + crying + failure + guilt +
+    punish + dislike + critical + pessimism + nopleasure +
+    nointerest + noworth + suicide + indecisive +
+    irritable + agitated + nosex + tired + noenergy +
+    noconcentrate + appetite + sleep",
   auto.var = TRUE, std.lv = TRUE)
 # Fit the model
-bdicfa2 <- cfa(bdimod2, sample.cov = BDI$S, sample.nobs = 576)
+bdicfa2 <- cfa(bdimod2, sample.cov = BDI$S,
+  sample.nobs = 576)
 # Print output
 summary(bdicfa2, fit = TRUE, standardized = TRUE)
 ```
@@ -357,10 +368,12 @@ almod <- lavaanify(model = "
   # Three factors
   memor =~ st27q01 + st27q03 + st27q05 + st27q07
   elab =~ st27q04 + st27q08 + st27q10 + st27q12
-  cstrat =~ st27q02 + st27q06 + st27q09 + st27q11 + st27q13",
+  cstrat =~ st27q02 + st27q06 + st27q09 + st27q11 +
+    st27q13",
   auto.var = TRUE, auto.cov.lv.x = TRUE, std.lv = TRUE)
 # Fit the model
-alcfa <- cfa(almod, sample.cov = cov(pisagbr[, alitems]), sample.nobs = 3514)
+alcfa <- cfa(almod, sample.cov = cov(pisagbr[, alitems]),
+  sample.nobs = 3514)
 # Print output
 summary(alcfa, fit = TRUE, standardized = TRUE)
 ```

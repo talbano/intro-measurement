@@ -52,7 +52,7 @@ You should have come up with something like this for the CST test purpose: the C
 
 ## Learning objectives
 
-To keep the description of the CSTs brief, I omitted details about the content standards. California, like all other states, has detailed standards or *learning objectives* defining what content/skills/knowledge/information/etc. must be covered by schools in the core subject areas. The standards specify what a student should know and be able to do after their educational experience. They establish the overarching goals for teaching and learning. Teachers, schools, and districts, to some extent, are then free to determine the best way to teach the standards.
+To keep the description of the CST brief, I omitted details about the content standards. California, like all other states, has detailed standards or *learning objectives* defining what content/skills/knowledge/information/etc. must be covered by schools in the core subject areas. The standards specify what a student should know and be able to do after their educational experience. They establish the overarching goals for teaching and learning. Teachers, schools, and districts, to some extent, are then free to determine the best way to teach the standards.
 
 In this chapter, educational standards are presented as a form of learning objective, which identify the goals or purposes of instruction. Here's a simplified example of a learning objective for this chapter: write and critique test items. This objective is extremely simple and brief. Can you describe why it would be challenging to assess proficiency or competency for this objective? How could the objective be changed to make it easier to assess?
 
@@ -70,7 +70,7 @@ Notice also that the simplest way to assess the first science objective listed a
 
 ### Depth of knowledge
 
-In addition to being written to specific standards or learning objectives, cognitive test items are also written to assess at a specific depth of knowledge (DOK). The DOK of an item indicates its level of complexity in terms of the knowledge and skills required to obtain a correct response. @bloom1956taxonomy presented the original framework for categorizing depth of knowledge in cognitive assessments. However, the majority of achievement tests nowadays use some version of the DOK categories presented by @webb2002depth. These DOK differ somewhat by content area, but are roughly defined in levels of increasing complexity as 1) recall and reproduction, 2) skills and concepts, 3) strategic thinking, and 4) extended thinking.
+In addition to being written to specific standards or learning objectives, cognitive test items are also written to assess at a specific depth of knowledge (DOK). The DOK of an item indicates its level of complexity in terms of the knowledge and skills required to obtain a correct response. @bloom1956taxonomy presented the original framework for categorizing depth of knowledge in cognitive assessments. Many achievement tests nowadays use some version of the DOK categories presented by @webb2002depth. These DOK differ somewhat by content area, but are roughly defined in levels of increasing complexity as 1) recall and reproduction, 2) skills and concepts, 3) strategic thinking, and 4) extended thinking.
 
 These simple DOK categories can be modified to meet the needs of a particular testing program. For example, here is the description of Level 1 DOK used in writing items for the standardized science tests in Nebraska:
 
@@ -78,6 +78,36 @@ These simple DOK categories can be modified to meet the needs of a particular te
 > Verbs such as "identify," "recall," "recognize," "use," "calculate," and "measure" generally represent cognitive work at the recall and reproduction level. Simple word problems that can be directly translated into and solved by a formula are considered Level 1. Verbs such as "describe" and "explain" could be classified at different DOK levels, depending on the complexity of what is to be described and explained.
 
 DOK descriptions such as this are used to categorize items in the item writing process, and thereby ensure that the items together support the overall DOK required in the purpose of the test. Typically, higher DOK is preferable. However, lower levels of DOK are sometimes required to assess certain objectives, for example, ones that require students to recall or reproduce definitions, steps, procedures, or other key information. Furthermore, constraints on time and resources within the standardized testing process often make it impossible to assess the highest level of DOK, which requires extended thinking and complex cognitive demands.
+
+Items can often be taken beyond DOK1 with the introduction of novel material and context. The following examples assess the same learning objective at different levels of DOK by relying on a simple hypothetical scenario to varying degrees. The learning objective is *Define criterion referencing and identify contexts in which it is appropriate.*
+
+**Ineffective**:
+
+>An aggression test is administered to a group of people before and after participating in a treatment program designed to help them manage their aggression. Scores on the test are categorized into three groups to indicate low, medium, and high levels of aggression. What type of score referencing will provide meaning to scores by referring to the content of the test itself?  
+>A. Criterion referencing  
+>B. Norm referencing  
+>C. Downward social referencing  
+
+This first example is ineffective because the question itself is detached from the context. The context is simple and straightforward, and sets us up nicely to get beyond recalling the definition of criterion referencing. However, it boils down to recall in the end because we provide too much scaffolding in the question. Option A is the correct choice, regardless of what's happening with the aggression test. Also, option C is absurd. Something like "Percentile referencing" would be better because it at least resembles an actual term.
+
+**Effective**:
+
+>An aggression test is administered to a group of people before and after participating in a treatment program designed to help them manage their aggression. Scores on the test are categorized into three groups to indicate low, medium, and high levels of aggression. What type of score referencing is most appropriate here?  
+>A. Criterion referencing  
+>B. Norm referencing  
+>C. Percentile referencing  
+
+This version is better than the first because the question itself is dependent on the context. Students must refer to the scenario to identify the most appropriate type of score referencing. The next version requires an even more focused evaluation of the context.
+
+**More focused**:
+
+>An aggression test is administered to a group of people before and after participating in a treatment program designed to help them manage their aggression. Scores on the test are categorized into three groups to indicate low, medium, and high levels of aggression. What feature of this testing application suggests the use of criterion score referencing?  
+>A. The test measures a psychological construct.  
+>B. People participate in a treatment program to manage aggression.  
+>C. Scores are categorized into three groups.  
+>D. Groups indicate low, medium, and high levels of aggression.  
+
+By asking about what makes criterion referencing most appropriate, this final version of the item stretches DOK with more complex reasoning, while also giving us a more narrow and direct assessment of the learning objective. More narrow may not always be best, but it is often optimal for formative assessment purposes because it helps uncover student thinking and misconceptions. Later, we'll see how to combine the effective and more focused approaches to get the benefits of both.
 
 ### Item types
 
@@ -101,19 +131,26 @@ A variety of SR item types are available. More popular types include:
 5. complex multiple-choice, where different combinations of response options can be selected as correct, resembling a constrained form of multiple correct (e.g., options A and B, A and C, or all of the above); and
 6. evidence-based, which can be any form of SR item where a follow-up question requires test takers to select an option justifying their response to the original item.
 
-Evidence-based questions are becoming more popular in standardized achievement testing, as, test makers claim, they can be used to assess more complex reasoning. This is achieved via the nesting of content from one question inside the follow-up. Here's a simple evidence-based question on DOK.
+Evidence-based questions are becoming more popular in standardized testing, as they can be used to assess more complex reasoning. This is achieved via the nesting of content from one question inside the follow-up. Here's a simple evidence-based question on learning objective 6.10: *Utilize item analysis to distinguish between items that function well in a set and items that do not.* Note that this question also utilizes select all that apply.
 
-> Part I. In a constructed-response science question, students are given a hypothesis and must then describe with an essay an experiment that could be used to test the hypothesis. In their description they must identify the key components of the experiment and justify the importance of each component in testing the hypothesis.  
-> What depth of knowledge level does this science question assess?  
+> Part I. Suppose an item analysis produces the following results, where coefficient alpha is 0.72. Identify the item(s) NOT contributing to the internal consistency reliability of this item set. Select all that apply.
+```
+Item p-value CITC  AID  
+1    0.83    0.53  0.68  
+2    0.61    0.40  0.70  
+3    0.47    0.45  0.72  
+4    0.15    0.18  0.76  
+5    0.92    0.17  0.74  
+```
 > A. 1  
 > B. 2  
 > C. 3  
 > D. 4  
 
-> Part II. What task from the science question in Part I best supports the answer for Part I?  
-A. Describe an experiment.  
-B. Identify the key components of an experiment.  
-C. Justify the importance of each component.  
+> Part II. What information supports your answer for Part I? Select all that apply.  
+A. p-value  
+B. CITC  
+C. AID  
 
 A constructed-response (CR) item does not present options to the test taker. As the name implies, a response must be constructed. Constructed-response items include short-answer, fill-in-the-blank, graphing, manipulation of information, and essays. Standardized performance assessments, for example, reading fluency measures, can also be considered CR tasks.
 
@@ -135,6 +172,7 @@ The GRE analytical writing section is a familiar form of performance assessment.
 
 > As people rely more and more on technology to solve problems, the ability of humans to think for themselves will surely deteriorate.  
 > Discuss the extent to which you agree or disagree with the statement and explain your reasoning for the position you take. In developing and supporting your position, you should consider ways in which the statement might or might not hold true and explain how these considerations shape your position.
+> Source: [www.ets.org/gre/revised_general/prepare/analytical_writing/issue/sample_responses](https://www.ets.org/gre/revised_general/prepare/analytical_writing/issue/sample_responses)
 
 Take a minute to think about the construct that this question is intended to measure. "Analytical writing" is a good start, but you should try to be more specific. What knowledge, skills, and abilities are required to do well on the question? What are the benefits of performance assessments such as these?
 

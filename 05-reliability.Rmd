@@ -47,7 +47,7 @@ This chapter starts with a general definition of reliability in terms of consist
 17. Describe the three main considerations involved in using g coefficients.
 ```
 
-In this chapter, we'll conduct reliability analses on `PISA09` data using epmr, and plot results using ggplot2. We'll also simulate some data and examine interrater reliability using epmr.
+In this chapter, we'll conduct reliability analyses on `PISA09` data using epmr, and plot results using ggplot2. We'll also simulate some data and examine interrater reliability using epmr.
 
 ```{r, append=TRUE, chap=5}
 # R setup for this chapter
@@ -370,7 +370,9 @@ Table \@ref(tab:rdesigns) contains four commonly used reliability study designs.
 > It was like listening to three cats getting strangled in an alley.  
 > --- Simon Cowell, disparaging a singer on *American Idol*
 
-Interrater reliability extends the concepts of CTT to applications of testing that rely on scores from raters or judges. These applications most often involve some form of performance assessment, for example, stage performance within a singing competition. Judgment and scoring of performance by raters introduces additional error into the measurement process. Interrater reliability allows us to examine the negative impact of this error on our scores.
+Interrater reliability can be considered a specific instance of reliability where inconsistencies are not attributed to differences in test forms, test items, or administration occasions, but to the scoring process itself, where humans, or in some cases computers, contribute as raters. Measurement with raters often involves some form of performance assessment, for example, a stage performance within a singing competition. Judgment and scoring of such a performance by raters introduces additional error into the measurement process. Interrater reliability allows us to examine the negative impact of this error on our results.
+
+Note that rater error is another factor or facet in the measurement process. Because it is another facet of measurement, raters can introduce error above and beyond error coming from sampling of items, differences in test forms, or the passage of time between administrations. This is made explicit within generalizability theory, discussed below. Some simpler methods for evaluating interrater reliability are introduced first.
 
 ### Proportion agreement
 

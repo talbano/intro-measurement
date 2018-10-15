@@ -1,7 +1,7 @@
 --- 
 title: "Introduction to Educational and Psychological Measurement Using R"
 author: "Tony Albano"
-date: "May 18, 2018"
+date: "September 4, 2018"
 description: "This book introduces the theory and practice of measurement in education and psychology, with applications in the statistical software R using open-source data and functions."
 knit: "bookdown::render_book"
 favicon: "images/favicon.jpeg"

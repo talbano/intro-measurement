@@ -11,15 +11,15 @@ Item response theory (IRT) is arguably one of the most influential developments 
 
 Given its role and influence in educational and psychological measurement, the topic of IRT has accumulated an extensive literature. Rather than cover every detail, this chapter gives a broad overview of IRT, with the intention of helping you understand key concepts and common applications. For comprehensive treatments of IRT, see @deayala2009theory and @embretson2000item. For a comparison of CTT and IRT, see @hambleton1993comparison. @harvey1999item describe IRT specifically in the context of psychological testing.
 
-This chapter begins with a comparison of IRT with classical test theory (CTT), including a discussion of strengths and weaknesses and some typical uses of each. Next, the traditional dichotomous IRT models are introduced with definitions of key terms and a comparison based on assumptions, benefits, limitations, and uses. Finally, details are provided on applications of IRT in item analysis, test development, item banking, and computer adaptive testing.
+This chapter begins with a comparison of IRT with classical test theory (CTT), including a discussion of strengths and weaknesses and some typical uses of each. Next, the traditional dichotomous IRT models are introduced with definitions of key terms and a comparison based on assumptions, benefits, limitations, and uses. Finally, details are provided on applications of IRT in item analysis, test development, item banking, and computerized adaptive testing.
 
 ```{block, type="objectives"}
 **Learning objectives**
 
 1. Compare and contrast IRT and CTT in terms of their strengths and weaknesses.
 2. Identify the two main assumptions that are made when using a traditional IRT model, regarding dimensionality and functional form or the number of model parameters.
-3. Identify key terms in IRT, including probability of correct response, logistic curve, theta, IRF, TRF, SEM, and information functions.
-4. Define the three item parameters and one ability parameter in the traditional IRT models, and describe the role of each in modeling performance with the IIF.
+3. Identify key terms in IRT, including probability of correct response, logistic curve, theta, and functions for item response, test response, standard error, and information.
+4. Define the three item parameters and one ability parameter in the traditional IRT models, and describe the role of each in modeling performance.
 5. Distinguish between the 1PL, 2PL, and 3PL IRT models in terms of assumptions made, benefits and limitations, and applications of each.
 6. Describe how IRT is utilized in item analysis, test development, item banking, and computer adaptive testing.
 ```
@@ -31,7 +31,7 @@ In this chapter, we'll use epmr to run IRT analyses with `PISA09` data, and we'l
 library("epmr")
 library("ggplot2")
 # Functions we'll use in this chapter
-# rirf() for getting an item response function
+# rirf() from epmr for getting an item response function
 # scale_y_continuous() for plotting a continuous scale
 # irtstudy() from epmr for running an IRT study
 # rtef() from epmr for getting a test error function
@@ -80,7 +80,7 @@ pisagbr <- PISA09[PISA09$cnt == "GBR",
 pisagbr <- pisagbr[complete.cases(pisagbr), ]
 ```
 
-Another key difference between IRT and CTT has to do with the shape of the relationship that we estimate between item score and construct score. The CTT discrimination models a simple linear relationship between the two, whereas IRT models a curvilinear relationship between them. Recall from Chapter \@ref(itemanalysis) that the discrimination for an item can be visualized within a scatter plot, with the construct on the $x$-axis and item scores on the $y$-axis. A strong positive item discrimination would be shown by points for incorrect scores bunching up at the bottom of the scale, and points for correct scores bunching up at the top. A line passing through these points would then have a positive slope. Because they're based on correlations, ITC and CITC discriminations are always represented by a straight line. See Figure \@ref(fig:irtplot1) for an example based on `PISA09` reading item `r452q06s`.
+Another key difference between IRT and CTT has to do with the shape of the relationship that we estimate between item score and construct score. The CTT discrimination models a simple linear relationship between the two, whereas IRT models a curvilinear relationship between them. Recall from Chapter \@ref(itemanalysis) that the discrimination for an item can be visualized within a scatter plot, with the construct on the $x$-axis and item scores on the $y$-axis. A strong positive item discrimination would be shown by points for incorrect scores bunching up at the bottom of the scale, and points for correct scores bunching up at the top. A line passing through these points would then have a positive slope. Because they're based on correlations, ITC and CITC discriminations are always represented by a straight line with constant slope. See Figure \@ref(fig:irtplot1) for an example based on `PISA09` reading item `r452q06s`.
 
 ```{r irtplot1, append=TRUE, chap=7, out.width="75%", fig.cap="Scatter plots showing the relationship between total scores on the x-axis and scores from PISA item `r452q06s` on the y-axis. Lines represent the relationship between the construct and item scores for CTT (straight) and IRT (curved)."}
 # Get p-values conditional on rtotal
@@ -114,21 +114,21 @@ In the discussion that follows, we will frequently use the term *function*. A fu
 
 The IRT model for a given item has a special name in IRT. It's called the item response function (IRF), because it can be used to predict an item response. Each item has its own IRF. We can add up all the IRF in a test to obtain a test response function (TRF) that predicts not item scores but total scores on the test.
 
-Two other functions, with corresponding equations, are also commonly used in IRT. One is the item information function (IIF). This gives us the predicted discriminatory power of an item across the theta scale. Remember that, as CTT discrimination can be visualized with a straight line, the discrimination in IRT can be visualized with a curve. This curve is flatter at some points than others, indicating the item is less discriminating at those points. In IRT, *information* tells us how the discriminating power of an item changes across the theta scale. IIF can also be added together to get an overall test information function (TIF).
+Two other sets of functions, with corresponding equations, are also commonly used in IRT. The first is based on the contribution of an item, or set of items, to the reliability of measurement. In IRT, reliability is conceptualized using a statistical index called *information*. The item information function (IIF) tells us how reliability is expected to change for a given item when measuring across the theta scale. Remember that, whereas discrimination in CTT can be visualized with a straight line, the discrimination in IRT can be visualized with a curve. This curve is flatter at some points than others, indicating that an item is less discriminating at those points. In IRT, *information* tells us how the discriminating power of an item changes, thereby providing more and less reliable measurement, depending on theta. Multiple IIF can also be added together to get an overall test information function (TIF).
 
 The last IRT function we'll discuss here gives us the SEM for our test. This is called the test error function (TEF). As with all the other IRT functions, there is an equation that is used to estimate the function output, in this case, the standard error of measurement, for each point on the theta scale.
 
-This overview of IRT terminology should help clarify the benefits of IRT over CTT. Recall that the main limitations of CTT are: 1) sample and test dependence, where our estimates of construct levels depend on the items in our test, and our estimates of item parameters depend on the construct levels for our sample of test takers; and 2) reliability and SEM that do not change depending on the construct. IRT addresses both of these limitations. The IRT model estimates the dependent variable of the model while accounting for both the construct and the properties of the item. As a result, estimates of ability or trait levels and item analysis statistics will be *sample and test independent*. This will be discussed further below. The IRT model also produces, via the TEF, measurement error estimates that vary by theta. Thus, the accuracy of a test depends on where the items are located on the construct.
+This overview of IRT terminology should help clarify the benefits of IRT over CTT. Recall that the main limitations of CTT are: 1) sample and test dependence, where our estimates of construct levels depend on the items in our test, and our estimates of item parameters depend on the construct levels for our sample of test takers; and 2) reliability and SEM that do not change depending on the construct. IRT addresses both of these limitations. The IRT model estimates the dependent variable of the model while accounting for both the construct and the properties of the item. As a result, estimates of ability or trait levels and item analysis statistics will be *sample and test independent*. This will be discussed further below. The IRT model also produces, via the IIF, TIF and TEF, measurement error estimates that vary by theta. Thus, the accuracy of a test depends on where the items are located on the construct.
 
 Here's a recap of the key terms we'll be using throughout this chapter:
 
 * Theta, $\theta$, is our label for the construct measured for people.  
 * $\Pr(X = 1)$ is the probability of correct response, the outcome in the IRT model. Remember that $X$ is now an item score, as opposed to a total score in CTT.  
-* The IRF is the visual representation of $\Pr(X = 1)$, showing us our predictions about how well people will do on an item based on theta.  
-* The logistic curve is the name for the shape we use to model performance via the IRF. It is a curve with certain properties, such as horizontal lower and upper asymptotes.  
+* The IRF gives us a visual representation of $\Pr(X = 1)$, showing predictions about how well people will do on an item based on theta.  
+* The logistic curve is the name for the shape we use to model performance via the IRF. It is a curve with certain properties, such as a slope that gradually increases and then decreases, and horizontal lower and upper asymptotes.  
 * The properties of the logistic curve are based on three item parameters, $a$, $b$, and $c$, which are the item discrimination, difficulty, and lower-asymptote, also known as the pseudo-guessing parameter.  
 * Functions are simply equations that produce a single output value for each value on the theta scale. IRT functions include the IRF, TRF, IIF, TIF, and TEF.
-* Information refers to a summary of the discriminating power provided by an item or test.
+* Information refers to the contribution of an item or test to the reliability of measurement.
 
 ### The IRT models
 

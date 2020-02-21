@@ -21,7 +21,7 @@ This chapter extends concepts from Chapters \@ref(measurement) and \@ref(reliabi
 6. Calculate and interpret item difficulties and compare items in terms of difficulty.
 7. Calculate and interpret item discrimination indices, and describe what they represent and how they are used in item analysis.
 8. Describe the relationship between item difficulty and item discrimination and identify the practical implications of this relationship.
-9. Calculate and interpret alpha-if-item-removed.
+9. Calculate and interpret alpha-if-item-deleted.
 10. Utilize item analysis to distinguish between items that function well in a set and items that do not.
 11. Remove items from an item set to achieve a target level of reliability.
 12. Evaluate selected-response options using option analysis.
@@ -41,6 +41,8 @@ library("ggplot2")
 # colMeans() for getting means by column
 # istudy() from epmr for running an item analysis
 # ostudy() from epmr for running an option analysis
+# subset() for subsetting data
+# na.omit() for removing cases with missing data
 ```
 
 ## Preparing for item analysis
@@ -57,9 +59,9 @@ Bias in a test item indicates that the item is measuring some other construct be
 
 The goal in developing an instrument or scale is to identify bias and inconsistent measurement at the item level *prior to* administering a final version of our instrument. As we talk about item analysis, remember that the analysis itself is typically carried out in practice using pilot data. Pilot data are gathered prior to or while developing an instrument or scale. These data require at least a preliminary version of the educational or psychological measure. We've written some items for our measure, and we want to see how well they work.
 
-@ferketich1991focus and others recommend that the initial pilot "pool" of candidate test items should be at least twice as large as the final number of items needed. So, if you're dreaming up a test with 100 items on it, you should pilot at least 200 items. That may not be feasible, but it is a best-case scenario, and should at least be followed in large-scale testing. By collecting data on twice as many items as we intend to actually use, we're acknowledging that, despite our best efforts, many of our preliminary test items may either be low quality, for example, biased or internally inconsistent, and they may address different ability levels or content than intended.
+@nunnally1994psychometric and others recommend that the initial pilot "pool" of candidate test items should be 1.5 to 2 times as large as the final number of items needed. So, if you're envisioning a test with 100 items on it, you should aim to pilot 150 to 200 items. This may not be feasible, but it is a best-case scenario, and should at least be followed in large-scale testing. By collecting data on up to twice as many items as we intend to actually use, we're acknowledging that, despite our best efforts, many of our preliminary test items may either be low quality, for example, biased or internally inconsistent, and they may address different ability levels or content than intended.
 
-@ferketich1991focus also recommends that data should be collected on at least 100 individuals from the population of interest. This too may not be feasible, however, it is essential if we hope to obtain results that will generalize to other samples of individuals. When our sample is not representative, for example, when it is a convenience sample or when it contains fewer than 100 people, our item analysis results must be interpreted with caution. This goes back to inferences made based on any type of statistic: small samples leads to erroneous results. Keep in mind that every statistic discussed here has a standard error and confidence interval associated with it, whether it is directly examined or not. Note also that bias and measurement error arise in addition to this standard error or sampling error, and we cannot identify bias in our test questions without representative data from our intended population. Thus, adequate sampling in the pilot study phase is critical.
+An adequate sample size of test takers is essential if we hope to obtain item analysis results that generalize to the population of test takers. @nunnally1994psychometric recommend that data be collected on at least 300 individuals from the population of interest, or 5 times as many individuals as test items, whichever is larger. A more practical goal for smaller scale testing applications, such as with classroom assessments, is 100 to 200 test takers. With smaller or non-representative samples, our item analysis results must be interpreted with caution. As with inferences made based on other types of statistics, small samples more often lead to erroneous results. Keep in mind that every statistic discussed here has a standard error and confidence interval associated with it, whether it is directly examined or not. Note also that bias and measurement error arise in addition to this standard error or sampling error, and we cannot identify bias in our test questions without representative data from our intended population. Thus, adequate sampling in the pilot study phase is critical.
 
 The item analysis statistics discussed here are based on the CTT model of test performance. In Chapter \@ref(irt) we'll discuss the more complex item response theory (IRT) and its applications in item analysis.
 
@@ -206,19 +208,19 @@ round(colMeans(PISA09[PISA09$rtotal > 6, crsitems],
 Although calculating $p$-values for different groups of individuals is still a useful approach to examining item discrimination, we lose information when we reduce scores on our construct to categories such as "high" and "low." Item discrimination is more often estimated using the correlation between item responses and construct scores. In the absence of scores on the construct, total scores are typically used as a proxy. The resulting correlation is referred to as an *item-total correlation* (ITC). When responses on the item are dichotomously scored, it is also sometimes called a point-biserial correlation.
 
 ```{r, echo=FALSE}
-pisadeu <- PISA09[PISA09$cnt == "DEU", c(crsitems,
-  "rtotal")]
-pisadeu <- pisadeu[complete.cases(pisadeu), ]
+pisadeu <- subset(PISA09, subset = cnt == "DEU",
+  select = c(crsitems, "rtotal"))
+pisadeu <- na.omit(pisadeu)
 ```
 
-Here, we take a subset of `PISA09` including CR item scores and the total reading score for German students. The correlation matrix for these five variables shows how scores on the items relate to one another, and to the total score. Relationships between items and the total are ITC estimates of item discrimination. The first item, with ITC of `r 0.70`, is best able to discriminate between students of high and low ability.
+Here, we take a subset of `PISA09` including CR item scores and the total reading score for German students. We then omit all students with missing data using `na.omit()`. The correlation matrix for these five variables shows how scores on the items relate to one another, and to the total score. Relationships between items and the total are ITC estimates of item discrimination. The first item, with ITC of `r 0.70`, is best able to discriminate between students of high and low ability.
 
 ```{r, append=TRUE, chap=6}
 # Create subset of data for German students, then reduce
 # to complete data
-pisadeu <- PISA09[PISA09$cnt == "DEU", c(crsitems,
-  "rtotal")]
-pisadeu <- pisadeu[complete.cases(pisadeu), ]
+pisadeu <- subset(PISA09, subset = cnt == "DEU",
+  select = c(crsitems, "rtotal"))
+pisadeu <- na.omit(pisadeu)
 round(cor(pisadeu), 2)
 ```
 
@@ -253,7 +255,7 @@ Although there are no clear guidelines on acceptable or ideal levels of discrimi
 
 The last item analysis statistic we'll consider here indexes how individual items impact the overall internal consistency reliability of the scale. Internal consistency is estimated via coefficient alpha, introduced in Chapter \@ref(reliability). Alpha tells us how well our items work together as a set. "Working together" refers to how consistently the item responses change, overall, in similar ways. A high coefficient alpha tells us that people tend to respond in similar ways from one item to the next. If coefficient alpha were perfectly 1.00, we would know that each person responded in exactly the same rank-ordered way across all items. An item's contribution to internal consistency is measured by estimating alpha with that item removed from the set. The result is a statistic called alpha-if-item-deleted (AID).
 
-AID answers the question, what happens to the internal consistency of a set of items with a given item is removed from the set? Because it involves the removal of an item, higher AID indicates a potential increase in internal consistency when an item is removed. Thus, when it is retained, the item is actually detracting from the internal consistency of the scale. Items that detract from the internal consistency should be considered for removal.
+AID answers the question, what happens to the internal consistency of a set of items when a given item is removed from the set? Because it involves the removal of an item, higher AID indicates a potential increase in internal consistency when an item is removed. Thus, when it is retained, the item is actually detracting from the internal consistency of the scale. Items that detract from the internal consistency should be considered for removal.
 
 ```{r, echo=FALSE}
 ris <- istudy(PISA09[, rsitems])
@@ -279,13 +281,13 @@ Suppose we needed to identify a brief but effective subset of `PISA09` reading i
 
 ```{r, append=TRUE, chap=6}
 # Subset of data for Hong Kong, scored reading items
-pisahkg <- PISA09[PISA09$cnt == "HKG", rsitems]
+pisahkg <- subset(PISA09, cnt == "HKG", rsitems)
 # Spearman-Brown based on original alpha and new test
 # length of 8 items
-sbr(r = epmr::alpha(pisahkg), k = 8/11)
+sb_r(r = coef_alpha(pisahkg)$alpha, k = 8/11)
 ```
 
-Our new reliability is estimated to be `r round(sbr(r = epmr::alpha(pisahkg), k = 8/11), 3)`, which, thankfully, meets our hypothetical requirements. Now, we can explore our item statistics to find items for removal. The item analysis results for the full set of eleven items show two items with CITC below 0.20. These are items `r414q11` and `r452q03`. These items also have AID above alpha for the full set, indicating that both are detracting from the internal consistency of the measure, though only to a small degree. Finally, notice that these are also the most difficult items in the set, with means of 0.36 and 0.04 respectively. Only 4% of students in Hong Kong got item `r452q03` right.
+Our new reliability is estimated to be `r round(sb_r(r = coef_alpha(pisahkg)$alpha, k = 8/11), 3)`, which, thankfully, meets our hypothetical requirements. Now, we can explore our item statistics to find items for removal. The item analysis results for the full set of eleven items show two items with CITC below 0.20. These are items `r414q11` and `r452q03`. These items also have AID near or above alpha for the full set, indicating that both are detracting from the internal consistency of the measure, though only to a small degree. Finally, notice that these are also the most difficult items in the set, with means of 0.36 and 0.04 respectively. Only 4% of students in Hong Kong got item `r452q03` right.
 
 ```{r, append=TRUE, chap=6}
 # Item analysis for Hong Kong

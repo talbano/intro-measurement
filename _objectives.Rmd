@@ -106,7 +106,7 @@
 6. Calculate and interpret item difficulties and compare items in terms of difficulty.  
 7. Calculate and interpret item discrimination indices, and describe what they represent and how they are used in item analysis.  
 8. Describe the relationship between item difficulty and item discrimination and identify the practical implications of this relationship.  
-9. Calculate and interpret alpha-if-item-removed.  
+9. Calculate and interpret alpha-if-item-deleted.  
 10. Utilize item analysis to distinguish between items that function well in a set and items that do not.  
 11. Remove items from an item set to achieve a target level of reliability.  
 12. Evaluate selected-response options using option analysis.  
@@ -142,8 +142,8 @@
   
   
 1. Define validity in terms of test score interpretation and use, and identify and describe examples of this definition in context.  
-2. Compare and contrast three main types of validity evidence (content, criterion, and construct), with examples of how each type is established, including the validation process involved with each.  
-3. Explain the structure and function of a test blueprint, and how it is used to provide evidence of content validity.  
+2. Compare and contrast three main sources of validity evidence (content, criterion, and construct), with examples of how each type is established, including the validation process involved with each.  
+3. Explain the structure and function of a test outline, and how it is used to provide evidence of content validity.  
 4. Calculate and interpret a validity coefficient, describing what it represents and how it supports criterion validity.  
 5. Describe how unreliability can attenuate a correlation, and how to correct for attenuation in a validity coefficient.  
 6. Identify appropriate sources of validity evidence for given testing applications and describe how certain sources are more appropriate than others for certain applications.  

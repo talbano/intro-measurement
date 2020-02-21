@@ -4,6 +4,11 @@ knit: bookdown::preview_chapter
 
 # Testing Applications {#applications}
 
+```{r, include=FALSE}
+# To do
+# Add brief lit review and disucssion of noncognitive in admissions, SJT
+```
+
 > If my future were determined just by my performance on a standardized test, I wouldn't be here.  
 > --- Michelle Obama
 

@@ -292,7 +292,7 @@ Polytomous scoring with cognitive tests can be less straightforward and less obj
 
 Polytomous scoring with affective or non-cognitive measures most often occurs with the use of rating scales. For example, individuals may use a rating scale to describe how much they identify with a statement, or how well a statement represents them, rather than simply saying "yes" or "no." Such rating scales measure multiple levels of agreement (e.g., from disagree to agree) or preference (e.g., from dislike to like). In this case, because individuals provide their own responses, subjectivity in scoring is not an issue as it is with polytomous scoring in cognitive tests. Instead, the challenge with rating scales is in ensuring that individuals interpret the rating categories in the same way. For example, strongly disagree could mean different things to different people, which will impact how the resulting scores can be compared across individuals.
 
-The student survey variables in `PISA09$st27q01` through `PISA09$st42q05` are polytomously scored rating scale items that contribute to four different composite scales. One of these scales measures students attitude toward school, shown in Figure \@ref(fig:pisaq33).
+The student survey variables in `PISA09$st27q01` through `PISA09$st42q05` are polytomously scored rating scale items that contribute to four different composite scales. One of these scales measures students' attitude toward school, shown in Figure \@ref(fig:pisaq33).
 
 ```{r pisaq33, echo = FALSE, out.width='75%', fig.cap = "PISA 2009 student survey items measuring attitude toward school."}
 knitr::include_graphics("images/pisaq33.jpg")

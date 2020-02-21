@@ -7,16 +7,30 @@ knit: bookdown::preview_chapter
 > Validity has long been one of the major deities in the pantheon of the psychometrician. It is universally praised, but the good works done in its name are remarkably few.  
 > --- Robert Ebel
 
-As noted by @ebel1961must, validity is universally considered the most important feature of a testing program. Validity encompasses everything relating to the testing process that makes score inferences useful and meaningful. All of the topics covered in Chapters \@ref(introduction) through \@ref(irt), including measurement, test construction, reliability, and item analysis, provide evidence supporting the validity of scores. Scores that are consistent and based on items written according to specified content standards with appropriate levels of difficulty and discrimination are more useful and meaningful than scores that do not have these qualities. Correct measurement, sound test construction, reliability, and certain item properties are thus all prerequisites for validity.
+As noted by @ebel1961must, validity is considered the most important feature of a testing program. Its status should not be surprising given that   yet, it often does not receive the attention it deserves. As a result, tests can end up being misaligned or unrelated to what they are intended to measure, with scores that have limited meaning or usefulness.
 
-This chapter begins with a definition of validity and some related terms. After defining validity, three common sources of validity evidence are discussed: test content via what's referred to as a test blueprint or test outline, relationships with criterion variables, and theoretical models of the construct being measured. These three sources of validity evidence are then discussed within a unified view of validity. Finally, threats to validity are addressed.
+Consider studying diligently for an introductory measurement exam that assesses topics like validity only superficially with recall questions rather than essays that require a deep evaluation of competing ideas. You might Or consider a screening test for a job in customer service that measures the extraversion but not agreeableness of candidates. In each of these examples, the results may not support
+
+Validity encompasses all design considerations, administration procedures, and  relating to the testing process that makes score inferences useful and meaningful. Test results that are consistent and based on items written according to specified content standards with appropriate levels of difficulty and discrimination are more useful and meaningful than scores that do not have these qualities. Correct scaling, sound test construction, and rigorous statistical analysis are thus all prerequisites for validity.
+
+This chapter begins with an overview of validity, including definitions of key terms and concepts as well as some historical perspective. Common sources of validity evidence are then discussed in detail, including:
+
+1. test content,  
+2. response processes,  
+3. dimensionality and internal structure,  
+4. relationships with other variables, and  
+5. consequences of test use.
+
+Note that much of our discussion around these five sources will incorporate information presented in previous chapters. Test content and response processes will draw from Chapters \@ref(applications) and \@ref(development). Dimensionality and internal structure will elaborate on information from Chapters \@ref(reliability) through \@ref(dimensionality). Relationships with other variables and consequences of test use are more unique to this chapter and involve some new concepts.
+
+The three sources of validity evidence are discussed within what is referred to as a unified view of validity.
 
 ```{block, type="objectives"}
 **Learning objectives**
 
 1. Define validity in terms of test score interpretation and use, and identify and describe examples of this definition in context.
-2. Compare and contrast three main types of validity evidence (content, criterion, and construct), with examples of how each type is established, including the validation process involved with each.
-3. Explain the structure and function of a test blueprint, and how it is used to provide evidence of content validity.
+2. Compare and contrast three main sources of validity evidence (content, criterion, and construct), with examples of how each type is established, including the validation process involved with each.
+3. Explain the structure and function of a test outline, and how it is used to provide evidence of content validity.
 4. Calculate and interpret a validity coefficient, describing what it represents and how it supports criterion validity.
 5. Describe how unreliability can attenuate a correlation, and how to correct for attenuation in a validity coefficient.
 6. Identify appropriate sources of validity evidence for given testing applications and describe how certain sources are more appropriate than others for certain applications.
@@ -31,28 +45,38 @@ R analysis in this chapter is minimal. We'll run correlations and make adjustmen
 library("epmr")
 # Functions we'll use
 # cor() from the base package
+# subset() from the base package for subsetting data
 # rsim() from epmr to simulate scores
+# rstudy() from epmr for finding alpha
 ```
 
 ## Overview of validity
 
+### Some context
+
+Suppose you are conducting a research study on the efficacy of a reading intervention. Scores on a reading test will be compared for a treatment group who participated in the intervention and a control group who did not. A statistically significant difference in mean reading scores for the two groups will be taken as evidence of an effective intervention, suggesting its utility with the broader population. This is an inferential use of statistics, as defined in Chapter \@ref(introduction).
+
+In measurement, we step back and evaluate the extent to which our mean scores for each group accurately support what they are intended to measure. On the surface, the means themselves may differ above and beyond statistical error. But if neither mean actually captures average reading ability for our target population, our results are misleading, and our intervention may not actually be as effective as we expect. Instead, it may appear effective, or not, because of error in our measurements.
+
+Reliability, from Chapter \@ref(reliability), focuses on the consistency of measurement. With reliability, we estimate the amount of variability in scores that can be attributed to a reliable source, and, conversely, the amount of variability that can be attributed to an unreliable source, that is, random error. As consistency increases, we gain confidence in the stability and replicability of our measurement.
+
+While reliability is essential, it does not tell us whether a reliable source of variability is the source we hope it is. This is the job of validity. With validity, we more comprehensively examine the quality of our items as individual components of the target construct. We examine other sources of variability in our scores, such as item and test bias. We also examine relationships between scores on our items and other measures of the target construct.
+
+Within the context presented above, strong reliability evidence may indicate that repeated administrations of our reading test would produce similar means for our treatment and control groups. Strong validity evidence could then indicate, for example, that our reading test sufficiently covers the indended domain of content and skill while not disadvantaging certain populations of test takers. Validity evidence could also demonstrate that our test aligns with existing standards of instruction, and that it is sufficiently distinct from measures of broader cognitive ability and aptitude. As validity evidence increases, we gain confidence in the overall meaningfulness of our measurement and its effectiveness in informing decisions, such as in an intervention study.
+
 ### Definitions
 
-Suppose you are conducting a research study on the efficacy of a reading intervention. Scores on a reading test will be compared for a treatment group who participated in the intervention and a control group who did not. A statistically significant difference in mean reading scores for the two groups will be taken as evidence of an effective intervention. This is an inferential use of statistics, as discussed in Chapter \@ref(introduction).
+With some context for understanding how validity relates to other measurement concepts, we're now ready for some formal definitions of terms. The Standards for Educational and Psychological Testing [@ncme2014standards] define validity as "the degree to which evidence and theory support the interpretations of test scores entailed by the proposed uses of a test." This definition is simple, but very broad, potentially encompassing a wide range of evidence and theory. We'll focus, as the Standards do, on three specific sources of validity information, information based on test content, other measures, and theoretical models.
 
-In measurement, we step back and evaluate the extent to which our mean scores for each group accurately measure what they are intended to measure. On the surface, the means themselves may differ. But if neither mean actually captures average reading ability, our results are misleading, and our intervention may not actually be effective. Instead, it may appear effective because of systematic or random error in our measurements.
-
-Reliability, from Chapter \@ref(reliability), focuses on the consistency of measurement. With reliability, we estimate the amount of variability in scores that can be attributed to a reliable source, and, conversely, the variability that can be attributed to an unreliable source, that is, random error. While reliability is useful, it does not tell us whether that reliable source of variability is the source we hope it is. This is the job of validity. With validity, we additionally examine the quality of our items as individual components of the target construct. We examine other sources of variability in our scores, such as item and test bias. We also examine relationships between scores on our items and other measures of the target construct.
-
-The Standards for Educational and Psychological Testing [@ncme1999standards] define validity as "the degree to which evidence and theory support the interpretations of test scores entailed by the proposed uses of a test." This definition is simple, but very broad, encompassing a wide range of evidence and theory. We'll focus on three specific types of validity evidence, evidence based on test content, other measures, and theoretical models.
+Note that validity theory has evolved considerably since the early 1900s. The three main sources of validity evidence that we cover here have been treated as separate "types" of validity, where a given instrument could be validated using one type but not another. This evolution is due in part to the increasing complexity of available psychometric methods, starting with correlation and an emphasis on relationships with criterion variables
 
 Recent literature on validity theory has clarified that tests and even test scores themselves are not valid or invalid. Instead, only score *inferences* and *interpretations* are valid or invalid [e.g., @kane2013validating]. Tests are then described as being valid only *for a particular use*. This is a simple distinction in the definition of validity, but some authors continue to highlight it. Referring to a test or test score as valid implies that it is valid for any use, even though this is likely not the case. Shorthand is sometimes used to refer to tests themselves as valid, because it is simpler than distinguishing between tests, uses, and interpretations. However, the assumption is always that validity only applies to a specific test use and not broadly to the test itself.
 
-Finally, @kane2013validating also clarifies that validity is a matter of degree. It is establish incrementally through an accumulation of supporting evidence. Validity is not inherent in a test, and it is not simply declared to exist by a test developer. Instead, data are collected and research is conducted to establish evidence supporting a test for a particular use. As this evidence builds, so does our confidence that test scores can be used for their intended purpose.
+Finally, @kane2013validating and others also clarify that validity is a matter of degree. It is establish incrementally through an accumulation of supporting evidence. Validity is not inherent in a test, and it is not simply declared to exist by a test developer. Instead, data are collected and research is conducted to establish evidence supporting a test for a particular use. As this evidence builds, so does our confidence that test scores can be used for their intended purpose.
 
 ### Validity examples
 
-To evaluate the proposed score interpretations and uses for a test, and the extent to which they are valid, we should first examine the purpose of the test itself. As discussed in Chapters \@ref(measurement) and \@ref(applications), a good test purpose articulates key information about the test, including what it measures (the construct), for whom (the intended population), and why (for what purpose). The question then becomes, given the quality of its contents, how they were constructed, and how they are implemented, is the test valid for this purpose?
+To evaluate the proposed score interpretations and uses for a test, and the extent to which they are valid, we should first examine the purpose of the test itself. As discussed in Chapters \@ref(measurement) and \@ref(applications), a good test purpose articulates key information about the test, including what it measures (the construct), for whom (the intended population), and why (for what reason). The question then becomes, given the quality of its contents, how they were constructed, and how they are implemented, is the test valid for this purpose?
 
 As a first example, lets return to the test of early literacy introduced in Chapter \@ref(measurement). Documentation for the test ([www.myigdis.com](http://www.myigdis.com)) claims that,
 
@@ -69,9 +93,10 @@ The information gathered to support a test purpose, and establish validity evide
 - **content** focuses on the test content and procedures for developing the test,  
 - **criterion** focuses on external measures of the same target construct, and  
 - **construct** focuses on the theory underlying the construct and includes relationships with other measures.  
+
 In certain testing situations, one source of validity evidence may be more relevant than another. However, all three are often used together to argue that the evidence supporting a test is "adequate."
 
-We will review each source of validity evidence in detail, and go over some practical examples of when one is more relevant than another. In this discussion, consider your own example, and examples of other tests you've encountered, and what type of validity evidence could be used to support their use.
+We will review each source of validity evidence in detail, and go over some practical examples of when one is more relevant than another. In this discussion, consider your own example, and examples of other tests you've encountered, and what type of validity evidence would support their use.
 
 ## Content validity
 
@@ -159,7 +184,7 @@ ritems <- c("r414q02", "r414q11", "r414q06", "r414q09",
   "r458q07", "r458q04")
 rsitems <- paste0(ritems, "s")
 # Calculate total reading scores
-pisausa <- PISA09[PISA09$cnt == "USA", rsitems]
+pisausa <- subset(PISA09, cnt == "USA", rsitems)
 rtotal <- rowSums(pisausa, na.rm = TRUE)
 # Simulate a criterion - see Chapter 5 for another example
 # using rsim
@@ -180,7 +205,7 @@ Correcting for attenuation due to measurement error produces a validity coeffici
 
 ```{r, append=TRUE, chap=9}
 # Internal consistency for the PISA items
-epmr::alpha(pisausa)
+rstudy(pisausa)
 # Correction for attenuation
 cor(rtotal, criterion$y)/sqrt(.77 * .86)
 ```

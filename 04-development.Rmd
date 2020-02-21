@@ -4,6 +4,14 @@ knit: bookdown::preview_chapter
 
 # Test Development {#development}
 
+```{r, include=FALSE}
+# To do
+# More review of cognitive guidelines, reference book
+# Summarize style guidelines
+# Discuss terminology, noncognitive vs affective
+# Add SJT
+```
+
 > A careful review of any testing program will identify poorly worded test items, written by persons with minimal training and inadequate insights into their audience. We need to do much more work to produce quality test items.  
 > --- Mark Reckase, *2009 NCME Presidential Address*
 

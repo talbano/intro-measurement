@@ -27,6 +27,7 @@ You need to set up a free account at [proola.org/users/sign_up](http://proola.or
 
 Some things to keep in mind as you get started:
 
+* Full access to the site is currently limited to teachers participating in professional development and students taking courses in assessment and measurement.
 * The site itself is still under development, with new features on the way. Report bugs or send suggestions to <contact@proola.org>.
 * Everything you share is public. Don't post copyrighted items, images, or other information, and don't share items you need to keep secure.
 * You can learn a lot from the successes and failures of others. Search the bank for items related to your content area, and then see where people struggle and what they do well.
@@ -97,7 +98,7 @@ print(mx)
 
 When the output from a function is stored in an R object, you typically don't see the output printed to the console. If we type an object name at the console, R does its best to print out the contents, as shown above for `mx` and `x`. This is simply a shortcut for using the `print()` function on the object.
 
-Note that for larger objects, like `data.frame`s with lots of rows and columns, viewing all the data at once isn't very helpful. In this book we'll analyze data from the Programme for International Student Assessment (PISA), with dozens of variables measured for thousands of students. Printing all the PISA data would flood the console with information. This brings us to the third thing to notice about the example code above, that the console isn't the best place to view results. The console is functional and efficient, but it isn't pretty or well organized. Fortunately, R offers other mediums besides fixed-width text for visualizing output, discussed below.
+Note that for larger objects, like a `data.frame` with lots of rows and columns, viewing all the data at once isn't very helpful. In this book we'll analyze data from the Programme for International Student Assessment (PISA), with dozens of variables measured for thousands of students. Printing all the PISA data would flood the console with information. This brings us to the third thing to notice about the example code above, that the console isn't the best place to view results. The console is functional and efficient, but it isn't pretty or well organized. Fortunately, R offers other mediums besides fixed-width text for visualizing output, discussed below.
 
 ### Packages
 
@@ -105,9 +106,7 @@ When you install R on your computer, you get a variety of functions and example 
 
 The examples in this book rely on a few different R packages. The book itself is compiled using the bookdown and knitr packages [@xie2015bookdown; @xie2016knitr], and some knitr code is shown for formatting output tables. The ggplot2 package [@wickham2009ggplot2] is used for plotting. In this chapter we also need the devtools package [@wickham2016devtools], which allows us to install R packages directly from the code sharing website [github.com](https://github.com/). Finally, throughout the book we'll then be using a package called epmr, which contains functions and data used in many of the examples.
 
-Packages published to the official R website CRAN are initially installed using `install.packages()`. You only need to do this once per package. Each time you open a new R session, you load the package with `library()` to use it. Alternatively, you can use individual functions without explicitly loading a package by referencing both the package and function at each use, separated by `::`.
-
-devtools, knitr, and ggplot2 are on CRAN. The development version of epmr is not yet on CRAN and must be installed using `devtools::install_github()`.
+Packages published to the official R website CRAN are initially installed using `install.packages()`. You only need to do this once per package. Installing a package will download it from an online repository and automatically integrate it into your R software. devtools, knitr, and ggplot2 are on CRAN. The development version of epmr is not yet on CRAN and must be installed from [github.com](https://github.com/) using `devtools::install_github()`.
 
 ```{r, eval=FALSE, append=TRUE, chap=1}
 # Some examples require data and functions from add-on R 
@@ -132,7 +131,7 @@ library("epmr")
 library("ggplot2")
 ```
 
-After a package is installed, and you've run `library()`, you have access to the functionality of the package. Here, we've loaded epmr and ggplot2 so we can type functions directly, without referencing the package name each time. Because both of these packages contain a function called `alpha()`, we do have to reference the package name when using this function later in Chapter \@ref(reliability).
+Each time you open a new R session, you load the package with `library()`. Loading a package in this way simply tells R that you'd like direct access to the contents of the package. Alternatively, you can use individual functions without explicitly loading a package by referencing both the package and function at each use, separated by `::`. So, if you installed a package called fortnite, and it contained a function `nerf()`, you could use the function at any time with `fortnite::nerf()`. To avoid typing out the package name with each use, you can load it first with `library(fortnite)` and then use `nerf()` directly. Here, we've loaded epmr and ggplot2 so we can type functions within them without referencing the package name each time.
 
 ### Getting help
 
@@ -146,9 +145,9 @@ If you're unsatisfied with the documentation internal to R, an online search can
 
 ### Data
 
-Data can be entered directly into the console by using any of a variety of functions for collecting information together into an R object. These functions typically give the object certain properties, such as length, rows, columns, variable names, and factor levels. In the code above, we created `x` as a vector of quantitative scores using `c()`. You could think of `x` as containing test scores for a sample of `length(x)` `r length(x)` test takers, with no other variables attached to those test takers.
+Data can be entered directly into the console by using any of a variety of functions for collecting information together into an R object. These functions typically give the object certain properties, such as length, rows, columns, variable names, and factor levels. In the code above, we created `x` as a vector of quantitative scores using `c()`. You could think of `x` as containing numeric test scores for a sample of `length(x)` `r length(x)` test takers, with no other variables attached to those test takers.
 
-We can create a factor by supplying a vector of categorical values, as quoted text, to the `factor()` function.
+A factor is a special kind of vector consisting of a limited set of possible values, referred to as factor levels. We can create a factor by supplying a vector of categorical values, as quoted text, to the `factor()` function.
 
 ```{r, append=TRUE, chap=1}
 # Create a factor variable
@@ -157,11 +156,11 @@ classroom <- factor(classroom)
 classroom[c(1, 4)]
 ```
 
-In this code, the `classroom` object is first assigned a vector of letters, which might represent labels for three different classrooms. The classroom object is then converted to a factor, and assigned to an object of the same name, which essentially overwrites the first assignment. Reusing object names like this is usually not recommended. This is just to show that a name in R can't be assigned two separate objects at once.
+In this code, the `classroom` object is first assigned a vector of letters, which might represent labels for three different classrooms. The `classroom` object is then converted to a factor, and assigned to an object of the same name, which essentially overwrites the first assignment. Reusing object names like this is usually not recommended. This is just to show that a name in R can't be assigned two separate objects at once.
 
-The code above also demonstrates a simple form of indexing. Square brackets are used after some R objects to select subsets of their elements, for example, the first and fourth values in `classroom`. The vector `c(1, 4)` is used as an indexing object. Take a minute to practice indexing with `x` and `classroom`. Can you print the last three classrooms? Can you print them in reverse order? Can you print the first score in `x` three times?
+The code above also demonstrates a simple form of indexing and subsetting. Square brackets are used after some R objects to select subsets of their elements, for example, the first and fourth values in `classroom`. The vector `c(1, 4)` is used as an indexing object. Take a minute to practice indexing with `x` and `classroom`. Can you print the last three classrooms? Can you print them in reverse order? Can you print the first score in `x` three times?
 
-The `data.frame()` function combines multiple vectors into a set of variables that can be viewed and accessed as a matrix with rows and columns.
+So far, we've created data within vectors that exist separately from one another in R. The `data.frame()` function combines multiple vectors into a set of variables that can be viewed and accessed as a matrix with rows and columns.
 
 ```{r, append=TRUE, chap=1}
 # Combine variables as columns in a data frame
@@ -169,9 +168,9 @@ mydata <- data.frame(scores = x, classroom)
 mydata[1:4, ]
 ```
 
-We can index both the columns and rows of a matrix. The indexing objects we use must be separated by a comma. For example, `mydata[1:3, 2]` will print the first three rows in the second column. `mydata[6, 1:2]` prints both columns for the sixth row. `mydata[, 2]`, with the rows index empty, prints all rows for column two. Note that the comma is still needed, even if the row or column index object is omitted. Also note that a colon `:` was used here as a shortcut function to obtain sequences of numbers, where, for example, `1:3` is equivalent to typing `c(1, 2, 3)`.
+Using square brackets, we can index both the rows and columns of a data frame or matrix. The indexing objects we use must be separated by a comma, with the row index first and then the column index. For example, `mydata[1:3, 2]` will print the first three rows in the second column. `mydata[6, 1:2]` prints both columns for the sixth row. `mydata[, 2]`, with the rows index empty, prints all rows for column two. Omitting an index returns all of the corresponding rows or columns. Note that the comma is still needed if either the row or column indexing object is omitted, and the other is provided. Also note that a colon `:` was used here as a shortcut function to obtain sequences of numbers, where, for example, `1:3` is equivalent to typing `c(1, 2, 3)`.
 
-Typically, we'll import or load data into R, rather than enter it manually. Importing is most commonly done using `read.table()` and `read.csv()`. Each one takes a "file path" as its first argument. See the help documentation for instructions on their use and the types of files they require. Data and any other objects in the console can also be saved directly to your computer using `save()`. This creates an "rda" file, which can then be loaded back in to R using `load()`. Finally, some data are already available in R and can be loaded into our current session with `data()`. The PISA data, referenced above, are loaded with `data(PISA09)`. Make sure the epmr package has been loaded with `library()` before you try to load the data.
+Typically, we'll import or load data into R, rather than enter it manually. Importing is most commonly done using `read.table()` and `read.csv()`. Each one takes a "file path" as its first argument. See the help documentation for instructions on their use and the types of files they require. Data and any other objects in the console can also be saved directly to your computer using `save()`. This creates an "rda" file, which can then be loaded back in to R using `load()`. Finally, some data are already available in R and can be loaded into our current session with `data()`. The PISA data, referenced above, are loaded with `data(PISA09)`. Make sure the epmr package has been loaded with `library()` before you try to load the data. All of the data used in this book are already available in R, so we won't discuss reading or importing data further.
 
 The `PISA09` object is a `data.frame` containing demographic, noncognitive, and cognitive variables for a subset of questions and a subset of students from the PISA 2009 study ([nces.ed.gov/surveys/pisa](https://nces.ed.gov/surveys/pisa/)). It is stored within the epmr R package that accompanies this book. After loading the data, we can print a few rows for a selection of variables, accessed via their sequential column number, and then the first 10 values for the age variable.
 
@@ -203,15 +202,15 @@ Generic variables will be labeled in this book using capital letters, usually $X
 
 Indices can also be used to denote generic variables that are part of some sequence of variables. Most often this will be scores on items within a test, where, for example, $X_1$ is the first item, $X_2$ is the second, and $X_J$ is the last, with $J$ being the number of items in the test and $X_j$ representing any given item. Subscripts can also be used to index individual people on a single variable. For example, test scores for a group of people could be denoted as $X_1$, $X_2$, $\dots$, $X_N$, where $N$ is the number of people and $X_i$ represents the score for a generic person. Combining people and items, $X_{ij}$ would be the score for person $i$ on item $j$.
 
-The number of people is denoted by $n$ or sometimes $N$. Typically, the lowercase  $n$ represents sample size and the uppercase $N$ represents the population, however, the two are often used interchangeably. Greek and Arabic letters are used for other sample and population statistics. The sample mean is denoted by $m$ and the population mean by $\mu$, the standard deviation is $s$ or $\sigma$, variance is $s^2$ or $\sigma^2$, and correlation is $r$ or $\rho$. Note that the mean and standard deviation are sometimes abbreviated as $M$ and $SD$. Note also that distinctions between sample and population values often aren't necessary, in which case the population terms are used. If a distinction is necessary, it will be identified.
+The number of people is denoted by $n$ or sometimes $N$. Typically, the lowercase $n$ represents sample size and the uppercase $N$ represents the population, however, the two are often used interchangeably. Greek and Arabic letters are used for other sample and population statistics. The sample mean is denoted by $m$ and the population mean by $\mu$, the standard deviation is $s$ or $\sigma$, variance is $s^2$ or $\sigma^2$, and correlation is $r$ or $\rho$. Note that the mean and standard deviation are sometimes abbreviated as $M$ and $SD$. Note also that distinctions between sample and population values often aren't necessary, in which case the population terms are used. If a distinction is necessary, it will be identified.
 
 Finally, you may see named subscripts added to variable names and other terms, for example, $M_{control}$ might denote the mean of a control group. These subscripts depend on the situation and must be interpreted in context.
 
 ### Descriptive and inferential
 
-Descriptive and inferential are terms that refer to two general uses of statistics. These uses differ based on whether or not an inference is made from properties of a sample of data to parameters for an unknown population. Descriptive statistics, or descriptives, are used simply to explore and describe certain features of distributions. For example, the mean and variance are statistics identifying the center of and variability in a distribution. These and other statistics are used inferentially when an inference is made to a population 
+Descriptive and inferential are terms that refer to two general uses of statistics. These uses differ based on whether or not an inference is made from properties of a sample of data to parameters for an unknown population. Descriptive statistics, or descriptives, are used simply to explore and describe certain features of distributions. For example, the mean and variance are statistics identifying the center of and variability in a distribution. These and other statistics are used inferentially when an inference is made to a population.
 
-Descriptives are not typically used to answer research questions or inform decision making. Instead, inferential statistics are more appropriate for these less exploratory and more confirmatory .
+Descriptives are not typically used to answer research questions or inform decision making. Instead, inferential statistics are more appropriate for these less exploratory and more confirmatory applications.
 
 Inferential statistics involve an inference to a parameter or a population value. The quality of this inference is gauged using statistical tests that index the error associated with our estimates. In this review we're focusing on descriptive statistics. Later we'll consider some inferential applications.
 
@@ -219,7 +218,8 @@ The `dstudy()` function in the epmr package returns some commonly used univariat
 
 ```{r, append=TRUE, chap=1}
 # Get descriptive statistics for three variables in PISA09
-dstudy(PISA09[, c("elab", "cstrat", "memor")])
+# The subset() function is demonstrated further below
+dstudy(subset(PISA09, select = c(elab, cstrat, memor)))
 ```
 
 ```{block, type="learning-check"}
@@ -274,7 +274,7 @@ ggplot(PISA09, aes(cnt, memor)) + geom_boxplot()
 
 Note that these plotting functions come from the ggplot2 package. As alternatives, the base package contains `barplot()`, `hist()`, and `boxplot()`, which will also get the job done. You don't need to understand all the details of the plotting syntax right now, but you should be able to modify the example code given here to examine the distributions of other variables.
 
-Some distributions have notable shapes. For example, a distribution with the same or very similar amounts of people having each value is referred to as a *uniform distribution*. Plot the distribution of `PISA09$age` and you'll see a good example. A distribution is called a *normal distribution* when certain amounts of it fall within a central midpoint. For example, in a normal distribution, roughly 68\% of scores should be found within 1 standard deviation the mean, and frequencies should decrease and taper off as they get further away from the center. A distribution that tapers off to the left but not the right is described as negatively skewed, whereas tapering to the right but not left is positive skew. Finally, a distribution that is more peaked than normal is called leptokurtic, with high kurtosis, and a distribution that is less peaked than normal is platykurtic, with low kurtosis.
+Some distributions have notable shapes. For example, a distribution with the same or very similar amounts of people having each value is referred to as a *uniform distribution*. Plot the distribution of `PISA09$age` and you'll see a good example. A distribution is called a *normal distribution* when certain amounts of it fall within a central midpoint. For example, in a normal distribution, roughly 68\% of scores should be found within 1 standard deviation of the mean, and frequencies should decrease and taper off as they get further away from the center. A distribution that tapers off to the left but not the right is described as negatively skewed, whereas tapering to the right but not left is positive skew. Finally, a distribution that is more peaked than normal is called leptokurtic, with high kurtosis, and a distribution that is less peaked than normal is platykurtic, with low kurtosis.
 
 ```{block, type="learning-check"}
 **Learning check**: Describe the difference between a bar chart and histogram, with examples of when each one is used.
@@ -333,13 +333,23 @@ The standard deviation is interpreted as the average distance from the mean, and
 
 ```{r, append=TRUE, chap=1}
 # Check the standard deviations on a survey item for Hong 
-# Kong and Germany 
+# Kong and Germany
 sd(PISA09$st33q01[PISA09$cnt == "HKG"], na.rm = TRUE)
 sd(PISA09$st33q01[PISA09$cnt == "DEU"], na.rm = TRUE)
 ```
 
 ```{block, type="learning-check"}
 **Learning check**: The standard deviations on PISA item `st33q01` for students in Hong Kong (HKG) and Germany (DEU) were 0.69 and 0.91 respectively. Compare and contrast these results. On this item, students rated their level of agreement (1 = strongly disagree to 4 = strongly agree) with the statement, "School has done little to prepare me for adult life when I leave school."
+```
+
+Note that `PISA09$cnt == "HKG"` is used in the code above as an indexing object to select scores on item `st33q01` only for students in Hong Kong. A similar index is used for subsetting students in Germany. You can create indexing objects in R using comparison operators. For example, `==` asks for each value on the left if it is equal to a single value on the right. The result is a vector of class `logical`, containing `TRUE` and `FALSE` values. With a `logical` variable as an index, any row receiving `FALSE` is omitted, whereas `TRUE` is kept. Other comparisons include `>` for greater than, and `<=` for less than or equal to. See `?Comparison` for details. Below are a few more examples of logical indexing using the `mydata` object we created earlier.
+
+```{r, append=TRUE, chap=1}
+# Examples of subsetting using brackets with logical vectors
+mydata # Print the full data frame
+mydata$scores < 10 # Is each score less than 10, TRUE or FALSE?
+mydata[mydata$scores < 10, ] # Print only for scores below 10
+mydata[mydata$classroom == "A", ] # Print only classroom A
 ```
 
 ### Correlation
@@ -386,16 +396,25 @@ Correlations are commonly used to index the strength and direction of the linear
 # position_jitter() wiggles them around a little, to
 # uncover the densities of points that would otherwise
 # overlap
-ggplot(PISA09[PISA09$cnt == "USA", ], aes(elab, cstrat)) +
+ggplot(subset(PISA09, cnt == "USA"), aes(elab, cstrat)) +
   geom_point(position = position_jitter(w = 0.1, h = 0.1))
 ```
 
 Positive correlations indicate that, overall, as scores on one variable increase they also tend to increase on the other variable. Stronger correlations then indicate, overall, the extent to which this is true. In Figure \@ref(fig:usa-cor), scores for one variable differ substantially for a given value on the other. For example, cstrat scores span nearly the entire y-axis for elab scores below -1. This represents inconsistency in scoring, relative to the mean, from one variable to the other.
 
-Note that `PISA09$cnt == "USA"` is used in the code above as an indexing object to select only rows for students in the US. You can create indexing objects in R using comparison operators. For example, `==` asks for each value on the left if it is equal to a single value on the right. The result is a vector of class `logical`, containing `TRUE` and `FALSE` values. With a `logical` variable as an index, any row receiving `FALSE` is omitted, whereas `TRUE` is kept. Other comparisons include `>` for greater than, and `<=` for less than or equal to. See `?Comparison` for details.
-
 ```{block, type="learning-check"}
 **Learning check**: Compare and contrast correlations of -0.40 and 0.60 in terms of strength and direction of the linear relationship measured by each.
+```
+
+Note that the plotting code above incorporates a new function for subsetting data with `subset(PISA09, cnt == "USA")`. The `subset()` function aims to simplify the subsetting process by accepting row and column indexing objects as arguments, rather than as vectors within square brackets following a data frame. Here are some examples of the `subset()` function, again using the `mydata` object from earlier. The row index is specified with the `subset` argument, and the column index with `select`.
+
+```{r, append=TRUE, chap=1}
+# Examples of subsetting using the logical vectors and the
+# subset() function
+mydata # Print the full data frame again
+subset(mydata, subset = scores < 10) # Print only for scores below 10
+subset(mydata, subset = classroom == "A") # Print only classroom A
+subset(mydata, subset = scores < 10, select = scores) # Subset a column
 ```
 
 ### Rescaling
@@ -454,6 +473,31 @@ ggplot(PISA09, aes(factor(round(newage, 2)))) + geom_bar()
 This chapter introduced two resources that will be used throughout this book, Proola and R. Some introductory statistics were also reviewed. These will support our discussions of reliability, item analysis, item response theory, dimensionality, and validity.
 
 Before moving forward, you should get an account at Proola and browse around the item bank. You should also install R and optionally RStudio on your own computer, and make sure you are comfortable explaining frequency distributions, central tendency, variability, correlation, and rescaling, including what they are and how they're used.
+
+Many of the R examples in this book involve subsetting and indexing data objects, primarily within `PISA09`. Here is a reference table that summarizes some of the more common methods of doing so with the `PISA09` data frame.
+
+```{r sumtab, echo=FALSE}
+sub_row_lab <- c("All", "", "", "All", "", "", "All", "",
+  "Some", "", "", "Some", "", "", "Some", "", "")
+sub_col_lab <- c("All", "", "", "Single", "", "", "Multiple", "",
+  "All", "", "", "Single", "", "", "Multiple", "", "")
+sub_out <- c(rep("data.frame", 3),
+  rep("vector", 2), "data.frame",
+  "data.frame", "data.frame",
+  rep("data.frame", 3),
+  "vector", "vector", "data.frame",
+  rep("data.frame", 3))
+sub_code <- c('`PISA09`', '`PISA09[]`', '`PISA09[, ]`',
+  '`PISA09$grade`', '`PISA09[, "grade"]`', '`subset(PISA09, select = grade)`',
+  '`PISA09[, c("cnt", "grade")]`', '`subset(PISA09, select = c(cnt, grade))`',
+  '`PISA09[37306:37308, ]`', '`PISA09[PISA09$schoolid == "00996", ]`',
+    '`subset(PISA09, subset = schoolid == "00996")`',
+  '`PISA09[37306:37308, "grade"]`', '`PISA09[PISA09$schoolid == "00996", "grade"]`', '`subset(PISA09, subset = schoolid == "00996", select = grade)`',
+  '`PISA09[37306:37308, c("cnt", "grade")]`', '`PISA09[PISA09$schoolid == "00996", c("cnt", "grade")]`', '`subset(PISA09, schoolid == "00996", select = c(cnt, grade))`'
+)
+knitr::kable(cbind(Rows = sub_row_lab, Columns = sub_col_lab,
+  Output = sub_out, "Example Code" = sub_code), caption = "Examples of Subsetting and Indexing with PISA09")
+```
 
 ### Exercises
 

@@ -1,7 +1,7 @@
 --- 
 title: "Introduction to Educational and Psychological Measurement Using R"
 author: "Tony Albano"
-date: "September 4, 2018"
+date: "December 30, 2019"
 description: "This book introduces the theory and practice of measurement in education and psychology, with applications in the statistical software R using open-source data and functions."
 knit: "bookdown::render_book"
 favicon: "images/favicon.jpeg"
@@ -44,7 +44,7 @@ output:
 # Update the intro-measurement.bib file from local bib
 source("R/getbib.R")
 renewbib(ext = c("tex", "rnw", "rmd"), newfile = "intro-measurement.bib",
-  bibfile = "/users/talbano/library/texmf/bibtex/bib/superbibfile.bib")
+  bibfile = "/users/albano/library/texmf/bibtex/bib/local/superbibfile.bib")
 # Update appendices with code and objective lists
 source("R/getblock.R")
 renew_obj(files = c("01-intro.Rmd", "02-measurement.Rmd", "03-applications.Rmd",
@@ -64,9 +64,11 @@ if (!knitr:::is_html_output()) options(width = 58)
 
 This book provides an introduction to the theory and application of measurement in education and psychology. Topics include test development, item writing, item analysis, reliability, dimensionality, and item response theory. These topics come together in overviews of validity and, finally, test evaluation.
 
-Validity and test evaluation are based on both qualitative and quantitative analysis of the properties of a measure. This book addresses the qualitative side using a simple argument-based approach. The quantitative side is addressed using descriptive and inferential statistical analyses, all of which are presented and visualized within the statistical environment R [@r2017].
+Validity and test evaluation are based on both qualitative and quantitative analysis of the properties of a measure. This book addresses the qualitative side using a simple argument-based approach. The quantitative side is addressed using descriptive and inferential statistical analyses, all of which are presented and visualized within the statistical environment R [@r2019].
 
 The intended audience for this book includes advanced undergraduate and graduate students, practitioners, researchers, and educators. Knowledge of R is not a prerequisite to using this book. However, familiarity with data analysis and introductory statistics concepts, especially ones used in the social sciences, is recommended.
+
+The most recent version of the book is available online at [thetaminusb.com/intro-measurement-r/](https://thetaminusb.com/intro-measurement-r/). Previous versions will be archived at [thetaminusb.com/archive/](https://thetaminusb.com/archive/).
 
 ## Perspectives on testing {-}
 
@@ -92,14 +94,14 @@ It appears that @kelley1927interpretation recognized in the early 1900s the same
 
 As a researcher and psychometrician, someone who studies methods for building and using measurement tools, I admire a good test, much like a computer programmer admires a seamless data access layer or an engineer admires a sturdy truss system. Testing can provide critical information to the systems it supports. It is essential to measuring key outcomes in both education and psychology, and can be used to enhance learning and encourage growth [e.g., @black1998inside; @meyer2013taking; @roediger2011test]. However, test content and methods can also become outdated and out of touch, and, as a result, they can waste time and even produce erroneous, biased, and damaging information [@santelices2010unfair].
 
-Rather than do away with testing, we need to refine and improve it. We need to clarify its function and ensure that it is fulfilling its purpose. In the end, there is clearly disagreement between the people at each end of the testing process, that is, those creating the tests and those taking them or witnessing firsthand their results, in terms of the validity or effectiveness of the endeavor. This disconnect may never go away completely, especially since an education system has many roles and objectives, inputs and outputs, not all of which are unanimously endorsed. However, there is definitely room for change and growth.
+Rather than do away with testing, I would argue that we need to refine and improve it. We need to clarify its function and ensure that it is fulfilling its purpose. There is clearly disagreement between the people at each end of the testing process, that is, those creating the tests and those taking them or witnessing firsthand their results, in terms of the validity or effectiveness of the endeavor. This disconnect may never go away completely, especially since an education system has many roles and objectives, inputs and outputs, not all of which are unanimously endorsed. However, there is definitely room for change and growth.
 
-This book will prepare you to contribute to the discussion by giving you a broad overview of the test development and evaluation processes. Given this scope, some deeper topics, like dimensionality and item response theory, are covered only superficially. The purpose of this book is not to make you an expert in every topic, but to help you:
+This book will prepare you to contribute to the discussion by giving you a broad overview of the test development and evaluation processes. Given this scope, some deeper topics, like dimensionality and item response theory, are covered only from a high level. The purpose of this book is not to make you an expert in every topic, but to help you:
 
 1. recognize what makes a test useful and understand the importance of valid testing; and
-2. gain some of the basic skills needed to build and evaluate effective tests.
+2. gain foundational skills needed to build and evaluate effective tests.
 
-This book addresses affective and non-cognitive testing as well as cognitive, educational testing. Affective testing includes, for example, testing used to measure psychological attributes, perceptions, and behaviors, ones that are typically the target of clinical support rather than ones that are the target of instruction. This form of testing is just as relevant, but is also somewhat less controversial than educational testing, so it didn't make for as strong an opening to the book.
+This book incorporates examples from both educational and psychological testing. These two contexts often overlap, with the former considered here to be a subset of the latter. Psychological tests, defined broadly, are ones that seek to measure psychological constructs such as aptitude, achievement, attitudes, and personality traits. Educational tests then are ones used in educational settings, and they usually focus more narrowly on the measurement of knowledge, skills, and abilities that are the target of instruction. Educational testing is likely more familiar to you, and it made for a stronger opening to the book. However, most of the concepts and methods presented here apply in education as well as psychology more generally. Distinctions between cognitive and non-cognitive or affective measures are made when necessary.
 
 A handful of other books provide thorough introductions to psychometric theory and applications of measurement. This book differs from the rest in its exclusive focus on introductory topics for readers with a limited background in mathematics or statistics. Experience with introductory statistical concepts is helpful but not essential. This book also provides extensive reproducible examples in R with a single, dedicated R package encapsulating most of the needed functionality.
 

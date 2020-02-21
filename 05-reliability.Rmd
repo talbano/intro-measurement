@@ -61,7 +61,7 @@ library("ggplot2")
 # rowSums() for getting totals by row
 # rsim() and setrange() from epmr to simulate and modify
 # scores
-# rstudy(), alpha(), and sem() from epmr to get
+# rstudy(), coef_alpha(), and sem() from epmr to get
 # reliability and SEM
 # geom_point(), geom_abline(), and geom_errorbar() for
 # plotting
@@ -243,11 +243,11 @@ cor(xsplit1, xsplit2, use = "complete")
 The Spearman-Brown formula was originally used to correct for the reduction in reliability that occurred when correlating two test forms that were only half the length of the original test. In theory, reliability will increase as we add items to a test. Thus, Spearman-Brown is used to estimate, or predict, what the reliability would be if the half-length tests were made into full-length tests.
 
 ```{r, append=TRUE, chap=5}
-# sbr() in the epmr package uses the Spearman-Brown 
+# sb_r() in the epmr package uses the Spearman-Brown 
 # formula to estimate how reliability would change when 
 # test length changes by a factor k
 # If test length were doubled, k would be 2
-sbr(r = cor(xsplit1, xsplit2, use = "complete"), k = 2)
+sb_r(r = cor(xsplit1, xsplit2, use = "complete"), k = 2)
 ```
 
 The Spearman-Brown formula also has other practical uses. Today, it is most commonly used during the test development process to predict how reliability would change if a test form were reduced or increased in length. For example, if you are developing a test and you gather pilot data on 20 test items with a reliability estimate of 0.60, Spearman-Brown can be used to predict how this reliability would go up if you increased the test length to 30 or 40 items. You could also pilot test a large number of items, say 100, and predict how reliability would decrease if you wanted to use a shorter test.
@@ -259,7 +259,7 @@ r_{new} = \frac{kr_{old}}{(k - 1)r_{old} + 1}.
 (\#eq:rnew)
 \end{equation}
 
-Again, $k$ is the factor by which the test length is increased or decreased. It is equal to the number of items in the new test divided by the number of items in the original test. Multiply $k$ by the old reliability, and then divided the result by $(k - 1)$ times the old reliability, plus 1. For the example mentioned above, going from 20 to 30 items, we have $(30/20 \times 0.60)$ divided by $(30/20 - 1) \times 0.60 + 1 = 0.69$. Going to 40 items, we have a new reliability of 0.75. The epmr package contains `sbr()`, a simple function for estimating the Spearman-Brown reliability.
+Again, $k$ is the factor by which the test length is increased or decreased. It is equal to the number of items in the new test divided by the number of items in the original test. Multiply $k$ by the old reliability, and then divided the result by $(k - 1)$ times the old reliability, plus 1. For the example mentioned above, going from 20 to 30 items, we have $(30/20 \times 0.60)$ divided by $(30/20 - 1) \times 0.60 + 1 = 0.69$. Going to 40 items, we have a new reliability of 0.75. The epmr package contains `sb_r()`, a simple function for estimating the Spearman-Brown reliability.
 
 Alpha is arguably the most popular form of reliability. Many people refer to it as "Chronbach's alpha," but Chronbach himself never intended to claim authorship for it and in later years he regretted the fact that it was attributed to him [see @cronbach2004current]. The popularity of alpha is due to the fact that it can be calculated using scores from a single test form, rather than two separate administrations or split halves. Alpha is defined as
 
@@ -274,7 +274,7 @@ where $J$ is the number of items on the test, $\sigma^2_X$ is the variance of ob
 # epmr includes rstudy() which estimates alpha and a 
 # related form of reliability called omega, along with 
 # corresponding SEM
-# You can also use epmr::alpha() to obtain coefficient 
+# You can also use coef_alpha() to obtain coefficient 
 # alpha directly
 rstudy(PISA09[, rsitems])
 ```
@@ -303,11 +303,9 @@ Confidence intervals for `PISA09` can be estimated in the same way. First, we ch
 
 ```{r cttplot3, append=TRUE, chap=5, out.width='75%', fig.cap = "The PISA09 reading scale shown with 68 and 95 percent confidence intervals around each point."}
 # Get alpha and SEM for students in Belgium
-# ggplot2 also has a function called alpha, so we have to 
-# specify the package name
-bela <- epmr::alpha(PISA09[PISA09$cnt == "BEL", rsitems])
-# The sem function from epmr also overlaps with sem from 
-# another package so we're spelling it out here in long 
+bela <- coef_alpha(PISA09[PISA09$cnt == "BEL", rsitems])$alpha
+# The sem function from epmr sometimes overlaps with sem from 
+# another R package so we're spelling it out here in long 
 # form
 belsem <- epmr::sem(r = bela, sd = sd(scores$x1,
   na.rm = T))

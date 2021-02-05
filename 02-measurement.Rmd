@@ -75,6 +75,10 @@ Take a minute to consider what the variables in `state.x77` are measuring, and w
 
 Note that `state.x77` is a matrix, which means we can't index columns using `$`. That only works with a `list` or `data.frame`. However, the rows and columns of a matrix can have names, accessed with `rownames()` and `colnames()`, and we can use these names to index the matrix, as shown above.
 
+```{block, type="learning-check"}
+**Learning check**: What are the objects of measurement and the units of measurement involved in measuring illiteracy rates, as contained in `state.x77[, "Illiteracy"]`?
+```
+
 ### From physical to intangible
 
 With most physical measurements, the property that we're trying to represent or capture with our values can be clearly defined and consistently measured. For example, amounts of food are commonly measured in grams. A cup of cola has about 44 grams of sugar in it. When you see that number printed on your can of soda pop or fizzy water, the meaning is pretty clear, and there's really no need to question if its accurate. Cola has a shocking amount of sugar in it.
@@ -93,12 +97,12 @@ When using a proxy for our construct, we *infer* that the operationalization we'
 
 In the last year of my undergraduate work in psychology I conducted a research study on the constructs of aggression, sociability, and victimization with Italian preschoolers [@nelson2010italian]. I spent about four weeks collecting data in preschools. Data collection involved covering a large piece of cardboard with pictures of all the children in a classroom, and then asking each child, individually, questions about their peers.
 
-To measure sociability, we asked three simple questions:
-
-* Who is fun to talk to?
-* Who is fun to do pretend things with?
-* Who has many friends?
-
+To measure sociability, we asked three simple questions:  
+  
+* Who is fun to talk to?  
+* Who is fun to do pretend things with?  
+* Who has many friends?  
+  
 Kids with lots of peer nominations on these questions received a higher score, indicating that they were more sociable. After asking these and other questions to about 300 preschoolers, and then tallying up the scores, I wondered how well we were actually measuring the constructs we were targeting. Were these scores any good? Was three or five questions enough? Maybe we were missing something important? Maybe some of these questions, which had to be translated from English into Italian, meant different things on the coast of the Mediterranean than they did in the Midwest US?
 
 This project was my first experience on the measuring side of measurement, and it fascinated me. The questions that I asked then are the same questions that we'll ask and answer in this book. How consistently and accurately are we measuring what we intend to measure? What can we do to improve our measurement? And how can we identify instruments that are better or worse than others? These questions all have to do with what makes measurement good.
@@ -201,9 +205,18 @@ Progressing from nominal to ratio, the measurement scales become more descriptiv
 1. number of days spent living, from 0 to infinity;
 2. day born within a given year, from 1 to 365;
 3. degree of youngness, including toddler, adolescent, adult, etc.; or
-4. type of youngness, such as the same as Mike, or the same as Ike.
+4. type of youngness, such as the same as Sam, or the same as Pat.
 
 The first of these four, a ratio scale, is the most versatile and can be converted into any of the scales below it. However, once age is defined based on a classification, such as "same as Mike," no improvement can be made. For this reason a variable's measurement scale should be considered in the planning stages of test design, ideally when we identify the purpose of our test.
+
+```{r, append=TRUE, chap=2}
+# A demonstration of degrading a measurement scale
+# from ratio down to nominal in R
+c(sam = 12, pat = 18, gustav = 12, fran = 18)
+c(37.83, 20.5, 1.17, 61.42, 8.75)
+c(37.83, 20.5, 1.17, 61.42, 8.75)
+c(37.83, 20.5, 1.17, 61.42, 8.75)
+```
 
 In the social sciences, measurement with the ratio scale is difficult to achieve because our operationalizations of constructs typically don't have meaningful zeros. So, interval scales are considered optimal, though they too are not easily obtained. Consider the sociability measure described above. What type of scale is captured by this measure? Does a zero score indicate a total absence of sociability? This is required for ratio. Does an incremental increase at one end of the scale mean the same thing as an incremental increase at the other end of the scale? This is required for interval.
 
@@ -247,7 +260,7 @@ ggplot(PISA09, aes(factor(rtotal))) + geom_bar()
 When we talk about measurement scales, and next scoring, keep in mind that we're focusing on the x-axis of a plot like the one shown in Figure \@ref(fig:qplot-rtotal). The distribution itself doesn't necessarily help us interpret the measurement scale or scoring process. Instead, we're examining how individual items and combinations of them capture differences in the underlying construct.
 
 ```{block, type="learning-check"}
-**Learning check**: Suppose aggression is measured with a group of students based on the number of aggressive behaviors observed over a certain time period. Why would this measurement not be considered a ratio scale?
+**Learning check**: Suppose the construct of aggression is measured with a group of students based on the number of aggressive behaviors observed during a class period. Why would an interval scale be more appropriate here than a ratio scale?
 ```
 
 ## Scoring

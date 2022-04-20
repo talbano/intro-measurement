@@ -311,12 +311,12 @@ The student survey variables in `PISA09$st27q01` through `PISA09$st42q05` are po
 knitr::include_graphics("images/pisaq33.jpg")
 ```
 
-Notice that the first two items in the scale are phrased negatively, and the second two are phrased positively. Items `PISA09$st33q01` and `PISA09$st33q02`, labeled a and b in Figure \@ref(fig:pisaq33), need to be reverse coded if we want higher scores to represent more positive attitude, as in c and d. `recode()` from the epmr package will automatically reverse score a numeric variable.
+Notice that the first two items in the scale are phrased negatively, and the second two are phrased positively. Items `PISA09$st33q01` and `PISA09$st33q02`, labeled a and b in Figure \@ref(fig:pisaq33), need to be reverse coded if we want higher scores to represent more positive attitude, as in c and d. `rescore()` from the epmr package will automatically reverse score a numeric variable.
 
 ```{r, append=TRUE, chap=2}
 # Reverse code two variables
-PISA09$st33q01r <- recode(PISA09$st33q01)
-PISA09$st33q02r <- recode(PISA09$st33q02)
+PISA09$st33q01r <- rescore(PISA09$st33q01)
+PISA09$st33q02r <- rescore(PISA09$st33q02)
 ```
 ```{r, echo=FALSE}
 stitems <- c("st27q01", "st27q02", "st27q03", "st27q04", 
